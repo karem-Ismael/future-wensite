@@ -49,20 +49,7 @@ function Services() {
                                             filterOption={(input, option) =>
                                                 (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                                             }
-                                            options={[
-                                                {
-                                                    value: 'jack',
-                                                    label: 'Jack',
-                                                },
-                                                {
-                                                    value: 'lucy',
-                                                    label: 'Lucy',
-                                                },
-                                                {
-                                                    value: 'tom',
-                                                    label: 'Tom',
-                                                },
-                                            ]}
+                                            options={[]}
                                         />
                                     </Row>
                                 </Col>
