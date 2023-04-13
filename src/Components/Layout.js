@@ -62,16 +62,16 @@ const LayoutComponent =({children})=>{
             <Button style={BtnStyle}><img src="/assets/images/ico-twitter.png" width={18} height={16}  alt="twitter icon"/> </Button>
           </div>  
           <div style={HeaderImages}>
-          <Button style={BtnStyle}> <Image src={"/assets/images/ico-insta.png"} width={18} height={16} alt="instgram icon"/></Button>
+          <Button style={BtnStyle}> <Image src="/assets/images/ico-insta.png" width={18} height={16} alt="instgram icon"/></Button>
           </div>  
           <div style={HeaderImages}>
           <Button style={BtnStyle}> 
-            <Image src={"/assets/images/ico-linkedin.png"}  width={18} height={16}  alt="Linkedon icon"/>
+            <Image src="/assets/images/ico-linkedin.png"  width={18} height={16}  alt="Linkedon icon"/>
           </Button>
           </div>  
           <div style={HeaderImages}>
           <Button style={BtnStyle}>
-            <Image src={"/assets/images/ico-mail.png"} width={18} height={16} alt="mail icon"/>
+            <Image src="/assets/images/ico-mail.png" width={18} height={16} alt="mail icon"/>
             </Button>
           </div>  
         
