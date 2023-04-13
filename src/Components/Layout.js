@@ -1,4 +1,4 @@
-import mailImage from "/public/assets/images/ico-mail.png"
+// import mailImage from "/public/assets/images/ico-mail.png"
 import HeaderComponent from "./Header"
 import styled from "styled-components";
 import { Layout, Space,Row,Col,Button} from 'antd';
