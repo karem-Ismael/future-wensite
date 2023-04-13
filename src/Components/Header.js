@@ -1,6 +1,6 @@
 import React from "react"
 import Image from 'next/image'
-import logo from "../../public/assets/images/logo-waqf.png"
+import logo from "/public/assets/images/logo-waqf.png"
 import styled from "styled-components";
 import { Layout, Space,Row,Col,Button} from 'antd';
 import Link from "next/link";
