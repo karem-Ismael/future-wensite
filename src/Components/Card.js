@@ -39,9 +39,14 @@ li.item{
     margin-top:10px;
 }
 .discount{
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    text-align: center;
     background:#D3B166;
     color:#fff;
     width:15%;
+    min-width:57px;
     padding:10px;
 }
 }

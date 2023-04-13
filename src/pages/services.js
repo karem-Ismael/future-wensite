@@ -172,7 +172,7 @@ function Services() {
                 <Row  gutter={[16, 16]}>
                     <Col md={8} sm={12} xs={24}>
                         <CardComponent>
-                                            <span className='discount' style={{position:"absolute",top:"0px",left:"10px",width:"10%",textAlign:"center"}}>
+                                            <span className='discount'>
                                             %20 <br/>
                                             دعم
                                             </span>
@@ -221,10 +221,104 @@ function Services() {
                         </CardComponent>
                     </Col>
                     <Col md={8} sm={12} xs={24}>
-                        <CardComponent />
+                    <CardComponent>
+                                            <span className='discount'>
+                                            %20 <br/>
+                                            دعم
+                                            </span>
+                                            <p className='card-title'>
+                                            مجموعة ألفا للاستشارات المهنية
+                                            </p>
+                                            <h2 className='service-title'>
+                                            التهيئة الضريبية
+                                            </h2>
+                                            <p className='service-description'>
+                                            تهدف إلى إعداد وتهيئة حسابات الضريبة وذلك لتمكين الوقف من معرفة الضريبة المستحقة عليه بشكل صحيح
+                                            </p>
+                                            <hr/>
+                                            <li className='item'>
+                                            <span>
+                                            التصنيف : 
+                                            </span>
+                                            <span>
+                                            محاسبي
+                                            </span>
+                                            </li>
+                                            <li className='item'>
+                                                <span>
+                                                التكلفة :
+                                                </span>
+                                                <span>
+                                                 حسب طلب الوقف
+
+                                                </span>
+                                            </li>
+                                            <li className='item'>
+                                                <span>
+                                                مدة التنفيذ :
+                                                </span>
+                                                <span>
+                                                 30 يوم
+
+                                                </span>
+                                            </li>
+                                            <div className='rate'>
+                                            <Rate allowHalf defaultValue={2.5} disabled />
+                                            </div>
+                                            <div className="btn-details">
+                                            <Button  style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
+                                            </div>
+                        </CardComponent>
                     </Col>
                     <Col md={8} sm={12} xs={24}>
-                        <CardComponent />
+                    <CardComponent>
+                                            <span className='discount'>
+                                            %20 <br/>
+                                            دعم
+                                            </span>
+                                            <p className='card-title'>
+                                            مجموعة ألفا للاستشارات المهنية
+                                            </p>
+                                            <h2 className='service-title'>
+                                            التهيئة الضريبية
+                                            </h2>
+                                            <p className='service-description'>
+                                            تهدف إلى إعداد وتهيئة حسابات الضريبة وذلك لتمكين الوقف من معرفة الضريبة المستحقة عليه بشكل صحيح
+                                            </p>
+                                            <hr/>
+                                            <li className='item'>
+                                            <span>
+                                            التصنيف : 
+                                            </span>
+                                            <span>
+                                            محاسبي
+                                            </span>
+                                            </li>
+                                            <li className='item'>
+                                                <span>
+                                                التكلفة :
+                                                </span>
+                                                <span>
+                                                 حسب طلب الوقف
+
+                                                </span>
+                                            </li>
+                                            <li className='item'>
+                                                <span>
+                                                مدة التنفيذ :
+                                                </span>
+                                                <span>
+                                                 30 يوم
+
+                                                </span>
+                                            </li>
+                                            <div className='rate'>
+                                            <Rate allowHalf defaultValue={2.5} disabled />
+                                            </div>
+                                            <div className="btn-details">
+                                            <Button  style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
+                                            </div>
+                        </CardComponent>
                     </Col>
                 </Row>
             </DIVContent>

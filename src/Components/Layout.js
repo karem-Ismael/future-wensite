@@ -1,11 +1,8 @@
-// import mailImage from "/public/assets/images/ico-mail.png"
 import HeaderComponent from "./Header"
 import styled from "styled-components";
 import { Layout, Space,Row,Col,Button} from 'antd';
 import Image from 'next/image'
-// import instaImage from "/public/assets/images/ico-insta.png"
-// import twitterImage from "/public/assets/images/ico-twitter.png"
-// import linkedin from "/public/assets/images/ico-linkedin.png"
+
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
   textAlign: 'left',
@@ -61,22 +58,22 @@ const LayoutComponent =({children})=>{
       <Header style={headerStyle}>
         {/* <img src="/assets/images/icon-insta.png" /> */}
         <Row style={HeaderImages}>
-          {/* <div style={HeaderImages}>
-            <Button style={BtnStyle}><Image src={twitterImage} width={18} height={16}  alt="twitter icon"/> </Button>
+          <div style={HeaderImages}>
+            <Button style={BtnStyle}><img src="/assets/images/ico-twitter.png" width={18} height={16}  alt="twitter icon"/> </Button>
           </div>  
           <div style={HeaderImages}>
-          <Button style={BtnStyle}> <Image src={instaImage} width={18} height={16} alt="instgram icon"/></Button>
+          <Button style={BtnStyle}> <Image src={"/assets/images/ico-insta.png"} width={18} height={16} alt="instgram icon"/></Button>
           </div>  
           <div style={HeaderImages}>
           <Button style={BtnStyle}> 
-            <Image src={linkedin}  width={18} height={16}  alt="Linkedon icon"/>
+            <Image src={"/assets/images/ico-linkedin.png"}  width={18} height={16}  alt="Linkedon icon"/>
           </Button>
           </div>  
           <div style={HeaderImages}>
           <Button style={BtnStyle}>
-            <Image src={mailImage} width={18} height={16} alt="mail icon"/>
+            <Image src={"/assets/images/ico-mail.png"} width={18} height={16} alt="mail icon"/>
             </Button>
-          </div>   */}
+          </div>  
         
         </Row>
         
