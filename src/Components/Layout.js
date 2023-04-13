@@ -64,12 +64,12 @@ const LayoutComponent =({children})=>{
           </div>  
           <div style={HeaderImages}>
           <Button style={BtnStyle}> 
-            <img src="/assets/images/ico-linkedin.png"  width={18} height={16}  alt="Linkedon icon"/>
+            <img src="/assets/images/linkedin.png"  width={18} height={16}  alt="Linkedon icon"/>
           </Button>
           </div>  
           <div style={HeaderImages}>
           <Button style={BtnStyle}>
-            <img src="/assets/images/ico-mail.png" width={18} height={16} alt="mail icon"/>
+            <img src="/assets/images/mail.png" width={18} height={16} alt="mail icon"/>
             </Button>
           </div>  
         
