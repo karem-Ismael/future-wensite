@@ -39,6 +39,11 @@ const footerStyle = {
   color: '#fff',
   backgroundColor: '#D3B166',
 };
+const footer1={
+  textAlign: 'right',
+  color: '#fff',
+  backgroundColor: '#005D5E',
+}
 const BtnStyle={
   padding:"9px 5px",
   borderRadius:"0px"
@@ -55,8 +60,10 @@ const LayoutComponent =({children})=>{
   >
     <Layout>
       <Header style={headerStyle}>
-        <Row style={HeaderImages}>
-          <div style={HeaderImages}>
+      <div className="container" style={{padding:"0px"}}>
+
+        <Row style={HeaderImages} justify="start">
+          <div style={HeaderImages} >
             <Button style={BtnStyle}><img src="/assets/images/ico-twitter.png" width={18} height={16}  alt="twitter icon"/> </Button>
           </div>  
           <div style={HeaderImages}>
@@ -74,14 +81,23 @@ const LayoutComponent =({children})=>{
           </div>  
         
         </Row>
-        
+      </div>
+
       </Header>
       <Content style={contentStyle}>
         <HeaderComponent /> 
       </Content>
       {children}
+      <Footer style={footer1}>
+        <div>
+
+        </div>
+      </Footer>
       <Footer style={footerStyle}>
+        <div>
       حقوق النشر 2023 تعود لـ شركة استثمار المستقبل المحدودة 〈وقف الأوقاف〉
+
+        </div>
       </Footer>
     </Layout>
   </Space>

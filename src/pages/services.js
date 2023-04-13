@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import CardComponent from '../Components/Card';
 
 const selectStyle={
-    width:"240px"
+    width:"220px"
 }
 const DIVContent = styled.div`
 transform:translateY(-300px);
@@ -13,6 +13,7 @@ direction:rtl;
 .select-title{
     color:#fff;
     align-self:center;
+    min-width:70px;
 }
 .select-content{
     gap:10px;
@@ -30,7 +31,7 @@ function Services() {
     };
     return (
         <LayoutComponent>
-            <DIVContent >
+            <DIVContent className='container' style={{padding:"0px"}}>
                 <Row>
                     <Col md={24} sm={24} xs={24}>
                         <CardComponent color={"#005D5E"} >
