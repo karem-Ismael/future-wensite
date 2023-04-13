@@ -1,7 +1,6 @@
 import HeaderComponent from "./Header"
 import styled from "styled-components";
 import { Layout, Space,Row,Col,Button} from 'antd';
-import Image from 'next/image'
 
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
@@ -56,7 +55,6 @@ const LayoutComponent =({children})=>{
   >
     <Layout>
       <Header style={headerStyle}>
-        {/* <img src="/assets/images/icon-insta.png" /> */}
         <Row style={HeaderImages}>
           <div style={HeaderImages}>
             <Button style={BtnStyle}><img src="/assets/images/ico-twitter.png" width={18} height={16}  alt="twitter icon"/> </Button>
