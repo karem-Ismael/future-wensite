@@ -4,7 +4,7 @@ import Image from 'next/image'
 import LayoutComponent from '../Components/Layout';
 const App = () => (
 <LayoutComponent>
-  karem
+  {/* karem */}
 </LayoutComponent>
 );
 export default App;    
