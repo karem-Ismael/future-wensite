@@ -98,11 +98,11 @@ const HeaderComponent = () => {
       
 
       {
-        screens.lg || screens.xl ? null : <Col md={4} sm={4} >
+        screens.lg || screens.xl ? null : <Col md={4} sm={4} xs={4} >
           <DrawerComponent /> 
         </Col>
       }  
-      <Col lg={8} md={20} sm={20} >
+      <Col lg={8} md={15} sm={15} xs={15} >
         <img src="/assets/images/logo-waqf.png" height={100} />
       </Col>
       <Col lg={16} style={{display: screens.lg || screens.xl  ? "" : "none"}}>

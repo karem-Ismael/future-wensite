@@ -27,7 +27,7 @@ const DrawerComponent = () => {
       <Drawer
         title="Drawer with extra actions"
         placement={placement}
-        width={500}
+        width={"80%"}
         onClose={onClose}
         open={open}
         extra={
