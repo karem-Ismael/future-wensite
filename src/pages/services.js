@@ -2,6 +2,8 @@ import LayoutComponent from '../Components/Layout';
 import { Col, Rate, Row,Select,Button  } from 'antd';
 import styled from 'styled-components';
 import CardComponent from '../Components/Card';
+import { Grid, Tag } from 'antd';
+const { useBreakpoint } = Grid;
 
 const selectStyle={
     width:"220px"
@@ -23,6 +25,8 @@ direction:rtl;
 }
 `;
 function Services() {
+    const screens = useBreakpoint();
+
     const onChange = (value) => {
         console.log(`selected ${value}`);
     };

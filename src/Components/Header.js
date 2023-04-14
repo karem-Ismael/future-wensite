@@ -7,6 +7,9 @@ import { Layout, Space, Row, Col, Button, Breadcrumb, Menu } from 'antd';
 
 import Link from "next/link";
 import { useRouter } from "next/router";
+import DrawerComponent from "./drawer";
+import { Grid, Tag } from 'antd';
+const { useBreakpoint } = Grid;
 const Nav = styled.div`
   display: flex;
   gap:30px;
@@ -88,14 +91,21 @@ const ImageStyle = {
 }
 const HeaderComponent = () => {
   const router = useRouter()
-
+  const screens = useBreakpoint();
   return (
 
     <Row style={RowStyle} className="container">
-      <Col lg={8}>
+      
+
+      {
+        screens.lg || screens.xl ? null : <Col md={4} sm={4} >
+          <DrawerComponent /> 
+        </Col>
+      }  
+      <Col lg={8} md={20} sm={20} >
         <img src="/assets/images/logo-waqf.png" height={100} />
       </Col>
-      <Col lg={16}>
+      <Col lg={16} style={{display: screens.lg || screens.xl  ? "" : "none"}}>
         <Nav>
 
           <li className={router.pathname === "/" ? "active-item" : null}>
