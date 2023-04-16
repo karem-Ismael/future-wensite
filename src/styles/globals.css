@@ -158,3 +158,20 @@ a {
     max-width:100%
   }
 }
+ul{
+  list-style-type: none;
+}
+.footer-list li{
+  padding: 10px;
+}
+.footer-icon{
+  color: #D3B166;
+}
+
+.social-row{
+  justify-content: space-between;
+}
+.social-row svg{
+  font-size: 30px;
+  color:#D3B166;
+}

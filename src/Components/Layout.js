@@ -1,6 +1,8 @@
 import HeaderComponent from "./Header"
 import styled from "styled-components";
 import { Layout, Space,Row,Col,Button} from 'antd';
+import Link from "next/link";
+import {LeftOutlined,MailOutlined,TwitterOutlined,YoutubeOutlined,WhatsAppOutlined,InstagramOutlined} from '@ant-design/icons';
 
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
@@ -43,6 +45,7 @@ const footer1={
   textAlign: 'right',
   color: '#fff',
   backgroundColor: '#005D5E',
+  direction:"rtl"
 }
 const BtnStyle={
   padding:"9px 5px",
@@ -89,7 +92,83 @@ const LayoutComponent =({children})=>{
       </Content>
       {children}
       <Footer style={footer1}>
-        <div>
+        <div className="container">
+          <Row gutter={[100,16]}>
+
+          <Col lg={10} md={10} sm={24} xs={24}>
+          <img src="/assets/images/logo-footr.png" width={"100%"}/>
+          <Row className="social-row">
+          <MailOutlined />
+          <WhatsAppOutlined />
+
+          <YoutubeOutlined />
+          <TwitterOutlined />
+          <InstagramOutlined style={{fontSize:"20px"}}/>
+
+          </Row>
+          </Col>
+          <Col lg={14} md={14} sm={24} xs={24}>
+              <Row>
+                <Col lg={12} md={12} sm={24} xs={24} >
+                <ul className="footer-list">
+                <li>
+                  <Link href={"/about-us"}>
+                    <LeftOutlined className="footer-icon"/>
+                       من نحن
+                  </Link>
+                </li>
+                <li>
+                  <Link href={"/"}>
+                  <LeftOutlined className="footer-icon"/>
+                    اتصل بنا    
+                  </Link>
+                </li>
+                <li>
+
+                  <Link href={"/"}>
+                  <LeftOutlined className="footer-icon"/>
+                    مكتبة الوقف
+                  </Link>
+                </li>
+                <li>
+                  <Link href={"/"}> 
+                  <LeftOutlined className="footer-icon"/>
+
+                    انضم الينا
+                  </Link>
+                </li>
+              </ul>
+                </Col>
+              <Col lg={12} sm={24} xs={24}>
+                  
+              <ul className="footer-list">
+               
+                <li>
+                <Link href="/services">
+                <LeftOutlined className="footer-icon"/>
+               
+                خدماتنا 
+                </Link>
+                </li>
+                <li>
+                  <Link href={"/"}>
+                <LeftOutlined className="footer-icon"/>
+                     الباقات
+                  </Link>
+                </li>
+                <li>
+                <Link href={"/"}>
+                <LeftOutlined className="footer-icon"/>
+                الاستشارات
+                     
+                  </Link>
+                </li>
+              </ul>
+              </Col>
+              </Row>
+            
+            </Col>
+          </Row>
 
         </div>
       </Footer>
