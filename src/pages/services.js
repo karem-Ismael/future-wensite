@@ -24,7 +24,7 @@ direction:rtl;
     color:#005D5E
 }
 `;
-function Services() {
+function Services({services}) {
     const screens = useBreakpoint();
 
     const onChange = (value) => {
@@ -33,6 +33,7 @@ function Services() {
     const onSearch = (value) => {
         console.log('search:', value);
     };
+    console.log(services,"services")
     return (
         <LayoutComponent>
             <DIVContent className='container' style={{padding:"0px"}}>
@@ -124,156 +125,60 @@ function Services() {
                     </Col>
                 </Row>
                 <Row  gutter={[16, 16]}>
-                    <Col md={8} sm={12} xs={24}>
-                        <CardComponent>
-                                            <span className='discount'>
-                                            %20 <br/>
-                                            دعم
-                                            </span>
-                                            <p className='card-title'>
-                                            مجموعة ألفا للاستشارات المهنية
-                                            </p>
-                                            <h2 className='service-title'>
-                                            التهيئة الضريبية
-                                            </h2>
-                                            <p className='service-description'>
-                                            تهدف إلى إعداد وتهيئة حسابات الضريبة وذلك لتمكين الوقف من معرفة الضريبة المستحقة عليه بشكل صحيح
-                                            </p>
-                                            <hr/>
-                                            <li className='item'>
-                                            <span>
-                                            التصنيف : 
-                                            </span>
-                                            <span>
-                                            محاسبي
-                                            </span>
-                                            </li>
-                                            <li className='item'>
+                    {
+                        services?.data?.data.map((oneservice)=>(
+                            <Col key={oneservice.id} md={8} sm={12} xs={24}>
+                            <CardComponent>
+                                                <span className='discount'>
+                                                {oneservice.support_ratio} % <br/>
+                                                دعم
+                                                </span>
+                                                <p className='card-title'>
+                                                    {oneservice.service_provider.company_name_ar}
+                                                </p>
+                                                <h2 className='service-title'>
+                                                 {oneservice.title}
+                                                </h2>
+                                                <p className='service-description'>
+                                                    {oneservice.description}
+                                                </p>
+                                                <hr/>
+                                                <li className='item'>
                                                 <span>
-                                                التكلفة :
+                                                التصنيف : 
                                                 </span>
                                                 <span>
-                                                 حسب طلب الوقف
-
+                                                {oneservice.field.name}
                                                 </span>
-                                            </li>
-                                            <li className='item'>
-                                                <span>
-                                                مدة التنفيذ :
-                                                </span>
-                                                <span>
-                                                 30 يوم
-
-                                                </span>
-                                            </li>
-                                            <div className='rate'>
-                                            <Rate allowHalf defaultValue={2.5} disabled />
-                                            </div>
-                                            <div className="btn-details">
-                                            <Button  style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
-                                            </div>
-                        </CardComponent>
-                    </Col>
-                    <Col md={8} sm={12} xs={24}>
-                    <CardComponent>
-                                            <span className='discount'>
-                                            %20 <br/>
-                                            دعم
-                                            </span>
-                                            <p className='card-title'>
-                                            مجموعة ألفا للاستشارات المهنية
-                                            </p>
-                                            <h2 className='service-title'>
-                                            التهيئة الضريبية
-                                            </h2>
-                                            <p className='service-description'>
-                                            تهدف إلى إعداد وتهيئة حسابات الضريبة وذلك لتمكين الوقف من معرفة الضريبة المستحقة عليه بشكل صحيح
-                                            </p>
-                                            <hr/>
-                                            <li className='item'>
-                                            <span>
-                                            التصنيف : 
-                                            </span>
-                                            <span>
-                                            محاسبي
-                                            </span>
-                                            </li>
-                                            <li className='item'>
-                                                <span>
-                                                التكلفة :
-                                                </span>
-                                                <span>
-                                                 حسب طلب الوقف
-
-                                                </span>
-                                            </li>
-                                            <li className='item'>
-                                                <span>
-                                                مدة التنفيذ :
-                                                </span>
-                                                <span>
-                                                 30 يوم
-
-                                                </span>
-                                            </li>
-                                            <div className='rate'>
-                                            <Rate allowHalf defaultValue={2.5} disabled />
-                                            </div>
-                                            <div className="btn-details">
-                                            <Button  style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
-                                            </div>
-                        </CardComponent>
-                    </Col>
-                    <Col md={8} sm={12} xs={24}>
-                    <CardComponent>
-                                            <span className='discount'>
-                                            %20 <br/>
-                                            دعم
-                                            </span>
-                                            <p className='card-title'>
-                                            مجموعة ألفا للاستشارات المهنية
-                                            </p>
-                                            <h2 className='service-title'>
-                                            التهيئة الضريبية
-                                            </h2>
-                                            <p className='service-description'>
-                                            تهدف إلى إعداد وتهيئة حسابات الضريبة وذلك لتمكين الوقف من معرفة الضريبة المستحقة عليه بشكل صحيح
-                                            </p>
-                                            <hr/>
-                                            <li className='item'>
-                                            <span>
-                                            التصنيف : 
-                                            </span>
-                                            <span>
-                                            محاسبي
-                                            </span>
-                                            </li>
-                                            <li className='item'>
-                                                <span>
-                                                التكلفة :
-                                                </span>
-                                                <span>
-                                                 حسب طلب الوقف
-
-                                                </span>
-                                            </li>
-                                            <li className='item'>
-                                                <span>
-                                                مدة التنفيذ :
-                                                </span>
-                                                <span>
-                                                 30 يوم
-
-                                                </span>
-                                            </li>
-                                            <div className='rate'>
-                                            <Rate allowHalf defaultValue={2.5} disabled />
-                                            </div>
-                                            <div className="btn-details">
-                                            <Button  style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
-                                            </div>
-                        </CardComponent>
-                    </Col>
+                                                </li>
+                                                <li className='item'>
+                                                    <span>
+                                                    التكلفة :
+                                                    </span>
+                                                    <span>
+                                                      {oneservice.cost} 
+    
+                                                    </span>
+                                                </li>
+                                                <li className='item'>
+                                                    <span>
+                                                    مدة التنفيذ :
+                                                    </span>
+                                                    <span>
+                                                     {oneservice.executive_time}{oneservice.executive_time_type} 
+    
+                                                    </span>
+                                                </li>
+                                                <div className='rate'>
+                                                <Rate allowHalf defaultValue={2.5} disabled />
+                                                </div>
+                                                <div className="btn-details">
+                                                <Button  style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
+                                                </div>
+                            </CardComponent>
+                        </Col>
+                        ))
+                    }
                 </Row>
             </DIVContent>
 
@@ -281,3 +186,12 @@ function Services() {
     )
 }
 export default Services
+export async function getServerSideProps(){
+    const response =await fetch("https://estithmar.arabia-it.net/api/service")
+    const data =await response.json()
+    return{
+        props:{
+            services:data
+        }
+    }
+}
