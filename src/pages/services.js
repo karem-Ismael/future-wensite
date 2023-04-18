@@ -144,32 +144,32 @@ function Services({services}) {
                                                 </p>
                                                 <hr/>
                                                 <li className='item'>
-                                                <span>
-                                                التصنيف : 
+                                                <span className='list-title'>
+                                                التصنيف :     
                                                 </span>
-                                                <span>
+                                                <span className='list-value'>
                                                 {oneservice.field.name}
                                                 </span>
                                                 </li>
                                                 <li className='item'>
-                                                    <span>
+                                                    <span className='list-title'>
                                                     التكلفة :
                                                     </span>
-                                                    <span>
-                                                      {oneservice.cost} 
+                                                    <span className='list-value'>
+                                                     حسب طلب الوقف
     
                                                     </span>
                                                 </li>
                                                 <li className='item'>
-                                                    <span>
+                                                    <span className='list-title'>
                                                     مدة التنفيذ :
                                                     </span>
-                                                    <span>
+                                                    <span className='list-value'>
                                                      {oneservice.executive_time}{oneservice.executive_time_type} 
     
                                                     </span>
                                                 </li>
-                                                <div className='rate'>
+                                                <div className='rate' >
                                                 <Rate allowHalf defaultValue={2.5} disabled />
                                                 </div>
                                                 <div className="btn-details">

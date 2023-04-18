@@ -175,3 +175,14 @@ ul{
   font-size: 30px;
   color:#D3B166;
 }
+.list-title{
+  color:#005D5E;
+  font-weight:bold
+}
+.service-description{
+  color:#9C9C9C;
+  text-align: center;
+}
+.list-value{
+  color: #707070;
+}
