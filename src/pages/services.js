@@ -42,6 +42,16 @@ function Services({services,fields}) {
         })
         
     };
+    const onChangeTime=(value)=>{
+        axios.get("https://estithmar.arabia-it.net/api/service",{
+            params:{
+                field_id:field ? field :undefined,
+                executive_time_type:value,
+            }
+        }).then((res)=>{
+            setClientServices(res.data)
+        })
+    }
     const onSearch = (value) => {
         console.log('search:', value);
     };
@@ -120,24 +130,24 @@ function Services({services,fields}) {
                                             showSearch
                                             placeholder="عرض الكل"
                                             optionFilterProp="children"
-                                            onChange={onChange}
+                                            onChange={onChangeTime}
                                             onSearch={onSearch}
                                             filterOption={(input, option) =>
                                                 (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                                             }
                                             options={[
-                                                // {
-                                                //     label:"يوم",
-                                                //     value:"day"
-                                                // },
-                                                // {
-                                                //     label:"شهر",
-                                                //     value:"month"
-                                                // },
-                                                // {
-                                                //     label:"سنة",
-                                                //     value:"year"
-                                                // }
+                                                {
+                                                    label:"يوم",
+                                                    value:"day"
+                                                },
+                                                {
+                                                    label:"شهر",
+                                                    value:"month"
+                                                },
+                                                {
+                                                    label:"سنة",
+                                                    value:"year"
+                                                }
                                             ]}
                                         />
                                     </Row>

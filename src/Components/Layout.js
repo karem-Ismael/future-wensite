@@ -65,10 +65,10 @@ const LayoutComponent =({children})=>{
       <Header style={headerStyle}>
       <div className="container" style={{padding:"0px"}}>
 
-        <Row style={HeaderImages} justify="start">
+        <Row style={HeaderImages} justify="end">
           <div style={HeaderImages} >
             <Button style={BtnStyle}><img src="/assets/images/ico-twitter.png" width={18} height={16}  alt="twitter icon"/> </Button>
-          </div>  
+          </div>    
           <div style={HeaderImages}>
           <Button style={BtnStyle}> <img src="/assets/images/ico-insta.png" width={18} height={16} alt="instgram icon"/></Button>
           </div>  
