@@ -3,6 +3,8 @@ import { Col, Rate, Row,Select,Button  } from 'antd';
 import styled from 'styled-components';
 import CardComponent from '../Components/Card';
 import { Grid, Tag } from 'antd';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 const { useBreakpoint } = Grid;
 
 const selectStyle={
@@ -24,16 +26,38 @@ direction:rtl;
     color:#005D5E
 }
 `;
-function Services({services}) {
+function Services({services,fields}) {
     const screens = useBreakpoint();
-
+    const [clientServices,setClientServices]=useState(services)
+    const [field,setField]=useState()
     const onChange = (value) => {
-        console.log(`selected ${value}`);
+        
+        setField(value)
+        axios.get("https://estithmar.arabia-it.net/api/service",{
+            params:{
+                field_id:value
+            }
+        }).then((res)=>{
+            setClientServices(res.data)
+        })
+        
     };
     const onSearch = (value) => {
         console.log('search:', value);
     };
-    console.log(services,"services")
+    // useEffect(async()=>{
+    //     if(field){
+    //         // const response =await fetch("https://estithmar.arabia-it.net/api/service")
+    //         // const data =await response.json()
+    //         // setClientServices(data)
+    //     }
+    // },[field])
+    // useEffect(async()=>{
+    //     console.log("karem")
+    //     const serviceres =await fetch("https://estithmar.arabia-it.net/api/service")
+    //     const data =await serviceres.json()
+    //     setClientServices(data)
+    // },[field])
     return (
         <LayoutComponent>
             <DIVContent className='container' style={{padding:"0px"}}>
@@ -55,7 +79,15 @@ function Services({services}) {
                                             filterOption={(input, option) =>
                                                 (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                                             }
-                                            options={[]}
+                                            
+                                            options={
+                                                fields.data.data.map((field)=>{
+                                                    return({
+                                                        value:field.id,
+                                                        label:field.name
+                                                    })
+                                                })
+                                            }
                                         />
                                     </Row>
                                 </Col>
@@ -93,7 +125,20 @@ function Services({services}) {
                                             filterOption={(input, option) =>
                                                 (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                                             }
-                                            options={[]}
+                                            options={[
+                                                // {
+                                                //     label:"يوم",
+                                                //     value:"day"
+                                                // },
+                                                // {
+                                                //     label:"شهر",
+                                                //     value:"month"
+                                                // },
+                                                // {
+                                                //     label:"سنة",
+                                                //     value:"year"
+                                                // }
+                                            ]}
                                         />
                                     </Row>
                                 </Col>
@@ -126,7 +171,7 @@ function Services({services}) {
                 </Row>
                 <Row  gutter={[16, 16]}>
                     {
-                        services?.data?.data.map((oneservice)=>(
+                        clientServices?.data?.data.map((oneservice)=>(
                             <Col key={oneservice.id} md={8} sm={12} xs={24}>
                             <CardComponent>
                                                 <span className='discount'>
@@ -189,9 +234,12 @@ export default Services
 export async function getServerSideProps(){
     const response =await fetch("https://estithmar.arabia-it.net/api/service")
     const data =await response.json()
+    const response2=await fetch("https://estithmar.arabia-it.net/api/admin/service-provider-fields")
+    const data2=await response2.json()
     return{
         props:{
-            services:data
+            services:data,
+            fields:data2
         }
     }
 }
