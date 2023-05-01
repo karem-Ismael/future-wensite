@@ -2,6 +2,7 @@ import styled from "styled-components"
 const DIV =styled.div`
 background-color:${(props)=> props.color ? props.color : "#fff" };
 border-radius:5px;
+height:100%;
 direction:rtl;
 box-shadow:0px 1px 15px 1px rgba(69,65,78,0.08);
 border:none;
@@ -33,6 +34,7 @@ li.item{
 }
 .rate{
     text-align:center;
+    margin:13px;
 }
 .btn-details{
     text-align:center;

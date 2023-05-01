@@ -188,10 +188,10 @@ function Services({services,fields}) {
                         </CardComponent>
                     </Col>
                 </Row>
-                <Row  gutter={[16, 16]}>
+                <Row  gutter={[16, 16]} className="mt-3">
                     {
                         clientServices?.data?.data.map((oneservice)=>(
-                            <Col key={oneservice.id} md={8} sm={12} xs={24}>
+                            <Col key={oneservice.id} md={8} sm={12} xs={24} style={{position:"relative"}}>
                             <CardComponent>
                                                 <span className='discount'>
                                                 {oneservice.support_ratio} % <br/>
@@ -236,7 +236,7 @@ function Services({services,fields}) {
                                                 <div className='rate' >
                                                 <Rate allowHalf defaultValue={2.5} disabled />
                                                 </div>
-                                                <div className="btn-details">
+                                                <div className="btn-details" style={{position:"absolute",bottom:"0px",width:"100%",marginBottom:"10px"}}>
                                                 <Button   onClick={()=>router.push(`/services/${oneservice.id}?service_provider=${oneservice.service_provider.user_id}`)} style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
                                                 </div>
                             </CardComponent>
