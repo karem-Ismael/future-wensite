@@ -373,7 +373,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         </p>
                                     </Col>
                                 </Row>
-                                <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "30px 0px", borderBottom: "1px dashed #D3B166" }}>
+                                <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "50px 0px", borderBottom: "1px dashed #D3B166" }}>
                                     <Col md={12} sm={24} xs={24}>
                                         <h3 className='text-center heading' >
                                             تكلفة الخدمة
@@ -399,8 +399,8 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         </p>
                                     </Col>
                                 </Row>
-                                <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "30px 0px", borderBottom: "1px dashed #D3B166" }}>
-                                    <Col md={24} sm={24} xs={24}>
+                                <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "30px 0px"}}>
+                                    <Col md={24} sm={24} xs={24}  style={{paddinTop:"23px"}}>
                                         <h3 className='text-center heading'>
                                             إجمالي التكاليف
                                         </h3>

@@ -175,7 +175,6 @@ const LayoutComponent =({children})=>{
       <Footer style={footerStyle}>
         <div>
       حقوق النشر 2023 تعود لـ شركة استثمار المستقبل المحدودة 〈وقف الأوقاف〉
-
         </div>
       </Footer>
     </Layout>
