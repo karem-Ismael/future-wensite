@@ -48,7 +48,7 @@ const footer1={
   direction:"rtl"
 }
 const BtnStyle={
-  padding:"9px 5px",
+  padding:"4px 5px",
   borderRadius:"0px"
 }
 
@@ -95,7 +95,7 @@ const LayoutComponent =({children})=>{
         <div className="container">
           <Row gutter={[100,16]}>
 
-          <Col lg={10} md={10} sm={24} xs={24}>
+          <Col lg={8} md={8} sm={24} xs={24}>
           <img src="/assets/images/logo-footr.png" width={"100%"}/>
           <Row className="social-row">
           <MailOutlined />

@@ -1,0 +1,28 @@
+.title{
+    color: #005D5E;
+    padding: 10px 0px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+  }
+  .cadrTitle{
+    font-size: 20px;
+    font-weight: bold;
+    color: #D3B166;
+  }
+  .list{
+   color: #707070;
+
+  }
+  .RateTitle{
+    color:#9C9C9C
+  }
+  .listItem{
+    display: flex;
+    gap:10px;
+    padding: 10px 0px;
+    color: #707070;
+  }
+  .description{
+    color:#9C9C9C;
+  }
+  

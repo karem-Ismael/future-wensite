@@ -1,10 +1,12 @@
-import LayoutComponent from '../Components/Layout';
+import LayoutComponent from '../../Components/Layout';
 import { Col, Rate, Row,Select,Button  } from 'antd';
 import styled from 'styled-components';
-import CardComponent from '../Components/Card';
+import CardComponent from '../../Components/Card';
 import { Grid, Tag } from 'antd';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router'
+
 const { useBreakpoint } = Grid;
 
 const selectStyle={
@@ -30,12 +32,17 @@ function Services({services,fields}) {
     const screens = useBreakpoint();
     const [clientServices,setClientServices]=useState(services)
     const [field,setField]=useState()
+    const [excutivetime,setExcutivetime]=useState()
+    const router = useRouter()
+
     const onChange = (value) => {
         
         setField(value)
         axios.get("https://estithmar.arabia-it.net/api/service",{
             params:{
-                field_id:value
+                field_id:value,
+                executive_time_type:excutivetime ? excutivetime :undefined,
+
             }
         }).then((res)=>{
             setClientServices(res.data)
@@ -43,6 +50,7 @@ function Services({services,fields}) {
         
     };
     const onChangeTime=(value)=>{
+        setExcutivetime(value)
         axios.get("https://estithmar.arabia-it.net/api/service",{
             params:{
                 field_id:field ? field :undefined,
@@ -68,6 +76,7 @@ function Services({services,fields}) {
     //     const data =await serviceres.json()
     //     setClientServices(data)
     // },[field])
+    console.log(services,"services")
     return (
         <LayoutComponent>
             <DIVContent className='container' style={{padding:"0px"}}>
@@ -228,7 +237,7 @@ function Services({services,fields}) {
                                                 <Rate allowHalf defaultValue={2.5} disabled />
                                                 </div>
                                                 <div className="btn-details">
-                                                <Button  style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
+                                                <Button   onClick={()=>router.push(`/services/${oneservice.id}?service_provider=${oneservice.service_provider.user_id}`)} style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
                                                 </div>
                             </CardComponent>
                         </Col>

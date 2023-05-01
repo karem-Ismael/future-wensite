@@ -1,5 +1,15 @@
+@font-face {
+  font-family: "Light";   
+  src: url("/fonts/THESANSARABIC-BOLD.ttf") format("truetype");
+   font-weight: normal;
+ font-style: normal;
+}
+
+
+
 *{
   direction: rtl;
+  font-family: "Light"; 
 }
 :root {
   --max-width: 1100px;
@@ -167,6 +177,9 @@ ul{
 .footer-list li{
   padding: 10px;
 }
+.footer-list li a{
+  color: #fff !important;
+}
 .footer-icon{
   color: #D3B166;
 }
@@ -188,4 +201,40 @@ ul{
 }
 .list-value{
   color: #707070;
+}
+.slick-dots li.slick-active button{
+  background: #D3B166 !important;
+}
+
+.slick-dots li button{
+  background: #587FA8 !important;
+
+}
+.carousel-control-next{
+  display: none;
+}
+.carousel-control-next-icon{
+  display: none;
+}
+.carousel-control-prev-icon{
+  display: none;
+}
+/* .slick-track{
+  transform: translate3d(0px,0px,0px) !important;
+} */
+.carousel-indicators [data-bs-target]{
+  background-color: #587FA8 !important; 
+
+}
+.carousel-indicators .active{
+  background-color: #D3B166 !important;
+}
+.heading{
+  color:#005D5E;
+}
+.val{
+  color:#D3B166
+}
+.currency{
+  color: #9C9C9C;
 }

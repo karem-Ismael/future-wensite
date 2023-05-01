@@ -102,8 +102,8 @@ const HeaderComponent = () => {
           <DrawerComponent /> 
         </Col>
       }  
-      <Col lg={8} md={15} sm={15} xs={15} >
-        <img src="/assets/images/logo-waqf.png" height={100} />
+      <Col lg={8} md={15} sm={15} xs={15} style={{height:"100%"}}>
+        <img src="/assets/images/logo-waqf.png" height={"100%"} style={{aspectRatio:4,padding:"8px 0px"}} />
       </Col>
       <Col lg={16} style={{display: screens.lg || screens.xl  ? "" : "none"}}>
         <Nav>
@@ -124,7 +124,7 @@ const HeaderComponent = () => {
               مكتبة الوقف
             </Link>
           </li>
-          <li className={router.pathname === "/services" ? "active-item" : null}>
+          <li className={router.pathname.includes("/services") ? "active-item" : null}>
             <Link href={'/services'}>
               خدماتنا
             </Link>
