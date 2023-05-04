@@ -76,7 +76,6 @@ function Services({services,fields}) {
     //     const data =await serviceres.json()
     //     setClientServices(data)
     // },[field])
-    console.log(services,"services")
     return (
         <LayoutComponent>
             <DIVContent className='container' style={{padding:"0px"}}>
@@ -200,9 +199,9 @@ function Services({services,fields}) {
                                                 <p className='card-title'>
                                                     {oneservice.service_provider.company_name_ar}
                                                 </p>
-                                                <h2 className='service-title'>
+                                                <h3 className='service-title'>
                                                  {oneservice.title}
-                                                </h2>
+                                                </h3>
                                                 <p className='service-description'>
                                                     {oneservice.description}
                                                 </p>
@@ -221,7 +220,6 @@ function Services({services,fields}) {
                                                     </span>
                                                     <span className='list-value'>
                                                      حسب طلب الوقف
-    
                                                     </span>
                                                 </li>
                                                 <li className='item'>
@@ -230,7 +228,6 @@ function Services({services,fields}) {
                                                     </span>
                                                     <span className='list-value'>
                                                      {oneservice.executive_time}{oneservice.executive_time_type} 
-    
                                                     </span>
                                                 </li>
                                                 <div className='rate' >

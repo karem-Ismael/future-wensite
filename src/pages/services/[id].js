@@ -44,20 +44,23 @@ function ServiceDetails({ services, ServicesDetails }) {
     const screens = useBreakpoint();
     const [clientServices, setClientServices] = useState(services)
     const [excutivetime, setExcutivetime] = useState()
+    const [borderSelected,setBorderSelected]=useState([])
     const router = useRouter()
 
-    const onChange = (value) => {
-
-        setField(value)
-        axios.get("https://estithmar.arabia-it.net/api/service", {
-            params: {
-                field_id: value,
-                executive_time_type: excutivetime ? excutivetime : undefined,
+    const onChange = (e,borderItem) => {
+        
+        if(e.target.checked){
+            const existborder=borderSelected.filter(border=>border.price  == borderItem.price)
+            if(existborder.length){
+                return
+            }else{
+                setBorderSelected([...borderSelected,borderItem])
 
             }
-        }).then((res) => {
-            setClientServices(res.data)
-        })
+        }else{
+            const AllbordersSelected = borderSelected.filter(borderitem=>borderitem.price != borderItem.price)
+            setBorderSelected([...AllbordersSelected])
+        }
 
     };
     const onChangeTime = (value) => {
@@ -90,6 +93,16 @@ function ServiceDetails({ services, ServicesDetails }) {
     //     const data =await serviceres.json()
     //     setClientServices(data)
     // },[field])
+    function sumArray(array) {
+        const ourArray = [1, 4, 0, 9, -3];
+        let sum = 0;
+      
+        for (let i = 0; i < borderSelected.length; i += 1) {
+          sum += +borderSelected[i].price;
+        }
+        
+        return sum;
+      }      
     return (
         <LayoutComponent>
             <DIVContent className='container' style={{ padding: "0px" }}>
@@ -112,7 +125,9 @@ function ServiceDetails({ services, ServicesDetails }) {
                                                     مقدم الخدمة :
                                                 </p>
                                                 <p className={styless.cadrTitle}>
-                                                    مجموعة ألفا للاستشارات المهنية
+                                                    {
+                                                        ServicesDetails?.data?.service_provider?.company_name_ar
+                                                    }
                                                 </p>
                                             </Col>
 
@@ -126,8 +141,10 @@ function ServiceDetails({ services, ServicesDetails }) {
                                                     تصنيف الخدمة :
                                                 </span>
                                                 <span style={{ color: "#707070" }}>
-                                                    خدمات محاسبية
-
+                                                     
+                                                    {
+                                                         ServicesDetails?.data?.field?.name
+                                                    }
                                                 </span>
                                             </li>
                                             <li>
@@ -135,7 +152,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                                     مدة الخدمة :
                                                 </span>
                                                 <span style={{ color: "#707070" }}>
-                                                    30 يوم
+                                                    {ServicesDetails?.data?.executive_time} {ServicesDetails?.data?.executive_time_type =="day" ? "يوم" :ServicesDetails?.data?.executive_time_type =="month" ? "شهر" : "سنة"  }
 
                                                 </span>
                                             </li>
@@ -153,7 +170,10 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         وصف الخدمة
                                     </h3>
                                     <p className={styless.description}>
-                                        إعداد الإجراءات والأدلة واللوائح المالية والمتعلقة بالعمليات المحاسبية والمالية للعميل
+                                    {
+                                        ServicesDetails?.data?.description
+                                        
+                                    }
                                     </p>
                                 </div>
                                 <div>
@@ -161,83 +181,35 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         خطوات التنفيذ
                                     </h3>
                                     <ul className={styless.list}>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
+                                        {
+                                            JSON.parse(ServicesDetails?.data?.executive_steps)?.map((step)=>(
+                                                <li key={step} className={styless.listItem}>
+                                                <img src={"/assets/images/ico-check.png"} width={20} height={20} />
+    
+                                                <span>
+                                                    {step}
+                                                </span>
+                                            </li> 
+                                            ))
+                                        }
                                     </ul>
                                 </div>
                                 <div>
                                     <h3 className={styless.title}>
-                                        خطوات التنفيذ
+                                    مخرجات الخدمة/ مواصفات التسليمات
                                     </h3>
                                     <ul className={styless.list}>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                إنشاء اللائحة المالية للعميل
-                                            </span>
-                                        </li>
+                                    {
+                                            JSON.parse(ServicesDetails?.data?.executive_result)?.map((result)=>(
+                                                <li key={result} className={styless.listItem}>
+                                                <img src={"/assets/images/ico-check.png"} width={20} height={20} />
+    
+                                                <span>
+                                                    {result}
+                                                </span>
+                                            </li> 
+                                            ))
+                                        }
                                     </ul>
                                 </div>
                             </CardComponent>
@@ -253,25 +225,38 @@ function ServiceDetails({ services, ServicesDetails }) {
                                     <Row gutter={[50, 20]} className={styless.title}>
                                         <Col lg={12} md={12} sm={24} xs={24}>
                                             الأمور التي خارج النطاق
-
                                         </Col>
                                         <Col lg={12} md={12} sm={24} xs={24}>
+                                            <span>
                                             تكلفة الملحقات
+                                            </span>
+                                            <span className='text-center val' style={{fontSize:"30px"}}>
+                                            {
+                                                sumArray(borderSelected)
+                                            }
+                                            <sub className='currency'>
+                                                ر.س
+
+                                            </sub>
+                                        </span>
                                         </Col>
                                     </Row>
-                                    <div className='d-flex'>
-                                        <Checkbox onChange={onChange}></Checkbox>
+                                    {       
+                                              JSON.parse(ServicesDetails?.data?.service_border)?.map((border,index)=>(
+                                                      <div className='d-flex'>
+                                        <Checkbox onChange={(e)=>onChange(e,border)}></Checkbox>
                                         <div>
-                                            <p>
-                                                وضع النماذج المالية والمحاسبية
-
+                                            <p className='m-0'>  
+                                            {border.title}
                                             </p>
-                                            <p>
-                                                ا 326 ر.س
+                                            <p className='m-0'>
+                                                {border.price} {"ر.س"}
                                             </p>
                                         </div>
 
                                     </div>
+                                              ))      
+                                      }
                                 </div>
 
                             </CardComponent>
@@ -379,7 +364,9 @@ function ServiceDetails({ services, ServicesDetails }) {
                                             تكلفة الخدمة
                                         </h3>
                                         <p className='text-center val' style={{fontSize:"30px"}}> 
-                                            ا453
+                                            {
+                                                ServicesDetails?.data?.cost
+                                            }
                                             <sub className='currency'>
                                                 ر.س
 
@@ -391,7 +378,9 @@ function ServiceDetails({ services, ServicesDetails }) {
                                             الملحقات
                                         </h6>
                                         <p className='text-center val' style={{fontSize:"30px"}}>
-                                            ا453
+                                            {
+                                                sumArray(borderSelected)
+                                            }
                                             <sub className='currency'>
                                                 ر.س
 
@@ -431,58 +420,34 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         مدة التنفيذ
                                     </h3>
                                     <ul className={styless.list}>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-
-                                            <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
-                                                <span>
-                                                    تسليم المسودة الأولى
-                                                </span>
-                                                <span style={{ color: "#005D5E" }}>
-                                                    10 يوم
-
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
-                                                <span>
-                                                    مراجعة التسليم
-                                                </span>
-                                                <span style={{ color: "#005D5E" }}>
-                                                    10 يوم
-
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-                                            <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
-                                                <span>
-                                                    تسليم المنتج النهائي
-                                                </span>
-                                                <span style={{ color: "#005D5E" }}>
-                                                    10 يوم
-
-                                                </span>
-                                            </div>
-
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-                                            <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
-                                                <span>
-                                                    مدة التنفيذ المتوقعة
-                                                </span>
-                                                <span style={{ color: "#005D5E" }}>
-                                                    10 يوم
-                                                </span>
-                                            </div>
-
-                                        </li>
+                                    {
+                                              
+                                              JSON.parse(ServicesDetails?.data?.stages_of_delivery)?.map((delivery)=>(
+                                                <li className={styless.listItem}>
+                                                <img src={"/assets/images/ico-check.png"} width={20} height={20} />
+    
+                                                <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
+                                                    <span>
+                                                        {
+                                                            delivery.title
+                                                        }
+                                                    </span>
+                                                    <span style={{ color: "#005D5E" }}>
+                                                        {
+                                                            delivery.count
+                                                        }
+                                                        {
+                                                            delivery.count_type == "day" ? "يوم" : 
+                                                            delivery.count_type  == "month" ? "شهر" : "سنة"
+                                                        }
+    
+                                                    </span>
+                                                </div>
+                                            </li>
+                                              ))      
+                                      }
+                                        
+                                       
 
 
 
@@ -497,55 +462,19 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         متطلبات الاشتراك
                                     </h3>
                                     <ul className={styless.list}>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                صك الوقفية.
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                شهادة التسجيل في ضريبة القيمة المضافة – إن كان مسجلاً .
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                الترخيص من وزارة الموارد البشرية والشؤون الاجتماعية – إن كان ينطبق -.
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                السجل التجاري – إن كان ينطبق
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                عقد التأسيس.
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                شرح لنشاطه الرئيسي ولأي مصادر إيرادات أخرى، مكتوبة بالتفصيل أو من خلال عقد اجتماع.
-                                            </span>
-                                        </li>
-                                        <li className={styless.listItem}>
-                                            <img src={"/assets/images/ico-check.png"} width={20} height={20} />
-
-                                            <span>
-                                                اللوائح والسياسات والإجراءات المعتمدة الحالية – إن وجدت-.
-                                            </span>
-                                        </li>
+                                        {
+                                              
+                                                JSON.parse(ServicesDetails?.data?.service_requirment)?.map((result)=>(
+                                                    <li key={result.id} className={styless.listItem}>
+                                                    <img src={"/assets/images/ico-check.png"} width={20} height={20} />
+        
+                                                    <span>
+                                                        {result.title}
+                                                    </span>
+                                                </li> 
+                                                ))      
+                                        }
+                                      
                                     </ul>
                                 </div>
                             </CardComponent>
@@ -559,65 +488,16 @@ function ServiceDetails({ services, ServicesDetails }) {
                     </h3>
                     <hr style={{ width: "80%", height: "0px", border: " 1px solid #D3B166", alignSelf: "center" }} />
                 </div>
-                <Row gutter={[16, 16]}>
-                    {
-                        clientServices?.data?.data.map((oneservice) => (
-                            <Col key={oneservice.id} md={24} sm={24} xs={24}>
-
-                                {/* <CardComponent>
-                                    <span className='discount'>
-                                        {oneservice.support_ratio} % <br />
-                                        دعم
-                                    </span>
-                                    <p className='card-title'>
-                                        {oneservice.service_provider.company_name_ar}
-                                    </p>
-                                    <h2 className='service-title'>
-                                        {oneservice.title}
-                                    </h2>
-                                    <p className='service-description'>
-                                        {oneservice.description}
-                                    </p>
-                                    <hr />
-                                    <li className='item'>
-                                        <span className='list-title'>
-                                            التصنيف :
-                                        </span>
-                                        <span className='list-value'>
-                                            {oneservice.field.name}
-                                        </span>
-                                    </li>
-                                    <li className='item'>
-                                        <span className='list-title'>
-                                            التكلفة :
-                                        </span>
-                                        <span className='list-value'>
-                                            حسب طلب الوقف
-
-                                        </span>
-                                    </li>
-                                    <li className='item'>
-                                        <span className='list-title'>
-                                            مدة التنفيذ :
-                                        </span>
-                                        <span className='list-value'>
-                                            {oneservice.executive_time}{oneservice.executive_time_type}
-
-                                        </span>
-                                    </li>
-                                    <div className='rate' >
-                                        <Rate allowHalf defaultValue={2.5} disabled />
-                                    </div>
-                                    <div className="btn-details">
-                                        <Button onClick={() => router.push(`/services/${oneservice.id}`)} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>التفاصيل</Button>
-                                    </div>
-                                </CardComponent> */}
-                            </Col>
-                        ))
-                    }
-                </Row>
+               
                 <div>
-                    <Slider clientServices={clientServices} />
+                   {
+                    ServicesDetails?.data?.suggested.length ? 
+                    <Slider clientServices={ServicesDetails?.data?.suggested} /> : 
+                    <p className='text-center'>
+                        لا توجد بيانات 
+                    </p>
+                   }
+                   
                 </div>
             </DIVContent>
 
@@ -626,7 +506,6 @@ function ServiceDetails({ services, ServicesDetails }) {
 }
 export default ServiceDetails
 export async function getServerSideProps(context) {
-    console.log(context, "oneservice")
     const response = await fetch(`https://estithmar.arabia-it.net/api/service/${context.params.id}`)
     const data = await response.json()
     const response1 = await fetch(`https://estithmar.arabia-it.net/api/service?service_provider_id=${context.query.service_provider}`)

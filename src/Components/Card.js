@@ -22,6 +22,7 @@ padding:1.25rem 1.25rem ;
     color:#005D5E;
     text-align:center;
     padding:20px 0px;
+    width:80%;
 }
 .service-description{
     text-align:center;

@@ -2,13 +2,18 @@ import React from "react"
 import Image from 'next/image'
 // import logo from "/assets/images/logo-waqf.png"
 import styled from "styled-components";
-import { Layout, Space, Row, Col, Button, Breadcrumb, Menu } from 'antd';
+import { Layout, Space, Row, Col, Button, Breadcrumb, Menu,Dropdown } from 'antd';
 // import { , Layout, , theme } from 'antd';
 
 import Link from "next/link";
 import { useRouter } from "next/router";
 import DrawerComponent from "./drawer";
 import { Grid, Tag } from 'antd';
+import { useDispatch, useSelector } from "react-redux";
+import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  LogOutAction
+} from '../store/authentication/action';
 const { useBreakpoint } = Grid;
 const Nav = styled.div`
   display: flex;
@@ -89,9 +94,38 @@ const RowStyle = {
 const ImageStyle = {
   height: "-wevkit-fill-available",
 }
+
+
 const HeaderComponent = () => {
   const router = useRouter()
   const screens = useBreakpoint();
+  const dispatch=useDispatch()
+  const {user} =useSelector(state=>state.authentication.login_data) || {}
+  const handleMenuClick = (e) => {
+    if(e.key == 3){
+    dispatch(LogOutAction());
+    }
+  };
+  const items = [
+    {
+      label: 'حسابي',
+      key: '1',
+    },
+    {
+      label: 'طلباتي',
+      key: '2',
+    },
+    {
+      label: 'تسجيل خروج',
+      key: '3',
+   
+    },
+    
+  ];
+  const menuProps = {
+    items,
+    onClick: handleMenuClick,
+  };
   return (
 
     <Row style={RowStyle} className="container">
@@ -103,7 +137,7 @@ const HeaderComponent = () => {
         </Col>
       }  
       <Col lg={8} md={15} sm={15} xs={15} style={{height:"100%"}}>
-        <img src="/assets/images/logo-waqf.png" height={"100%"} style={{aspectRatio:4,padding:"8px 0px"}} />
+        <img src="/assets/images/logoheader.png" height={"100%"} style={{aspectRatio:4,padding:"8px 0px"}} />
       </Col>
       <Col lg={16} style={{display: screens.lg || screens.xl  ? "" : "none"}}>
         <Nav>
@@ -146,9 +180,23 @@ const HeaderComponent = () => {
             </Link>
           </li>
           <li>
-            <Button className="login">
+            {
+              user?.id ?  
+              <Dropdown menu={menuProps}>
+              <Button>
+                <Space>
+                  {
+                    user.name
+                  }
+                  <DownOutlined />
+                </Space>
+              </Button>
+            </Dropdown>
+              :  
+              <Button className="login" onClick={()=>router.push("/login")}>
               تسجيل الدخول
             </Button>
+            }
           </li>
         </Nav>
 

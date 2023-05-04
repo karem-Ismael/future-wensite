@@ -53,7 +53,8 @@ function Slider({clientServices}) {
     setActiveIndex(newIndex);
   };
 
-  const slides = items.map((item,index) => {
+
+  const slides = clientServices?.length  &&  items.map((item,index) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
@@ -62,7 +63,7 @@ function Slider({clientServices}) {
       >
                        <Row gutter={[16, 16]}>
                        {
-                        clientServices?.data?.data.map((oneservice) => (
+                        clientServices?.slice(index*3,index == 0 ? 3  : index==1 ? 6 : 9).map((oneservice) => (
                             <Col key={oneservice.id} md={8} sm={24} xs={24}>
        
                                 <CardComponent>
@@ -71,7 +72,7 @@ function Slider({clientServices}) {
                                         دعم
                                     </span>
                                     <p className='card-title'>
-                                        {oneservice.service_provider.company_name_ar}
+                                        {oneservice?.service_provider?.company_name_ar}
                                     </p>
                                     <h2 className='service-title'>
                                         {oneservice.title}
@@ -85,7 +86,7 @@ function Slider({clientServices}) {
                                             التصنيف :
                                         </span>
                                         <span className='list-value'>
-                                            {oneservice.field.name}
+                                            {oneservice?.field?.name}
                                         </span>
                                     </li>
                                     <li className='item'>
@@ -122,52 +123,52 @@ function Slider({clientServices}) {
                             <Col key={oneservice.id} md={8} sm={24} xs={24}>
        
                                 <CardComponent>
-                                    <span className='discount'>
-                                        {oneservice.support_ratio} % <br />
-                                        دعم
-                                    </span>
-                                    <p className='card-title'>
-                                        {oneservice.service_provider.company_name_ar}
-                                    </p>
-                                    <h2 className='service-title'>
-                                        {oneservice.title}
-                                    </h2>
-                                    <p className='service-description'>
-                                        {oneservice.description}
-                                    </p>
-                                    <hr />
-                                    <li className='item'>
-                                        <span className='list-title'>
-                                            التصنيف :
-                                        </span>
-                                        <span className='list-value'>
-                                            {oneservice.field.name}
-                                        </span>
-                                    </li>
-                                    <li className='item'>
-                                        <span className='list-title'>
-                                            التكلفة :
-                                        </span>
-                                        <span className='list-value'>
-                                            حسب طلب الوقف
-
-                                        </span>
-                                    </li>
-                                    <li className='item'>
-                                        <span className='list-title'>
-                                            مدة التنفيذ :
-                                        </span>
-                                        <span className='list-value'>
-                                            {oneservice.executive_time}{oneservice.executive_time_type}
-
-                                        </span>
-                                    </li>
-                                    <div className='rate' >
-                                        <Rate allowHalf defaultValue={2.5} disabled />
-                                    </div>
-                                    <div className="btn-details">
-                                        <Button onClick={() => router.push(`/services/${oneservice.id}`)} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>التفاصيل</Button>
-                                    </div>
+                                <span className='discount'>
+                                                {oneservice.support_ratio} % <br/>
+                                                دعم
+                                                </span>
+                                                <p className='card-title'>
+                                                    {oneservice.service_provider.company_name_ar}
+                                                </p>
+                                                <h2 className='service-title'>
+                                                 {oneservice.title}
+                                                </h2>
+                                                <p className='service-description'>
+                                                    {oneservice.description}
+                                                </p>
+                                                <hr/>
+                                                <li className='item'>
+                                                <span className='list-title'>
+                                                التصنيف :     
+                                                </span>
+                                                <span className='list-value'>
+                                                {oneservice.field.name}
+                                                </span>
+                                                </li>
+                                                <li className='item'>
+                                                    <span className='list-title'>
+                                                    التكلفة :
+                                                    </span>
+                                                    <span className='list-value'>
+                                                     حسب طلب الوقف
+    
+                                                    </span>
+                                                </li>
+                                                <li className='item'>
+                                                    <span className='list-title'>
+                                                    مدة التنفيذ :
+                                                    </span>
+                                                    <span className='list-value'>
+                                                     {oneservice.executive_time}{oneservice.executive_time_type} 
+    
+                                                    </span>
+                                                </li>
+                                                <div className='rate' >
+                                                <Rate allowHalf defaultValue={2.5} disabled />
+                                                </div>
+                                                <div className="btn-details" style={{position:"absolute",bottom:"0px",width:"100%",marginBottom:"10px"}}>
+                                                <Button   onClick={()=>router.push(`/services/${oneservice.id}?service_provider=${oneservice.service_provider.user_id}`)} style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
+                                                </div>
                                 </CardComponent>
                             </Col>
                         ))
@@ -178,7 +179,6 @@ function Slider({clientServices}) {
       </CarouselItem>
     );
   });
-
   return (
     <Carousel
       activeIndex={activeIndex}
