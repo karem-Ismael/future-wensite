@@ -365,7 +365,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         </h3>
                                         <p className='text-center val' style={{fontSize:"30px"}}> 
                                             {
-                                                ServicesDetails?.data?.cost
+                                                ServicesDetails?.data?.cost +  ServicesDetails?.data?.cost* .15
                                             }
                                             <sub className='currency'>
                                                 ر.س
