@@ -401,7 +401,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                             </sub>
                                         </p>
                                         <div className="btn-details">
-                                            <Button onClick={() => router.push(`/services`)} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
+                                            <Button onClick={() => router.push(`/services/service-order?id=34`)} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
 
                                         </div>
                                         <div className="btn-details">

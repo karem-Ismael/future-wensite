@@ -1,0 +1,14 @@
+.listItem{
+    display: flex;
+    gap:10px;
+    padding: 10px 0px;
+    color: #707070;
+    background: #D2D2D2;
+  }
+  .listItemActive{
+    display: flex;
+    gap:10px;
+    padding: 10px 0px;
+    color: #fff;
+    background: #00B994;
+  }
