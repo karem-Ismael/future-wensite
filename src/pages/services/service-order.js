@@ -8,10 +8,12 @@ import axios from 'axios';
 import styless from '@/styles/ServiceDetails.module.css'
 import orders from "@/styles/serviceorder.module.css"
 import { Checkbox } from 'antd';
-import { CheckOutlined,CloseOutlined  } from "@ant-design/icons"
+import { CheckOutlined,CloseOutlined,PlusOutlined  } from "@ant-design/icons"
 import Slider from "../../Components/Slider"
 import { useRouter } from 'next/router'
 import { Table } from 'reactstrap';
+import { useSelector } from 'react-redux';
+import FileUpload from '@/Components/FileUpload';
 
 const { useBreakpoint } = Grid;
 
@@ -46,8 +48,16 @@ function ServiceOrder({ ServicesDetails }) {
     const screens = useBreakpoint();
     const [excutivetime, setExcutivetime] = useState()
     const [borderSelected, setBorderSelected] = useState([])
+    const [AssetFiles,setAssetFiles]=useState()
+    const [ServiceDetails,setServiceDetails]=useState(ServicesDetails)
     const router = useRouter()
-    console.log(ServicesDetails, "ServicesDetails")
+  const {user} =useSelector(state=>state.authentication.login_data) || {}
+
+    useEffect(()=>{
+      if(localStorage.getItem("token")){
+        axios.get(`https://estithmar.arabia-it.net/api/asset-owner/files?token=${localStorage.getItem("token")}`).then((res)=>setAssetFiles(res.data.data.map(file=>file.title),"res"))        
+      }
+    },[user])
     const onChange = (e, borderItem) => {
 
         if (e.target.checked) {
@@ -104,6 +114,26 @@ function ServiceOrder({ ServicesDetails }) {
 
         return sum;
     }
+    const UploadFile=(file,name)=>{
+        alert(name)
+        const formdata = new FormData();
+        formdata.append("title", name);
+        formdata.append("store_file", true);
+        formdata.append("file", file);
+        
+          axios.post(`https://estithmar.arabia-it.net/api/asset-owner/files?token=${localStorage.getItem("token")}`, formdata, {
+            headers: {
+              "Content-Type": "multipart/form-data; ",
+            },
+          })
+          .then((res) => {
+            ReCallServiceDetalis()
+          });
+      }
+      const ReCallServiceDetalis= ()=>{
+        axios.get(`https://estithmar.arabia-it.net/api/asset-owner/files?token=${localStorage.getItem("token")}`).then((res)=>setAssetFiles(res.data.data.map(file=>file.title),"res"))        
+       
+      }
     return (
         <LayoutComponent>
             <DIVContent className='container' style={{ padding: "0px" }}>
@@ -141,13 +171,25 @@ function ServiceOrder({ ServicesDetails }) {
                                             <tr>
 
                                                 <td>
-                                                    مجموعة ألفا للاستشارات المهنية
+                                                    {
+                                                        ServicesDetails.data.service_provider.company_name_ar
+                                                    }
                                                 </td>
                                                 <td>
-                                                    خدمات محاسبية
+                                                    {
+                                                        ServicesDetails.data.field.name
+                                                    }
                                                 </td>
                                                 <td>
-                                                    30 يوم
+                                                    {
+                                                        ServicesDetails.data.executive_time
+                                                        
+                                                    }
+                                                    {
+                                                        ServicesDetails.data.executive_time_type =="day" ?"يوم" : 
+                                                        ServicesDetails.data.executive_time_type =="month" ? "شهر" : "سنة"
+                                                        
+                                                    }
                                                 </td>
                                                 <td>
                                                     ا703 ر.س
@@ -167,7 +209,36 @@ function ServiceOrder({ ServicesDetails }) {
                                     </h3>
                                 </div>
                                 <ul className={styless.list}>
-                                    <li className={orders.listItemActive} style={{marginTop:"10px"}}>
+                                    {
+                                        
+                                        ServicesDetails.data.service_requirment.map((service)=>(
+                                            AssetFiles?.includes(service.title)  ? 
+                                            <li className={orders.listItemActive} style={{marginTop:"10px"}}>
+                                            <CheckOutlined style={{marginRight:"8px",alignSelf:"center"}} />
+                                            <span>
+                                                {service.title}
+                                            </span>
+                                        </li>
+                                        :
+                                        <li className={orders.listItem} style={{marginTop:"10px",justifyContent:"space-between",padding:"10px 4px"}}>
+                                        <div style={{display:"flex",gap :"10px"}}>
+                                        <CloseOutlined style={{marginRight:"8px",alignSelf:"center"}} />
+                                        <span>
+                                            {service.title}
+                                        </span>
+                                        </div>
+                              
+                                <FileUpload 
+                                setImage={(file)=>{
+                                    UploadFile(file,service.title)
+                                }}
+                                />
+
+                                        
+                                    </li>
+                                        ))
+                                    }
+                                    {/* <li className={orders.listItemActive} style={{marginTop:"10px"}}>
                                         <CheckOutlined style={{marginRight:"8px",alignSelf:"center"}} />
                                         <span>
                                             صك الوقفية
@@ -179,6 +250,8 @@ function ServiceOrder({ ServicesDetails }) {
                                         عقد التأسيس
                                         </span>
                                     </li>
+                                    
+                                    */}
                                 </ul>
                             </CardComponent>
                             <CardComponent>
@@ -196,7 +269,7 @@ function ServiceOrder({ ServicesDetails }) {
                                     </p>
                                 </div>
                                 <div className='text-center'>
-                                <Button  style={{ width: "50%", maxWidth:"200px", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
+                                <Button  style={{ width: "50%", maxWidth:"200px", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>إتمام الطلب</Button>
 
                                 </div>
                               
@@ -216,13 +289,13 @@ function ServiceOrder({ ServicesDetails }) {
 
                                                     <div style={{ display: "flex", width: "100%" ,gap:"30px" }}>
                                                     <p className='text-center val' style={{ fontSize: "20px",margin:"0px" }}>
-                                            453
+                                            {ServicesDetails.data.cost}
                                             <sub className='currency'>
                                                 ر.س
 
                                             </sub>
                                         </p>
-                                                        <p style={{ color: "#005D5E",fontSize:"20px",margin:"0px" }}>
+                                                        <p style={{ color: "#005D5E",fontSize:"18px",margin:"0px" }}>
                                                         تكلفة الخدمة
                                                         </p>
                                                     </div>
@@ -258,23 +331,23 @@ function ServiceOrder({ ServicesDetails }) {
                                             ))
                                         }
                                         {
-                                             JSON.parse(ServicesDetails?.data?.stages_of_delivery)?.map((delivery) => (
-                                                <li className={styless.listItem}>
+                                        //      JSON.parse(ServicesDetails?.data?.stages_of_delivery)?.map((delivery) => (
+                                        //         <li className={styless.listItem}>
 
-                                                    <div style={{ display: "flex", width: "100%" ,gap:"30px" }}>
-                                                    <p className='text-center val' style={{ fontSize: "20px",margin:"0px" }}>
-                                            453
-                                            <sub className='currency'>
-                                                ر.س
+                                        //             <div style={{ display: "flex", width: "100%" ,gap:"30px" }}>
+                                        //             <p className='text-center val' style={{ fontSize: "20px",margin:"0px" }}>
+                                        //     453
+                                        //     <sub className='currency'>
+                                        //         ر.س
 
-                                            </sub>
-                                        </p>
-                                                        <p style={{ color: "#005D5E",fontSize:"20px",margin:"0px" }}>
-                                                        الملحقات
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                            ))
+                                        //     </sub>
+                                        // </p>
+                                        //                 <p style={{ color: "#005D5E",fontSize:"20px",margin:"0px" }}>
+                                        //                 الملحقات
+                                        //                 </p>
+                                        //             </div>
+                                        //         </li>
+                                        //     ))
                                         }
                                     </ul>
                                     </Col>
@@ -314,10 +387,8 @@ function ServiceOrder({ ServicesDetails }) {
 }
 export default ServiceOrder
 export async function getServerSideProps(context) {
-    console.log(context, "context")
     const response = await fetch(`https://estithmar.arabia-it.net/api/service/${context?.query?.id}`)
     const data = await response.json()
-
     return {
         props: {
             ServicesDetails: data,

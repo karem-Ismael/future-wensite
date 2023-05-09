@@ -46,7 +46,7 @@ function ServiceDetails({ services, ServicesDetails }) {
     const [excutivetime, setExcutivetime] = useState()
     const [borderSelected,setBorderSelected]=useState([])
     const router = useRouter()
-
+console.log(ServicesDetails,"ServicesDetails",router.query.id)
     const onChange = (e,borderItem) => {
         
         if(e.target.checked){
@@ -112,7 +112,9 @@ function ServiceDetails({ services, ServicesDetails }) {
 
                             <CardComponent>
                                 <h3 className={styless.title}>
-                                    بناء السياسات والإجراءات للإدارة المالية
+                                    {
+                                        ServicesDetails?.data.title
+                                    }
                                 </h3>
                                 <Row>
                                     <Col md={16} sm={12} xs={24}>
@@ -214,9 +216,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                 </div>
                             </CardComponent>
                         </Col>
-
                         <Col lg={24} md={24} sm={24} xs={24}>
-
                             <CardComponent>
                                 <div>
                                     <h3 className={styless.title}>
@@ -401,7 +401,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                             </sub>
                                         </p>
                                         <div className="btn-details">
-                                            <Button onClick={() => router.push(`/services/service-order?id=34`)} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
+                                            <Button onClick={() => router.push(`/services/service-order?id=${router.query.id}`)} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
 
                                         </div>
                                         <div className="btn-details">
@@ -464,7 +464,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                     <ul className={styless.list}>
                                         {
                                               
-                                                JSON.parse(ServicesDetails?.data?.service_requirment)?.map((result)=>(
+                                                ServicesDetails?.data?.service_requirment?.map((result)=>(
                                                     <li key={result.id} className={styless.listItem}>
                                                     <img src={"/assets/images/ico-check.png"} width={20} height={20} />
         
