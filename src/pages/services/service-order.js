@@ -217,7 +217,9 @@ function ServiceOrder({ ServicesDetails }) {
                                                     }
                                                 </td>
                                                 <td>
-                                                    ا703 ر.س
+                                                    {
+                                                        ServicesDetails.data.cost
+                                                    }
                                                 </td>
                                             </tr>
                                         </tbody>
