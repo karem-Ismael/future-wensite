@@ -159,7 +159,6 @@ function ServiceOrder({ ServicesDetails }) {
             match={router.asPath}
             enableBreadCrumb
             content={"         تركز خدمات وحلول الأوقاف الخاصة بنا على مجموعة واسعة من احتياجات الوقف القانونية والإدارية والمالية."}
-            lastElement={"اضافة خدمة"}
         />
             </BreedCrumb>
             <DIVContent className='container' style={{ padding: "0px" }}>
