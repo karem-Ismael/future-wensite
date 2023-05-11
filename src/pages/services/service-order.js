@@ -315,7 +315,6 @@ function ServiceOrder({ ServicesDetails }) {
                                         <ul className={styless.list}>
                                             {
 
-                                                JSON.parse(ServicesDetails?.data?.stages_of_delivery)?.map((delivery) => (
                                                     <li className={styless.listItem}>
 
                                                         <div style={{ display: "flex", width: "100%", gap: "30px" }}>
@@ -331,66 +330,20 @@ function ServiceOrder({ ServicesDetails }) {
                                                             </p>
                                                         </div>
                                                     </li>
-                                                ))
                                             }
                                         </ul>
                                     </Col>
 
                                 </Row>
-                                <Row gutter={[16, 16]} justify="center" align="middle" style={{ borderBottom: "1px dashed #D3B166" }}>
-                                    <Col md={24} sm={24} xs={24}>
-                                        <ul className={styless.list}>
-                                            {
-
-                                                JSON.parse(ServicesDetails?.data?.stages_of_delivery)?.map((delivery) => (
-                                                    <li className={styless.listItem}>
-
-                                                        <div style={{ display: "flex", width: "100%", gap: "30px" }}>
-                                                            <p className='text-center val' style={{ fontSize: "20px", margin: "0px" }}>
-                                                                453
-                                                                <sub className='currency'>
-                                                                    ر.س
-
-                                                                </sub>
-                                                            </p>
-                                                            <p style={{ color: "#005D5E", fontSize: "20px", margin: "0px" }}>
-                                                                تكلفة الخدمة بعد الخصم
-
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                ))
-                                            }
-                                            {
-                                                //      JSON.parse(ServicesDetails?.data?.stages_of_delivery)?.map((delivery) => (
-                                                //         <li className={styless.listItem}>
-
-                                                //             <div style={{ display: "flex", width: "100%" ,gap:"30px" }}>
-                                                //             <p className='text-center val' style={{ fontSize: "20px",margin:"0px" }}>
-                                                //     453
-                                                //     <sub className='currency'>
-                                                //         ر.س
-
-                                                //     </sub>
-                                                // </p>
-                                                //                 <p style={{ color: "#005D5E",fontSize:"20px",margin:"0px" }}>
-                                                //                 الملحقات
-                                                //                 </p>
-                                                //             </div>
-                                                //         </li>
-                                                //     ))
-                                            }
-                                        </ul>
-                                    </Col>
-
-                                </Row>
+                               
                                 <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "30px 0px" }}>
                                     <Col md={24} sm={24} xs={24} style={{ paddinTop: "23px" }}>
                                         <h3 className='text-center heading'>
                                             المبلغ الإجمالي
                                         </h3>
                                         <p className='text-center val' style={{ fontSize: "35px" }}>
-                                            453
+                                        {ServicesDetails.data.cost}
+                                            
                                             <sub className='currency'>
                                                 ر.س
 
