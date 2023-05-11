@@ -278,3 +278,18 @@ ul{
   margin-bottom: 0px !important;
   background-color: #D4B265 !important;
 }
+.ant-breadcrumb-link{
+  color:#fff !important;
+  font-size:25px !important;
+}
+.ant-breadcrumb-link a {
+  text-decoration: none ;
+}
+.ant-breadcrumb-separator{
+  font-size: 25px;
+}
+.pageContent{
+  font-size: 20px;
+  margin: 10px 0px ;
+  color:#fff;
+}

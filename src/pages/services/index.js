@@ -6,6 +6,7 @@ import { Grid, Tag } from 'antd';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router'
+import PageTitleBar from '@/Components/PageTitlebar';
 
 const { useBreakpoint } = Grid;
 
@@ -14,6 +15,22 @@ const selectStyle={
 }
 const DIVContent = styled.div`
 transform:translateY(-300px);
+direction:rtl;
+    padding:50px;
+.select-title{
+    color:#fff;
+    align-self:center;
+    min-width:70px;
+}
+.select-content{
+    gap:10px;
+}
+.ant-select-arrow{
+    color:#005D5E
+}
+`;
+const BreedCrumb =styled.div`
+transform:translateY(-400px);
 direction:rtl;
     padding:50px;
 .select-title{
@@ -78,6 +95,16 @@ function Services({services,fields}) {
     // },[field])
     return (
         <LayoutComponent>
+             <BreedCrumb className='container'>
+             
+             <PageTitleBar 
+                 title={"الخدمات"}
+                 match={router.asPath}
+                 enableBreadCrumb
+                 content={"تركز خدمات وحلول الأوقاف الخاصة بنا على مجموعة واسعة من احتياجات الوقف القانونية والإدارية والمالية."}
+                 lastElement={"اضافة خدمة"}
+             />
+                 </BreedCrumb>
             <DIVContent className='container' style={{padding:"0px"}}>
                 <Row>
                     <Col md={24} sm={24} xs={24}>

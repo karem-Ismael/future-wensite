@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Layout, Space,Row,Col,Button} from 'antd';
 import Link from "next/link";
 import {LeftOutlined,MailOutlined,TwitterOutlined,YoutubeOutlined,WhatsAppOutlined,InstagramOutlined} from '@ant-design/icons';
+import PageTitleBar from "./PageTitlebar";
+import { useRouter } from 'next/router'
 
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
@@ -53,6 +55,9 @@ const BtnStyle={
 }
 
 const LayoutComponent =({children})=>{
+
+  const router =useRouter()
+  console.log(router.route,"rr")
     return(
         <Space
     direction="vertical"
@@ -89,6 +94,7 @@ const LayoutComponent =({children})=>{
       </Header>
       <Content style={contentStyle}>
         <HeaderComponent /> 
+    
       </Content>
       {children}
       <Footer style={footer1}>

@@ -14,6 +14,7 @@ import { useRouter } from 'next/router'
 import { Table } from 'reactstrap';
 import { useSelector } from 'react-redux';
 import FileUpload from '@/Components/FileUpload';
+import PageTitleBar from '@/Components/PageTitlebar';
 
 const { useBreakpoint } = Grid;
 
@@ -30,6 +31,22 @@ const contentStyle = {
 };
 const DIVContent = styled.div`
 transform:translateY(-300px);
+direction:rtl;
+    padding:50px;
+.select-title{
+    color:#fff;
+    align-self:center;
+    min-width:70px;
+}
+.select-content{
+    gap:10px;
+}
+.ant-select-arrow{
+    color:#005D5E
+}
+`;
+const BreedCrumb =styled.div`
+transform:translateY(-400px);
 direction:rtl;
     padding:50px;
 .select-title{
@@ -115,7 +132,6 @@ function ServiceOrder({ ServicesDetails }) {
         return sum;
     }
     const UploadFile=(file,name)=>{
-        alert(name)
         const formdata = new FormData();
         formdata.append("title", name);
         formdata.append("store_file", true);
@@ -136,6 +152,16 @@ function ServiceOrder({ ServicesDetails }) {
       }
     return (
         <LayoutComponent>
+            <BreedCrumb className='container'>
+             
+        <PageTitleBar 
+            title={"الخدمات"}
+            match={router.asPath}
+            enableBreadCrumb
+            content={"         تركز خدمات وحلول الأوقاف الخاصة بنا على مجموعة واسعة من احتياجات الوقف القانونية والإدارية والمالية."}
+            lastElement={"اضافة خدمة"}
+        />
+            </BreedCrumb>
             <DIVContent className='container' style={{ padding: "0px" }}>
                 <Row gutter={[16, 16]}>
                     <Col lg={16} md={14} sm={24} xs={24}>

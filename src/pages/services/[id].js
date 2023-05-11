@@ -10,6 +10,7 @@ import { Checkbox } from 'antd';
 import { FacebookFilled, TwitterSquareFilled, LinkedinFilled } from "@ant-design/icons"
 import Slider from "../../Components/Slider"
 import { useRouter } from 'next/router'
+import PageTitleBar from '@/Components/PageTitlebar';
 
 const { useBreakpoint } = Grid;
 
@@ -40,13 +41,28 @@ direction:rtl;
     color:#005D5E
 }
 `;
+const BreedCrumb =styled.div`
+transform:translateY(-400px);
+direction:rtl;
+    padding:50px;
+.select-title{
+    color:#fff;
+    align-self:center;
+    min-width:70px;
+}
+.select-content{
+    gap:10px;
+}
+.ant-select-arrow{
+    color:#005D5E
+}
+`;
 function ServiceDetails({ services, ServicesDetails }) {
     const screens = useBreakpoint();
     const [clientServices, setClientServices] = useState(services)
     const [excutivetime, setExcutivetime] = useState()
     const [borderSelected,setBorderSelected]=useState([])
     const router = useRouter()
-console.log(ServicesDetails,"ServicesDetails",router.query.id)
     const onChange = (e,borderItem) => {
         
         if(e.target.checked){
@@ -105,6 +121,17 @@ console.log(ServicesDetails,"ServicesDetails",router.query.id)
       }      
     return (
         <LayoutComponent>
+                 <BreedCrumb className='container'>
+             
+                        <PageTitleBar 
+                            title={"الخدمات"}
+                            match={router.asPath}
+                            enableBreadCrumb
+                            content={"تركز خدمات وحلول الأوقاف الخاصة بنا على مجموعة واسعة من احتياجات الوقف القانونية والإدارية والمالية."}
+                            lastElement={ServicesDetails?.data.title}
+                            
+                        />
+                 </BreedCrumb>
             <DIVContent className='container' style={{ padding: "0px" }}>
                 <Row gutter={[16, 16]}>
                     <Col lg={16} md={14} sm={24} xs={24}>
@@ -336,7 +363,7 @@ console.log(ServicesDetails,"ServicesDetails",router.query.id)
                     <Col lg={8} md={10} sm={8} xs={24}>
                         <Col md={24} sm={24} xs={24}>
                             <CardComponent>
-                                <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "10px 0px", borderBottom: "1px solid #ccc" }}>
+                                {/* <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "10px 0px", borderBottom: "1px solid #ccc" }}>
                                     <Col md={12} sm={24} xs={24} style={{ borderLeft: "1px dashed #9C9C9C" }}>
                                         <h5 className={`text-center heading`}>
                                             نسبة دعم الخدمة
@@ -357,7 +384,7 @@ console.log(ServicesDetails,"ServicesDetails",router.query.id)
                                             </sub>
                                         </p>
                                     </Col>
-                                </Row>
+                                </Row> */}
                                 <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "50px 0px", borderBottom: "1px dashed #D3B166" }}>
                                     <Col md={12} sm={24} xs={24}>
                                         <h3 className='text-center heading' >
@@ -405,7 +432,7 @@ console.log(ServicesDetails,"ServicesDetails",router.query.id)
 
                                         </div>
                                         <div className="btn-details">
-                                            <Button onClick={() => router.push(`/services`)} style={{ width: "50%", background: "#fff", color: "#005D5E", border: "2px solid #005D5E", borderRadius: "0px" }} size={"large"}>دعم الخدمة</Button>
+                                            <Button onClick={() => router.push(`/services`)} style={{ width: "50%", background: "#fff", color: "#005D5E", border: "2px solid #005D5E", borderRadius: "0px" }} size={"large"}>طلب اجتماع</Button>
 
                                         </div>
                                     </Col>
