@@ -63,18 +63,37 @@ function ServiceDetails({ services, ServicesDetails }) {
     const [excutivetime, setExcutivetime] = useState()
     const [borderSelected,setBorderSelected]=useState([])
     const router = useRouter()
-    const onChange = (e,borderItem) => {
+    const [calculations,setCalculations]=useState()
+    const onChange = async(e,borderItem) => {
         
         if(e.target.checked){
-            const existborder=borderSelected.filter(border=>border.price  == borderItem.price)
+            const existborder=borderSelected.filter(border=>border.title  == borderItem.title)
             if(existborder.length){
                 return
             }else{
+                console.log(router.query,"query")
+                const allborder=[...borderSelected,borderItem].map((border)=>border.title)
+                console.log(allborder,"allborder")
+                // const response = await fetch(`https://estithmar.arabia-it.net/api/service/${router.query.id}?calc=true&extra=${[allborder]}`)
+                // const data = await response.json()
+                axios.get(`https://estithmar.arabia-it.net/api/service/${router.query.id}`,{
+                    params:{
+                        calc:true,
+                        extra:allborder,
+                    }
+                }).then(res=>setCalculations(res.data.data))
                 setBorderSelected([...borderSelected,borderItem])
-
             }
         }else{
             const AllbordersSelected = borderSelected.filter(borderitem=>borderitem.price != borderItem.price)
+            const allborderList=borderSelected.filter(borderitem=>borderitem.title != borderItem.title).map((border)=>border.title)
+            axios.get(`https://estithmar.arabia-it.net/api/service/${router.query.id}`,{
+                params:{
+                    calc:true,
+                    extra:allborderList,
+                }
+            }).then(res=>setCalculations(res.data.data))
+          
             setBorderSelected([...AllbordersSelected])
         }
 
@@ -119,6 +138,7 @@ function ServiceDetails({ services, ServicesDetails }) {
         
         return sum;
       }      
+      console.log(ServicesDetails,"ServicesDetails")
     return (
         <LayoutComponent>
                  <BreedCrumb className='container'>
@@ -392,8 +412,8 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         </h3>
                                         <p className='text-center val' style={{fontSize:"30px"}}> 
                                             {
-                                                ServicesDetails?.data?.cost +  ServicesDetails?.data?.cost* .15
-                                            }
+                                               borderSelected.length ?  calculations?.cost : ServicesDetails.data.cost
+                                             }
                                             <sub className='currency'>
                                                 ر.س
 
@@ -406,7 +426,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         </h6>
                                         <p className='text-center val' style={{fontSize:"30px"}}>
                                             {
-                                                sumArray(borderSelected)
+                                                sumArray(calculations?.extra)
                                             }
                                             <sub className='currency'>
                                                 ر.س
@@ -421,14 +441,20 @@ function ServiceDetails({ services, ServicesDetails }) {
                                             إجمالي التكاليف
                                         </h3>
                                         <p className='text-center val' style={{fontSize:"35px", marginBottom:"70px"}}>
-                                            {ServicesDetails?.data?.cost}
+                                            { borderSelected.length ?  calculations?.total : ServicesDetails.data.cost}
                                             <sub className='currency'>
                                                 ر.س
 
                                             </sub>
                                         </p>
                                         <div className="btn-details">
-                                            <Button onClick={() => router.push(`/services/service-order?id=${router.query.id}`)} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
+                                            <Button onClick={() => {
+                                                localStorage.setItem("cost" ,borderSelected.length ?  calculations.cost :ServicesDetails.data.cost )
+                                                localStorage.setItem("total" ,borderSelected.length ?  calculations.total :ServicesDetails.data.cost )
+                                                localStorage.setItem("borders", sumArray(borderSelected)  )
+                                                router.push(`/services/service-order?id=${router.query.id}`)
+                                                
+                                            }} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
 
                                         </div>
                                         <div className="btn-details">

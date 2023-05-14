@@ -218,7 +218,7 @@ function ServiceOrder({ ServicesDetails }) {
                                                 </td>
                                                 <td>
                                                     {
-                                                        ServicesDetails.data.cost
+                                                      localStorage.getItem("total") ? localStorage.getItem("total") :  ServicesDetails.data.cost
                                                     }
                                                 </td>
                                             </tr>
@@ -313,37 +313,53 @@ function ServiceOrder({ ServicesDetails }) {
                                 <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "10px 0px", borderBottom: "1px solid #ccc" }}>
                                     <Col md={24} sm={24} xs={24}>
                                         <ul className={styless.list}>
-                                            {
 
-                                                    <li className={styless.listItem}>
 
-                                                        <div style={{ display: "flex", width: "100%", gap: "30px" }}>
-                                                            <p className='text-center val' style={{ fontSize: "20px", margin: "0px" }}>
-                                                                {ServicesDetails.data.cost}
-                                                                <sub className='currency'>
-                                                                    ر.س
+                                            <li className={styless.listItem}>
 
-                                                                </sub>
-                                                            </p>
-                                                            <p style={{ color: "#005D5E", fontSize: "18px", margin: "0px" }}>
-                                                                تكلفة الخدمة
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                            }
+                                                <div style={{ display: "flex", width: "100%", gap: "30px" }}>
+                                                    <p className='text-center val' style={{ fontSize: "20px", margin: "0px" }}>
+                                                        {localStorage.getItem("cost") ? localStorage.getItem("cost") : ServicesDetails.data.cost}
+                                                        <sub className='currency'>
+                                                            ر.س
+
+                                                        </sub>
+                                                    </p>
+                                                    <p style={{ color: "#005D5E", fontSize: "18px", margin: "0px" }}>
+                                                        تكلفة الخدمة
+                                                    </p>
+                                                </div>
+                                            </li>
+
+
+                                            <li className={styless.listItem}>
+
+                                                <div style={{ display: "flex", width: "100%", gap: "30px" }}>
+                                                    <p className='text-center val' style={{ fontSize: "20px", margin: "0px" }}>
+                                                        {localStorage?.getItem("borders") ? localStorage?.getItem("borders") : 0}
+                                                        <sub className='currency'>
+                                                            ر.س
+
+                                                        </sub>
+                                                    </p>
+                                                    <p style={{ color: "#005D5E", fontSize: "18px", margin: "0px" }}>
+                                                        تكلفة الملحقات
+                                                    </p>
+                                                </div>
+                                            </li>
                                         </ul>
                                     </Col>
 
                                 </Row>
-                               
+
                                 <Row gutter={[16, 16]} justify="center" align="middle" style={{ padding: "30px 0px" }}>
                                     <Col md={24} sm={24} xs={24} style={{ paddinTop: "23px" }}>
                                         <h3 className='text-center heading'>
                                             المبلغ الإجمالي
                                         </h3>
                                         <p className='text-center val' style={{ fontSize: "35px" }}>
-                                        {ServicesDetails.data.cost}
-                                            
+                                            {localStorage.getItem("total") ? localStorage.getItem("total") : ServicesDetails.data.cost}
+
                                             <sub className='currency'>
                                                 ر.س
 
