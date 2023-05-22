@@ -11,7 +11,8 @@ import { FacebookFilled, TwitterSquareFilled, LinkedinFilled } from "@ant-design
 import Slider from "../../Components/Slider"
 import { useRouter } from 'next/router'
 import PageTitleBar from '@/Components/PageTitlebar';
-
+import {AddBorders} from "../../store/orders/action"
+import { useDispatch } from 'react-redux';
 const { useBreakpoint } = Grid;
 
 const selectStyle = {
@@ -63,6 +64,8 @@ function ServiceDetails({ services, ServicesDetails }) {
     const [excutivetime, setExcutivetime] = useState()
     const [borderSelected,setBorderSelected]=useState([])
     const router = useRouter()
+  const dispatch=useDispatch()
+
     const [calculations,setCalculations]=useState()
     const onChange = async(e,borderItem) => {
         
@@ -452,7 +455,10 @@ function ServiceDetails({ services, ServicesDetails }) {
                                                 localStorage.setItem("cost" ,borderSelected.length ?  calculations.cost :ServicesDetails.data.cost )
                                                 localStorage.setItem("total" ,borderSelected.length ?  calculations.total :ServicesDetails.data.cost )
                                                 localStorage.setItem("borders", sumArray(borderSelected)  )
+                                                dispatch(AddBorders(borderSelected));
+                                                setTimeout(()=>{
                                                 router.push(`/services/service-order?id=${router.query.id}`)
+                                                },300)
                                                 
                                             }} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
 

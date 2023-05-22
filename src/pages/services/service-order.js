@@ -15,6 +15,7 @@ import { Table } from 'reactstrap';
 import { useSelector } from 'react-redux';
 import FileUpload from '@/Components/FileUpload';
 import PageTitleBar from '@/Components/PageTitlebar';
+import OrderModal from '@/Components/OrderModal';
 
 const { useBreakpoint } = Grid;
 
@@ -69,6 +70,9 @@ function ServiceOrder({ ServicesDetails }) {
     const [ServiceDetails, setServiceDetails] = useState(ServicesDetails)
     const router = useRouter()
     const { user } = useSelector(state => state.authentication.login_data) || {}
+  const {borders} =useSelector(state=>state.orders) || {}
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         if (localStorage.getItem("token")) {
@@ -149,6 +153,21 @@ function ServiceOrder({ ServicesDetails }) {
     const ReCallServiceDetalis = () => {
         axios.get(`https://estithmar.arabia-it.net/api/asset-owner/files?token=${localStorage.getItem("token")}`).then((res) => setAssetFiles(res.data.data.map(file => file.title), "res"))
 
+    }
+    const SaveOrder=()=>{
+        console.log(router,"user")
+        axios.post("https://estithmar.arabia-it.net/api/service-request",{
+                token:localStorage.getItem("token"),
+                service_id:router.query.id,
+                service_border:borders
+        }).then((res)=>{
+            console.log(res.data,"res")
+            if(!res.data.errors){
+                setIsModalOpen(!isModalOpen)
+            }else{
+
+            }
+        })
     }
     return (
         <LayoutComponent>
@@ -269,20 +288,7 @@ function ServiceOrder({ ServicesDetails }) {
                                                 </li>
                                         ))
                                     }
-                                    {/* <li className={orders.listItemActive} style={{marginTop:"10px"}}>
-                                        <CheckOutlined style={{marginRight:"8px",alignSelf:"center"}} />
-                                        <span>
-                                            صك الوقفية
-                                        </span>
-                                    </li>
-                                    <li className={orders.listItem} style={{marginTop:"10px"}}>
-                                        <CloseOutlined style={{marginRight:"8px",alignSelf:"center"}} />
-                                        <span>
-                                        عقد التأسيس
-                                        </span>
-                                    </li>
-                                    
-                                    */}
+                                   
                                 </ul>
                             </CardComponent>
                             <CardComponent>
@@ -300,7 +306,14 @@ function ServiceOrder({ ServicesDetails }) {
                                     </p>
                                 </div>
                                 <div className='text-center'>
-                                    <Button style={{ width: "50%", maxWidth: "200px", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>إتمام الطلب</Button>
+                                    <Button 
+                                    onClick={()=>SaveOrder()}
+                                    style={{ width: "50%", maxWidth: "200px", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} 
+                                    size={"large"}
+                                    disabled={ServicesDetails.data.service_requirment.map((service)=>AssetFiles?.includes(service.title)).includes(false)}
+                                    
+                                    >
+                                        إتمام الطلب</Button>
 
                                 </div>
 
@@ -374,12 +387,11 @@ function ServiceOrder({ ServicesDetails }) {
                                 </Row>
                             </CardComponent>
                         </Col>
-
-
                     </Col>
                 </Row>
                 <div>
                 </div>
+                <OrderModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
             </DIVContent>
 
         </LayoutComponent>
