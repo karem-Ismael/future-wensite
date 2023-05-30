@@ -299,3 +299,31 @@ ul{
 .ant-result-extra{
   display: flex;
 }
+.ant-tabs-nav-list{
+  gap: 20px !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+.ant-tabs-ink-bar{
+  background:#C9AB7A !important;
+}
+.ant-tabs-tab-btn{
+  color: #707070 !important;
+}
+.ant-tabs-tab-active .ant-tabs-tab-btn{
+  color:#C9AB7A !important;
+
+}
+.title{
+  color:#005D5E;
+  position: relative;
+}
+.title::after{
+  position: absolute;
+  width: 65px;
+  height: 6px;
+  background: #C9AB7A;
+  content: "";
+  display: block;
+  right: 0;
+}

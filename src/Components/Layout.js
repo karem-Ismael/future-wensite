@@ -25,7 +25,7 @@ const contentStyle = {
   background:"url(/assets/images/slide.png)",
   backgroundRepeat:"no-repeat",
   backgroundPosition:"50% 50%",
-  minHeight:"84vh"
+  minHeight:"70vh"
 };
 const HeaderImages={
   gap:"15px",
