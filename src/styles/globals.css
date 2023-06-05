@@ -327,3 +327,6 @@ ul{
   display: block;
   right: 0;
 }
+.modal-title{
+  width: 100% !important;
+}

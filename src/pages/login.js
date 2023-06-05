@@ -22,9 +22,7 @@ const Signin =()=>{
          email:"",
          password:""
       })
-//    const logo=require('Assets/img/logo-waqf.png')
 const handelClick=()=>{
-//    dispatch(authDataAction(user,history))
 axios.post("https://estithmar.arabia-it.net/api/auth/login",{...user}
   ).then(res=>{
    if(res.status == 200){

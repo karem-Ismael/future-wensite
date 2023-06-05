@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import ProfileImage from "@/Components/ProfileImage"
 import ProfileInputs from "@/Components/ProfileInputs";
+import { useState } from "react";
 const BreedCrumb =styled.div`
 transform:translateY(-400px);
 direction:rtl;
@@ -40,6 +41,7 @@ direction:rtl;
 `;
 function Profile (){
     const router = useRouter()
+    const [profile,setProfile]=useState(true)
     const items = [
         {
           key: '1',
@@ -89,14 +91,19 @@ return(
             <Row>
                 <Col md={24} sm={24} xs={24}>
                     <CardComponent>
-                    <Tabs defaultActiveKey={1} items={items}  />
+                    <Tabs onChange={(e)=> e == 1 ? setProfile(true) :setProfile(false)} defaultActiveKey={1} items={items}  />
                     </CardComponent>
                 </Col>
-                <Col md={24} sm={24} xs={24} className="mt-2">
+                {
+                    profile ? 
+                    <Col md={24} sm={24} xs={24} className="mt-2">
                     <CardComponent>
                         <ProfileInputs />
                     </CardComponent>
                 </Col>
+                : null
+                }
+                
             </Row>
             </DIVContent>
         </LayoutComponent>
