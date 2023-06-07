@@ -444,7 +444,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                             إجمالي التكاليف
                                         </h3>
                                         <p className='text-center val' style={{fontSize:"35px", marginBottom:"70px"}}>
-                                            { borderSelected.length ?  calculations?.total : ServicesDetails.data.cost}
+                                            { borderSelected.length ?  calculations?.total : ServicesDetails.data.total}
                                             <sub className='currency'>
                                                 ر.س
 
