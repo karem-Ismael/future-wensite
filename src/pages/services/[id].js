@@ -311,14 +311,14 @@ function ServiceDetails({ services, ServicesDetails }) {
 
                             </CardComponent>
                         </Col>
-                        <Col lg={24} md={24} sm={24} xs={24}>
+                        <Col  lg={24} md={24} sm={24} xs={24}>
 
                             <CardComponent>
                                 <h3 className={styless.title}>
                                     تقييم المستفيدين
                                 </h3>
                                 <Row>
-                                    <Col lg={16} md={16} sm={24} xs={24}>
+                                    <Col className="rate" lg={16} md={16} sm={24} xs={24}>
                                         <Row>
                                             <Col lg={12} md={12} sm={24} xs={24}>
                                                 <p className={styless.RateTitle}>
@@ -369,12 +369,12 @@ function ServiceDetails({ services, ServicesDetails }) {
                         <Col md={24} sm={24} xs={24}>
                             <CardComponent>
                                 <Row>
-                                    <Col lg={12} md={12} sm={24} xs={24}>
+                                    <Col lg={12} md={12} sm={12} xs={12}>
                                         <h3 style={{ color: "#005D5E" }}>
                                             شارك الباقة
                                         </h3>
                                     </Col>
-                                    <Col lg={12} md={12} sm={24} xs={24} style={{ textAlign: "left" }}>
+                                    <Col lg={12} md={12} sm={12} xs={12} style={{ textAlign: "left" }}>
                                         <FacebookFilled style={{ fontSize: "20px", color: "#1976D2" }} />
                                         <TwitterSquareFilled style={{ fontSize: "20px", color: "#0A93E2" }} />
                                         <LinkedinFilled style={{ color: "#0B86CA", fontSize: "20px" }} />
@@ -542,7 +542,7 @@ function ServiceDetails({ services, ServicesDetails }) {
 
                 </Row>
                 <div style={{ marginBottom: "20px", display: "flex", gap: "10px" }}>
-                    <h3 style={{ width: "20%", maxWidth: "20%", color: "#005D5E", fontSize: "30px" }}>
+                    <h3 style={{ minWidth:"196px",width: "20%", maxWidth: "20%", color: "#005D5E", fontSize: "30px" }}>
                         خدمات ذات صلة
                     </h3>
                     <hr style={{ width: "80%", height: "0px", border: " 1px solid #D3B166", alignSelf: "center" }} />

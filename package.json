@@ -13,6 +13,7 @@
     "axios": "^1.4.0",
     "babel-plugin-styled-components": "^2.1.1",
     "bootstrap": "^5.2.3",
+    "moment": "^2.29.4",
     "next": "13.2.4",
     "next-redux-wrapper": "^8.1.0",
     "react": "^18.2.0",

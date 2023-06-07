@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import ProfileImage from "@/Components/ProfileImage"
 import ProfileInputs from "@/Components/ProfileInputs";
 import { useState } from "react";
+import OrderList from "@/Components/orderComponents/orderList";
 const BreedCrumb =styled.div`
 transform:translateY(-400px);
 direction:rtl;
@@ -51,7 +52,7 @@ function Profile (){
         {
           key: '2',
           label: `خدمات`,
-          children: "karem2",
+          children: <OrderList/>,
         },
         {
             key: '3',

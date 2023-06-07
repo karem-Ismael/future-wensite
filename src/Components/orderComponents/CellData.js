@@ -5,8 +5,8 @@
  */
 
 import React from "react";
-import { FormattedDate, FormattedMessage } from "react-intl";
-import { dataTypes, Alert } from "Constants/constants";
+import { dataTypes, Alert } from "./constants";
+import Link from "next/link";
 
 /**
  * @name CellData
@@ -16,7 +16,6 @@ import { dataTypes, Alert } from "Constants/constants";
  * @param {any} locale
  * @returns {JSX | string} Cell Content in a table
  */
-import { Link } from "react-router-dom";
 
 const {
   TEXT,
@@ -43,8 +42,7 @@ function CellData({ data, record, locale, actions, actionsArgs, dropdownActions 
         ? actions(Object.assign(...actionsArgs?.map((key) => ({ [key]: record[key] }), {})))
         : "";
 
-    case data?.dataType === TRANSLATE:
-      return <FormattedMessage id={dataValue} />;
+ 
 
     case data?.dataType === BILINGUAL && (!data?.bilingual?.ar || !data?.bilingual?.en):
       return Alert("Missing Locale In Bilingual");
@@ -57,7 +55,7 @@ function CellData({ data, record, locale, actions, actionsArgs, dropdownActions 
 
     case data?.dataType === FUNC:
       return data?.htmlElement === "link" ? (
-        <Link to={`/cw/dashboard/customers/${data?.userId(record)}`}>
+        <Link href={`/cw/dashboard/customers/${data?.userId(record)}`}>
           {data.func(record, locale)}
         </Link>
       ) : (
@@ -67,29 +65,12 @@ function CellData({ data, record, locale, actions, actionsArgs, dropdownActions 
       return data?.dataRef === "additionalNotes" && data?.dataRef?.length > 10
         ? dataValue.substring(0, 10)
         : dataValue;
-    case data?.dataType === TIME:
-      return <FormattedDate value={dataValue} hour="numeric" minute="numeric" />;
+    
 
-    case data?.dataType === PRICE:
-      return <FormattedMessage id="amount.sar" values={{ amount: dataValue }} />;
+    
 
     case data?.dataType === DATE && data?.dataRef?.length === 0:
       return Alert("Missing data can give false value of today");
-
-    case data?.dataType === DATE:
-      return <FormattedDate value={dataValue} day="numeric" month="short" year="numeric" />;
-
-    case data?.dataType === DATETIME:
-      return (
-        <FormattedDate
-          value={dataValue}
-          day="numeric"
-          month="long"
-          year="numeric"
-          hour="numeric"
-          minute="numeric"
-        />
-      );
 
     default:
       break;

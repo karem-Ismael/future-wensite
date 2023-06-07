@@ -330,3 +330,40 @@ ul{
 .modal-title{
   width: 100% !important;
 }
+.ant-pagination{
+  direction: ltr;
+}
+.drawer-link{
+  color:#005D5E !important;
+
+}
+.list-item a{
+  color:#005D5E !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+.list-item {
+  padding: 10px;
+}
+.drawerlist{
+  padding: 0px;
+}
+ .drawerlist .active-item{
+background:#D4B265;
+color:#fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .rate {
+      text-align: center;
+  }
+  .ant-breadcrumb-link a {
+    font-size: 12px;
+  }
+  .ant-breadcrumb-link{
+    font-size: 12px !important;
+  }
+  .ant-breadcrumb-separator{
+    font-size: 14px;
+  }
+}

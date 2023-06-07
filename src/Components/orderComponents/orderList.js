@@ -1,49 +1,76 @@
 /** Bookings List */
-import React, { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useEffect,useState } from "react";
+// import { Link, useRoute } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Typography, Tooltip } from "@material-ui/core";
-import { Pagination } from "@material-ui/lab";
-import useSetState from "Hooks/useSetState";
-import RctCollapsibleCard from "Components/RctCollapsibleCard/RctCollapsibleCard";
-import CustomTable from "Components/shared/CustomTable";
+import {Tooltip } from "antd";
+import { Pagination } from 'antd';
+import  { EyeOutlined } from '@ant-design/icons';
+
+import CardComponent from "../Card";
+import CustomTable from "./CustomTable";
 import { OrderData } from "./OrderData";
-import StatusDropDown from "Components/shared/StatusDropDown"
-import PerPage from "Components/shared/PerPage";
+import StatusDropDown from "./StatusDropDown"
 
 import axios from "axios"
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { FiltersAndSearches } from "./FiltersAndSearches";
 const client = axios.create({
-  baseURL: "https://estithmar.arabia-it.net/api/admin" 
+  baseURL: "https://estithmar.arabia-it.net/api" 
  
 });
-function OrderList({ allowners, loading, setPage, limit, setLimit ,status}) {
-  const history = useHistory();
-  const [owners, setOwners] = useSetState({
+function OrderList({ allowners, loading, limit, setLimit ,status}) {
+  const router = useRouter();
+  const [query,setQuery]=useState({})
+  const[page,setPage]=useState(1)
+  const [owners, setOwners] = useState({
     collection: [],
     metadata: {},
   });
   const { collection ,metadata} = owners;
   useEffect(() => {
-    setOwners({
-      collection: allowners?.data,
+    // setOwners({
+    //   collection: allowners?.data,
+    //   metadata: {
+    //     totalCount:allowners?.total,
+    //     currentPage:allowners?.current_page
+    //   }, 
+    // });
+    if(localStorage.getItem("token")){
+   
+      client.get(`/asset-owner/request?token=${localStorage.getItem("token")}`,
+      {
+        params:{
+          limit:10,
+          page,
+          service_provider_id: query.service_provider_id ? query.service_provider_id : undefined,
+          status: query.status ? query.status : undefined,
+        }
+      }
+      ).then(data=>{
+        setOwners({
+      collection: data?.data.data.data,
       metadata: {
-        totalCount:allowners?.total,
-        currentPage:allowners?.current_page
+        totalCount:data?.data.data.total,
+        currentPage:data?.data.data.current_page
       }, 
     });
-  }, [allowners]);
+      })
+    }
+  }, [query,page]);
 
 
 
   const actions = ({ id }) => (
-    <div className="d-flex align-items-center" style={{ gap: "5px" }}>
+    <div className="d-flex align-items-center m-2" style={{ gap: "5px" }}>
       {/* Redirects to Car details */}
 
       
         <Tooltip title={ "common.edit"} placement="top">
-          <Link to={`/app/orders/${id}`}>
-            <button className="border-0" style={{background:"#23D381",color:"#fff"}}>
+          <Link href={`/app/orders/${id}`} className="w-100 tex-center">
+            <button className="border-0 w-100" style={{background:"#23D381",color:"#fff"}}>
             <i className=" ti-eye m-1"></i>
+            <EyeOutlined />
 
             </button>
           </Link>
@@ -54,9 +81,20 @@ function OrderList({ allowners, loading, setPage, limit, setLimit ,status}) {
     <StatusDropDown inorder={true} status={status} activationStatus={record.status} id={record.id} client={client} url={`service-request/${record.id}`}/>
   )
   return (
-    <Typography component="div" style={{ padding: "10px", marginTop: "20px" }}>
+    <div component="div" style={{ padding: "10px", marginTop: "20px" }}>
       <div>
-        <RctCollapsibleCard fullBlock table>
+        <CardComponent>
+        <div className="row">
+              <FiltersAndSearches
+                make="make"
+                submitbtnid="search.filter"
+                filters={["status","service_provider"]}
+                query={query}
+                setPage={setPage}
+                setQuery={setQuery}
+              
+              />
+            </div>
           <CustomTable
             tableData={OrderData}
             loading={loading}
@@ -65,29 +103,32 @@ function OrderList({ allowners, loading, setPage, limit, setLimit ,status}) {
             actionsArgs={["id"]}
             dropdownActions={dropdownActions}
           />
-        </RctCollapsibleCard>
+        </CardComponent>
       </div>
       <div className="d-flex justify-content-around">
         {metadata?.currentPage && (
           <>
-            <Pagination
+            {/* <Pagination
               count={Math.ceil(metadata?.totalCount / limit)}
               page={metadata?.currentPage}
               onChange={(e, value) => {
                 setPage(value);
-                history.replace({ hash: `page=${value}` });
+                router.replace({ hash: `page=${value}` });
               }}
-            />
-            <PerPage
-              specialPagination={[10, 20, 40, 80, 100]}
-              handlePerPageChange={(value) => setLimit(value)}
-              perPage={limit}
-              setPage={setPage}
-            />
+            /> */}
+              <Pagination 
+              size="small"
+              defaultCurrent={page}
+              current={page}
+              onChange={(page)=>setPage(page)}
+              pageSize={10}
+               total={metadata.totalCount}
+                />
+            
           </>
         )}
       </div>
-    </Typography>
+    </div>
   );
 }
 

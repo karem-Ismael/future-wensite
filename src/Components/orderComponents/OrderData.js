@@ -1,5 +1,5 @@
 import React from "react";
-import { dataTypes } from "Constants/constants";
+import { dataTypes } from "./constants";
 import moment from "moment";
 const { TEXT, ACTIONS, FUNC,DROPDOWN } = dataTypes;
 
@@ -23,13 +23,6 @@ export const OrderData = [
     func: (record, locale) => record.service_provider?.company_name_ar,
   },
   {
-    headerId: "الاوقاف",
-    dataRef: "logo",
-    dataType: FUNC,
-    func: (record, locale) => record.asset_owner?.asset_name_ar
-    ,
-  },
-  {
     headerId: "تاريخ الطلب",
     dataRef: "logo",
     dataType: FUNC,
@@ -49,5 +42,5 @@ export const OrderData = [
 
   },
  
-  { headerId: "common.actions", dataType: ACTIONS },
+  { headerId: "", dataType: ACTIONS },
 ];

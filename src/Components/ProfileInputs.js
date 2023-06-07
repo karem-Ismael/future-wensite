@@ -51,12 +51,12 @@ useEffect(()=>{
               const thirdImage =data?.data?.data?.asset_owner?.files?.find(file=>file.title=="عقد التأسيس")?.path
               const forthImage=data?.data?.data?.asset_owner?.files?.find(file=>file.title=="دورة عمل الوقف")?.path
         
-              setEnImage(profile ? "https://estithmar.arabia-it.net"+ profile : null)
-              dispatch(AddProfileImage("https://estithmar.arabia-it.net"+ profile))
-              setFirstImage(firstImage ? "https://estithmar.arabia-it.net"+firstImage :null)
-              setSecondImage(secondImage ? "https://estithmar.arabia-it.net"+secondImage : null)
-              setThirdImage(thirdImage ? "https://estithmar.arabia-it.net"+ thirdImage: null)
-              setForthImage(forthImage ? "https://estithmar.arabia-it.net" + forthImage :null)
+              setEnImage(profile ? "https://estithmar.arabia-it.net/"+ profile : null)
+              dispatch(AddProfileImage("https://estithmar.arabia-it.net/"+ profile))
+              setFirstImage(firstImage ? "https://estithmar.arabia-it.net/"+firstImage :null)
+              setSecondImage(secondImage ? "https://estithmar.arabia-it.net/"+secondImage : null)
+              setThirdImage(thirdImage ? "https://estithmar.arabia-it.net/"+ thirdImage: null)
+              setForthImage(forthImage ? "https://estithmar.arabia-it.net/" + forthImage :null)
         })
     
 

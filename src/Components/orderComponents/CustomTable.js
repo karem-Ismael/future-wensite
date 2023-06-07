@@ -9,12 +9,10 @@
  */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { FormattedMessage } from "react-intl";
-import { Box, CircularProgress, Dialog, Modal, Typography } from "@material-ui/core";
-import { Alert } from "Constants/constants";
-import Checkbox from "@material-ui/core/Checkbox";
+import { Spin } from 'antd';
+
+import { Alert } from "./constants";
 import CellData from "./CellData";
-import AppLocale from "../../lang";
 function CustomTable({
   tableData,
   tableRecords,
@@ -33,8 +31,8 @@ function CustomTable({
  
 }) {
   const [open, setOpen] = useState(false);
+  const locale="ar"
   const handleClose = () => setOpen(false);
-	const locale = AppLocale[locale?.locale];
   const onSelectAllClick = (e) => {
     if (e.target.checked) {
       setAllChecked(true);
@@ -61,16 +59,7 @@ function CustomTable({
         <table className="table table-hover">
           <thead>
             <tr data-testid="header-row">
-              {withcheckbox && (
-                <th>
-                  <Checkbox
-                    // indeterminate={numSelected > 0 && numSelected < rowCount}
-                    checked={allchecked}
-                    onChange={onSelectAllClick}
-                    inputProps={{ "aria-label": "select all desserts" }}
-                  />
-                </th>
-              )}
+            
               {tableData?.map((header, idx) => (
                 <th key={JSON.stringify(idx)} align="center">
                   <div
@@ -84,8 +73,9 @@ function CustomTable({
                     <span data-testid="capitalized-header" style={{ textTransform: "capitalize" }}>
                      
                     
-                        
-                        <FormattedMessage id={header?.headerId || Alert("Missing Header ID")} />
+                        {
+                          header?.headerId
+                        }
                       
                     
                     </span>
@@ -98,15 +88,7 @@ function CustomTable({
           <tbody>
             {tableRecords?.map((record, idx) => (
               <tr key={JSON.stringify(idx)} data-testid={`data-tr-${idx}`}>
-                {withcheckbox && (
-                  <td>
-                    <Checkbox
-                      checked={carIds?.includes(record.id)}
-                      onChange={(e) => onSingleCheck(e, idx, record)}
-                      inputProps={{ "aria-label": "select all desserts" }}
-                    />
-                  </td>
-                )}
+               
                 {tableData.map((data, index) => (
                   <>
                     <td key={JSON.stringify(index)} align={`${data?.align || ""}`}>
@@ -120,38 +102,7 @@ function CustomTable({
                         AssignBooking,
                         RefundBooking,
                       })}
-                      {data?.dataRef === "additionalNotes" && record?.additionalNotes?.length > 10 && (
-                        <div className="d-inline-block">
-                          <button
-                            style={{ background: "none", border: "none", cursor: "pointer" }}
-                            type="button"
-                            onClick={() => setOpen(true)}
-                          >
-                            <span>..</span>
-                            <FormattedMessage id="button.more" />
-                          </button>
-                          <Modal
-                            open={open}
-                            onClose={handleClose}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
-                          >
-                            <Box className="custom-popup px-4 py-2 position-relative">
-                              <i
-                                style={{ cursor: "pointer" }}
-                                onClick={() => setOpen(false)}
-                                className="ti-close"
-                              ></i>
-                              <h4 style={{ textDecoration: "underline", fontWeight: "bold" }}>
-                                <FormattedMessage id="Additional notes" />
-                              </h4>
-                              <p className="m-0" style={{ fontSize: "18px" }}>
-                                {record?.additionalNotes}
-                              </p>
-                            </Box>
-                          </Modal>
-                        </div>
-                      )}
+             
                     </td>
                   </>
                 ))}
@@ -161,13 +112,13 @@ function CustomTable({
         </table>
         {tableRecords && tableRecords.length === 0 && (
           <div className="text-center mt-3 mb-4">
-            <FormattedMessage id="No data found" />
+            No data found
           </div>
         )}
       </div>
       { loading && (
         <div className="d-flex justify-content-center align-items-center" >
-          <CircularProgress />
+          <Spin />
         </div>
       )}
     </>

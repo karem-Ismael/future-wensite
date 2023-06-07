@@ -140,7 +140,7 @@ const HeaderComponent = () => {
         </Col>
       }  
       <Col lg={8} md={15} sm={15} xs={15} style={{height:"100%"}}>
-        <img src="/assets/images/logoheader.png" height={"100%"} style={{aspectRatio:4,padding:"8px 0px"}} />
+        <img src="/assets/images/logoheader.png"className="w-75" height={"100%"} style={{aspectRatio:4,padding:"8px 0px"}} />
       </Col>
       <Col lg={16} style={{display: screens.lg || screens.xl  ? "" : "none"}}>
         <Nav>
