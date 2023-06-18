@@ -369,8 +369,24 @@ color:#fff;
 }
 table thead{
   background-color: #efefef !important;
+  text-align: right;
 }
 .table th, .table td{
   padding: 0.75rem;
   vertical-align: middle;
+  text-align: right;
+}
+.MuiTableCell-root .MuiTableCell-head{
+  text-align: right !important;
+  font-family: Light;
+
+}
+.css-1ygcj2i-MuiTableCell-root{
+  text-align: right !important;
+  font-family: Light;
+}
+.css-1ex1afd-MuiTableCell-root{
+  text-align: right !important;
+  font-family: Light;
+
 }

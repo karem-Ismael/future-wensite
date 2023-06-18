@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -26,11 +27,36 @@ useEffect(()=>{
 },[props.activationStatus])
 const changeStatus=(status)=>{
   setActiveStatus(status)
+  // if(props.wakf){
+  //   props.client.put(`${props.url}`,{
+  //     owner_status : 1,
+  //   request_deliveries_id: 34,
+  //     token:user.access_token
+      
+  //   }).then(res=>console.log(res,"res active"))
+  //   return
+  // }
+  if(props.wakf){
+    
+    const clientUrl=
+    axios.create({
+      baseURL: "https://estithmar.arabia-it.net/api/asset-owner/",
+    });
+
+    clientUrl.put(`/request/${props.orderId}`,{
+      owner_status:status.id,
+      token:localStorage.getItem("token"),
+      request_deliveries_id : props.borderId,
+
+    }).then(res=>console.log(res,"res active"))
+    return
+  }
   if(props.inorder){
     props.client.put(`${props.url}`,{
       status:status.id,
       // token:user.access_token
     }).then(res=>console.log(res,"res active"))
+    
   }else{
     props.client.put(`${props.url}`,{
       type : "activate",
@@ -42,7 +68,7 @@ const changeStatus=(status)=>{
 }
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle} {...props}>
-      <DropdownToggle disabled={user?.category != "admin" || props.notAllowed} caret size="md" style={{background:activeStatus?.title == 
+      <DropdownToggle disabled={(user?.category != "admin" || props.notAllowed) && !props.wakf} caret size="md" style={{background:activeStatus?.title == 
 "قيد الانتظار" ?  "#EEB656":  "",border:"none",width:"fit-content"}}>
         {activeStatus?.name}
       </DropdownToggle>

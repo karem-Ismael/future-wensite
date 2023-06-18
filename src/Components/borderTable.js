@@ -1,34 +1,33 @@
+// import { makeStyles } from '@material-ui/core/styles';
+import React,{useRef, useState} from"react";
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Collapse from '@material-ui/core/Collapse';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import React, { useRef, useState } from "react";
-import IconButton from "@material-ui/core/IconButton";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Typography from "@material-ui/core/Typography";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import axios from 'axios';
-import Paper from '@material-ui/core/Paper';
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useDispatch, useSelector } from 'react-redux';
 import StatusDropDown from './orderComponents/StatusDropDown';
 import { OrderDetailsAction } from '@/store/orders/action';
-
+import axios from 'axios';
 const client = axios.create({
   baseURL: "https://estithmar.arabia-it.net/api",
 });
-const useRowStyles = makeStyles({
-  root: {
-    '& > *': {
-      borderBottom: 'unset',
-    },
-  },
-});
+// const useRowStyles = makeStyles({
+//   root: {
+//     '& > *': {
+//       borderBottom: 'unset',
+//     },
+//   },
+// });
 
 function createData(name, calories, fat, carbs, protein, price) {
   return {
@@ -47,11 +46,12 @@ function createData(name, calories, fat, carbs, protein, price) {
 function Row(props) {
   const { row ,serviceRequestId,setOrder} = props;
   const [open, setOpen] = React.useState(false);
-  const classes = useRowStyles();
+  // const classes = useRowStyles();
   const [loader,setLoader]=useState()
   const [EnImage,setEnImage]=useState()
   const inputFile = useRef(null);
   const {user} =useSelector(state=>state.authentication.login_data) || {}
+  const {orderDetails,tabsView} =useSelector((state)=>state.orders)||{}
 
 const dispatch=useDispatch()
   const uploadEnimage = (file,row) => {
@@ -85,7 +85,7 @@ const dispatch=useDispatch()
   };
   return (
     <React.Fragment>
-      <TableRow className={classes.root}>
+      <TableRow style={{marginBottom:"30px"}}>
         <TableCell>
           <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
@@ -102,7 +102,7 @@ const dispatch=useDispatch()
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box margin={1}>
+            <Box margin={1} style={{marginBottom:"50px"}}>
               <div className='container'>
               <div className='row justify-content-between'>
                 <div style={{width:"fit-content"}}>
@@ -124,7 +124,7 @@ const dispatch=useDispatch()
                   حالة المرحلة
                 </p>
                 <div>
-                <StatusDropDown notAllowed={true} activationStatus={row?.owner_status} />
+                <StatusDropDown  borderId={row.id} orderId={orderDetails.id}  wakf={true} activationStatus={row?.owner_status} />
                 </div>
                 </div>
                

@@ -133,7 +133,7 @@ return(
                    setOrder={setOrder}
                    Delivery={orderDetails && !orderDetails.service_request_deliveries.length? JSON.parse(orderDetails?.service?.stages_of_delivery) :  orderDetails && orderDetails.service_request_deliveries.length ?orderDetails.service_request_deliveries :[]}
                    />
-                   <div>
+                   <div style={{marginTop:"30px"}}>
                 <h3 className="title" style={{position:"relative"}}>
                 ملاحظات الطلب
                 </h3>
