@@ -42,7 +42,7 @@ const changeStatus=(status)=>{
 }
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle} {...props}>
-      <DropdownToggle disabled={user.category != "admin" || props.notAllowed} caret size="md" style={{background:activeStatus?.title == 
+      <DropdownToggle disabled={user?.category != "admin" || props.notAllowed} caret size="md" style={{background:activeStatus?.title == 
 "قيد الانتظار" ?  "#EEB656":  "",border:"none",width:"fit-content"}}>
         {activeStatus?.name}
       </DropdownToggle>

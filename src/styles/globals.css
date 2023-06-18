@@ -367,3 +367,10 @@ color:#fff;
     font-size: 14px;
   }
 }
+table thead{
+  background-color: #efefef !important;
+}
+.table th, .table td{
+  padding: 0.75rem;
+  vertical-align: middle;
+}

@@ -1,9 +1,11 @@
-import { SET_BORDERS, REMOVE_BORDERS} from "./action";
+import { SET_BORDERS, REMOVE_BORDERS,ORDER_DETAILS} from "./action";
 
 export default function OrdersReducer(state = {
 
     
-   borders:[]
+   borders:[],
+   orderDetails:{},
+   tabsView:true
 }, action) {
   switch (action.type) {
     case SET_BORDERS:
@@ -12,6 +14,8 @@ export default function OrdersReducer(state = {
       case REMOVE_BORDERS:
         return { ...state, borders:[] };
         break;
+        case ORDER_DETAILS:
+          return {...state,orderDetails:action.payload,tabsView:false}
     
     default:
       return state;
