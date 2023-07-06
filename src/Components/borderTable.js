@@ -19,7 +19,8 @@ import StatusDropDown from './orderComponents/StatusDropDown';
 import { OrderDetailsAction } from '@/store/orders/action';
 import axios from 'axios';
 import {
-  DownloadOutlined
+  DownloadOutlined,
+  DeleteOutlined
 } from '@ant-design/icons'
 import moment from "moment"
 const client = axios.create({
@@ -90,6 +91,16 @@ const dispatch=useDispatch()
         // setEnImage("https://estithmar.arabia-it.net" + res.data.data.path);
       });
   };
+  const DeleteFile=(id)=>{
+    client.delete(`/asset-owner/request/${id}?delete_file=true&token=${localStorage.getItem("token")}`).then((res)=>{
+      client.get(`/asset-owner/request/${orderDetails.id}?token=${localStorage.getItem("token")}`).then(res=>{
+        setOrder(res.data.data)
+        dispatch(OrderDetailsAction(res.data.data))
+
+      })
+    })
+  
+  }
   return (
     <React.Fragment>
       <TableRow style={{marginBottom:"30px"}}>
@@ -164,11 +175,14 @@ const dispatch=useDispatch()
                             <td>{file?.title}</td>
                             <td>{file?.user?.name}</td>
                             <td>{moment(file.created_at).locale("ar").format('DD MMM YYYY')}</td>
-                            <td>
+                            <td className="d-flex justify-content-center" style={{gap:"10px"}}>
                               <button className="btn btn-info"> 
                               <a href={`https://estithmar.arabia-it.net${file.file}`} target="_blank" download={`https://estithmar.arabia-it.net${file.file}`}>
                               <DownloadOutlined />
                               </a>
+                              </button>
+                              <button  onClick={()=>DeleteFile(file.id)} className="btn btn-danger"> 
+                              <DeleteOutlined />
                               </button>
                             </td>
 
@@ -240,7 +254,6 @@ Row.propTypes = {
 
 
 export default function CollapsibleTable({Delivery,serviceRequestId,setOrder}) {
-  console.log(Delivery,"Delivery")
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
