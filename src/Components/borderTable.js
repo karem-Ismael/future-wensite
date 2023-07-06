@@ -18,6 +18,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import StatusDropDown from './orderComponents/StatusDropDown';
 import { OrderDetailsAction } from '@/store/orders/action';
 import axios from 'axios';
+import {
+  DownloadOutlined
+} from '@ant-design/icons'
+import moment from "moment"
 const client = axios.create({
   baseURL: "https://estithmar.arabia-it.net/api",
 });
@@ -138,6 +142,9 @@ const dispatch=useDispatch()
                    <table className="table table-hover w-100">
                 <thead>
                     <th>
+                     ID
+                    </th>
+                    <th>
                      الملف
                     </th>
                     <th>
@@ -153,7 +160,18 @@ const dispatch=useDispatch()
                   <tbody>
                     {
                         row.request_delivery_files.map((file,index)=><tr>
-                            <td>{index}</td>
+                            <td>{index +1}</td>
+                            <td>{file.file.split("/")[3]}</td>
+                            <td>{file?.user?.name}</td>
+                            <td>{moment(file.created_at).locale("ar").format('DD MMM YYYY')}</td>
+                            <td>
+                              <button className="btn btn-info"> 
+                              <a href={`https://estithmar.arabia-it.net${file.file}`} target="_blank" download={`https://estithmar.arabia-it.net${file.file}`}>
+                              <DownloadOutlined />
+                              </a>
+                              </button>
+                            </td>
+
                         </tr>)
                     }
 
@@ -161,10 +179,8 @@ const dispatch=useDispatch()
               </table>
                 </div>
                 
-                              <div className='d-flex justify-content-between'>
-                              <div style={{width:"fit-content"}}className='mt-3'> 
-                            <img src={row.file ? "https://estithmar.arabia-it.net" + row.file : "/assets/images/no-image.jpg" } style={{border:"1px solid #ccc"}} height={"100px"}  width={"182px"}/>
-                              </div>
+                              <div className='d-flex justify-content-end'>
+                             
                               <div style={{alignSelf:"end"}}>
                                 <button 
                                 onClick={()=>{
