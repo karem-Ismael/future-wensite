@@ -161,7 +161,7 @@ const dispatch=useDispatch()
                     {
                         row.request_delivery_files.map((file,index)=><tr>
                             <td>{index +1}</td>
-                            <td>{file.file.split("/")[3]}</td>
+                            <td>{file?.title}</td>
                             <td>{file?.user?.name}</td>
                             <td>{moment(file.created_at).locale("ar").format('DD MMM YYYY')}</td>
                             <td>
