@@ -21,13 +21,13 @@ const NoteModal =({isopen,setIsOpen,serviceRequestId,setOrder})=>{
       );
     const addNote=()=>{
         client
-        .put(`service-request/${orderDetails.id}`, {
+        .put(`asset-owner/request/${orderDetails.id}`, {
             ...data
         }).then(res=>{
             console.log(res,"res")
             if(!res.errors){
                 // NotificationManager.success("تم تسجيل الملاحظة بنجاح")
-                client.get(`/service-request/${orderDetails.id}`).then(res=>{
+                client.get(`/asset-owner/request/${orderDetails.id}`).then(res=>{
                   setOrder(res.data.data)
                 setIsOpen(!isopen)
 

@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 import StagesTable from "@/Components/orderComponents/StagesTable";
 import CollapsibleTable from "@/Components/borderTable";
-
+import "moment/locale/ar-sa";
 const BreedCrumb =styled.div`
 transform:translateY(-400px);
 direction:rtl;
@@ -89,7 +89,7 @@ function Profile (){
         
        
       ];
-      console.log(orderDetails,"order profile ")
+      console.log(orderDetails.logs,"orderDetails karem")
 return(
     <LayoutComponent>
             <BreedCrumb className='container'>
@@ -295,7 +295,22 @@ return(
                     </th>
                   </thead>
                   <tbody>
-    
+                    {
+                        orderDetails.logs.map((log,index)=><tr>
+                            {console.log(JSON.parse(log.meta,"karem"))}
+                            <td>{JSON.parse(log.meta).request_status == 1 ? "مفعل" : JSON.parse(log.meta).request_status == 0 ? "جاري العمل " : "مرفوض" }</td>
+                            <td>{JSON.parse(log.meta).log_type}</td>
+                            <td>{JSON.parse(log.meta).name}</td>
+                            <td>{JSON.parse(log.meta).category =="service-provider" ? "مزود خدمة " : "وقف" }</td>  
+                            <td>{
+                    moment(log.created_at).locale("ar").format('DD MMM YYYY h:mm:ss a')
+                            
+                            }</td>
+                            <td></td>
+
+
+                        </tr>)
+                    }
 
                   </tbody>
               </table>

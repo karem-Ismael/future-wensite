@@ -156,7 +156,7 @@ function ServiceOrder({ ServicesDetails }) {
     }
     const SaveOrder=()=>{
         console.log(router,"user")
-        axios.post("https://estithmar.arabia-it.net/api/service-request",{
+        axios.post("https://estithmar.arabia-it.net/api/asset-owner/request",{
                 token:localStorage.getItem("token"),
                 service_id:router.query.id,
                 service_border:borders

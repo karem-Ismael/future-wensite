@@ -20,7 +20,8 @@ const Signin =()=>{
   const {errors} =useSelector(state=>state.authentication) || {}
       const [user,setUser] =useState({
          email:"",
-         password:""
+         password:"",
+         user_category:"portal",
       })
 const handelClick=()=>{
 axios.post("https://estithmar.arabia-it.net/api/auth/login",{...user}

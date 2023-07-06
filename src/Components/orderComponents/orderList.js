@@ -36,13 +36,7 @@ function OrderList({ allowners, loading, limit, setLimit ,status}) {
   const { collection ,metadata} = owners;
   const[orderid,setOrderId]=useState()
   useEffect(() => {
-    // setOwners({
-    //   collection: allowners?.data,
-    //   metadata: {
-    //     totalCount:allowners?.total,
-    //     currentPage:allowners?.current_page
-    //   }, 
-    // });
+    
     if(localStorage.getItem("token")){
    
       client.get(`/asset-owner/request?token=${localStorage.getItem("token")}`,
@@ -95,7 +89,7 @@ const getOrderDetails=(id)=>{
     </div>
   );
   const dropdownActions =(record)=>(
-    <StatusDropDown inorder={true} status={status} activationStatus={record.status} id={record.id} client={client} url={`service-request/${record.id}`}/>
+    <StatusDropDown inorder={true} status={status} activationStatus={record.status} id={record.id} client={client} url={`asset-owner/request/${record.id}`}/>
   )
   console.log(orderDetails,"OrderDetails")
   return (

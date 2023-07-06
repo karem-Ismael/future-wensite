@@ -25,7 +25,7 @@ const OrderDetailsComponent=({order})=>{
                   </span>
                 </div>
                 <div style={{width:"fit-content"}}>
-    <StatusDropDown inorder={true}  activationStatus={order?.status} id={order?.id}  url={`service-request/${order?.id}`}/>
+    <StatusDropDown inorder={true}  activationStatus={order?.status} id={order?.id}  url={`asset-owner/request/${order?.id}`}/>
                 </div>
               </div>
               <div className="row mt-2">
@@ -86,7 +86,7 @@ const OrderDetailsComponent=({order})=>{
                       {order?.service?.support_ratio} {"%"}
                     </td>
                     <td>
-    <StatusDropDown notAllowed={true} activationStatus={order?.service?.is_active}   url={`service-request/${order?.id}`} />
+    <StatusDropDown notAllowed={true} activationStatus={order?.service?.is_active}   url={`asset-owner/request/${order?.id}`} />
 
                     </td>
 

@@ -60,9 +60,12 @@ const dispatch=useDispatch()
     const formdata = new FormData();
     formdata.append("request_deliveries_id", row.id);
     formdata.append("file", file);
+    formdata.append("token",localStorage.getItem("token") );
+
     formdata.append("_method","PUT")
+    
     client
-      .post(`/admin/service-request/${serviceRequestId}`, formdata, {
+      .post(`/asset-owner/request/${serviceRequestId}`, formdata, {
         headers: {
           "Content-Type": "multipart/form-data; ",
         },
@@ -130,6 +133,33 @@ const dispatch=useDispatch()
                
               </div>
               {
+                <>
+                <div>
+                   <table className="table table-hover w-100">
+                <thead>
+                    <th>
+                     الملف
+                    </th>
+                    <th>
+                    بواسطة
+                    </th>
+                    <th>
+                    التاريخ
+                    </th>
+                    <th>
+                    </th>
+                   
+                  </thead>
+                  <tbody>
+                    {
+                        row.request_delivery_files.map((file,index)=><tr>
+                            <td>{index}</td>
+                        </tr>)
+                    }
+
+                  </tbody>
+              </table>
+                </div>
                 
                               <div className='d-flex justify-content-between'>
                               <div style={{width:"fit-content"}}className='mt-3'> 
@@ -161,6 +191,8 @@ const dispatch=useDispatch()
                             />
                               </div>
                             </div>
+                </>
+
               }
               </div>
             </Box>
