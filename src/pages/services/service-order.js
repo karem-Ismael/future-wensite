@@ -112,19 +112,7 @@ function ServiceOrder({ ServicesDetails }) {
     const onChangeSlide = (currentSlide) => {
         console.log(currentSlide);
     };
-    // useEffect(async()=>{
-    //     if(field){
-    //         // const response =await fetch("https://estithmar.arabia-it.net/api/service")
-    //         // const data =await response.json()
-    //         // setClientServices(data)
-    //     }
-    // },[field])
-    // useEffect(async()=>{
-    //     console.log("karem")
-    //     const serviceres =await fetch("https://estithmar.arabia-it.net/api/service")
-    //     const data =await serviceres.json()
-    //     setClientServices(data)
-    // },[field])
+
     function sumArray(array) {
         const ourArray = [1, 4, 0, 9, -3];
         let sum = 0;
@@ -155,13 +143,11 @@ function ServiceOrder({ ServicesDetails }) {
 
     }
     const SaveOrder=()=>{
-        console.log(router,"user")
         axios.post("https://estithmar.arabia-it.net/api/asset-owner/request",{
                 token:localStorage.getItem("token"),
                 service_id:router.query.id,
                 service_border:borders
         }).then((res)=>{
-            console.log(res.data,"res")
             if(!res.data.errors){
                 setIsModalOpen(!isModalOpen)
             }else{

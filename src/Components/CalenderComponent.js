@@ -7,7 +7,6 @@ dayjs.extend(dayLocaleData);
 const CalenderComponent = ({appointments,setFilteredAppointments}) => {
   const { token } = theme.useToken();
   const onPanelChange = (value, mode) => {
-    console.log(value.format('YYYY-MM-DD'), mode);
   };
   const [appointmentslist,setAppointmentsList]=useState([])
   const wrapperStyle = {
@@ -16,15 +15,12 @@ const CalenderComponent = ({appointments,setFilteredAppointments}) => {
     borderRadius: token.borderRadiusLG,
   };
   const handelChange=(value,mode)=>{
-    // console.log(value.format('YYYY-MM-DD'),"value")
 const filteredapp=appointments.filter((app)=>app.date == value.format('YYYY-MM-DD'))
-console.log(filteredapp,"filteredapp")
 setFilteredAppointments(filteredapp)
 // appointmentslist
 
   }
 
-  console.log(appointments,"appointments kaki")
   return (
     <div style={wrapperStyle}>
       <Calendar

@@ -80,19 +80,7 @@ function Services({services,fields}) {
     const onSearch = (value) => {
         console.log('search:', value);
     };
-    // useEffect(async()=>{
-    //     if(field){
-    //         // const response =await fetch("https://estithmar.arabia-it.net/api/service")
-    //         // const data =await response.json()
-    //         // setClientServices(data)
-    //     }
-    // },[field])
-    // useEffect(async()=>{
-    //     console.log("karem")
-    //     const serviceres =await fetch("https://estithmar.arabia-it.net/api/service")
-    //     const data =await serviceres.json()
-    //     setClientServices(data)
-    // },[field])
+ 
     return (
         <LayoutComponent>
              <BreedCrumb className='container'>

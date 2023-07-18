@@ -91,7 +91,6 @@ const getOrderDetails=(id)=>{
   const dropdownActions =(record)=>(
     <StatusDropDown inorder={true} status={status} activationStatus={record.status} id={record.id} client={client} url={`asset-owner/request/${record.id}`}/>
   )
-  console.log(orderDetails,"OrderDetails")
   return (
     <>
     <div component="div" style={{ padding: "10px", marginTop: "20px" }}>

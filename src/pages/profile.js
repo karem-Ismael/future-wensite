@@ -89,7 +89,6 @@ function Profile (){
         
        
       ];
-      console.log(orderDetails.logs,"orderDetails karem")
 return(
     <LayoutComponent>
             <BreedCrumb className='container'>
@@ -297,7 +296,6 @@ return(
                   <tbody>
                     {
                         orderDetails.logs.map((log,index)=><tr>
-                            {console.log(JSON.parse(log.meta,"karem"))}
                             <td>{JSON.parse(log.meta).request_status == 1 ? "مفعل" : JSON.parse(log.meta).request_status == 0 ? "جاري العمل " : "مرفوض" }</td>
                             <td>{JSON.parse(log.meta).log_type}</td>
                             <td>{JSON.parse(log.meta).name}</td>

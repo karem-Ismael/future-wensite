@@ -27,15 +27,7 @@ useEffect(()=>{
 },[props.activationStatus])
 const changeStatus=(status)=>{
   setActiveStatus(status)
-  // if(props.wakf){
-  //   props.client.put(`${props.url}`,{
-  //     owner_status : 1,
-  //   request_deliveries_id: 34,
-  //     token:user.access_token
-      
-  //   }).then(res=>console.log(res,"res active"))
-  //   return
-  // }
+ 
   if(props.wakf){
     
     const clientUrl=

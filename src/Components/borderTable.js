@@ -60,7 +60,6 @@ function Row(props) {
 
 const dispatch=useDispatch()
   const uploadEnimage = (file,row) => {
-    console.log(row,"row")
     setLoader(true);
     const formdata = new FormData();
     formdata.append("request_deliveries_id", row.id);
@@ -76,7 +75,6 @@ const dispatch=useDispatch()
         },
       })
       .then((res) => {
-        console.log(res,"res")
         // client.get(`/service-request/${serviceRequestId}`).then(res=>{
         //   setOrder(res.data.data)
            

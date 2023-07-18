@@ -80,7 +80,6 @@ const ServiceProviderDropDown = ({
             limit:50
           }
         }).then((res)=>{
-console.log(res.data.data.data,"s field ")
           const Alloptions =res.data.data.data.map(field=>(
             
             {

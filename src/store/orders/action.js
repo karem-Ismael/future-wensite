@@ -17,7 +17,6 @@ export function RemoveBorders() {
     };
   }
   export function OrderDetailsAction(payload){
-    console.log(payload)
     return{
       type:ORDER_DETAILS,
       payload,

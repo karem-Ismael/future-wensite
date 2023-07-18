@@ -74,9 +74,7 @@ function OrderDetails({ services, ServicesDetails }) {
             if(existborder.length){
                 return
             }else{
-                console.log(router.query,"query")
                 const allborder=[...borderSelected,borderItem].map((border)=>border.title)
-                console.log(allborder,"allborder")
                 // const response = await fetch(`https://estithmar.arabia-it.net/api/service/${router.query.id}?calc=true&extra=${[allborder]}`)
                 // const data = await response.json()
                 axios.get(`https://estithmar.arabia-it.net/api/service/${router.query.id}`,{
@@ -118,19 +116,7 @@ function OrderDetails({ services, ServicesDetails }) {
     const onChangeSlide = (currentSlide) => {
         console.log(currentSlide);
     };
-    // useEffect(async()=>{
-    //     if(field){
-    //         // const response =await fetch("https://estithmar.arabia-it.net/api/service")
-    //         // const data =await response.json()
-    //         // setClientServices(data)
-    //     }
-    // },[field])
-    // useEffect(async()=>{
-    //     console.log("karem")
-    //     const serviceres =await fetch("https://estithmar.arabia-it.net/api/service")
-    //     const data =await serviceres.json()
-    //     setClientServices(data)
-    // },[field])
+
     function sumArray(array) {
         const ourArray = [1, 4, 0, 9, -3];
         let sum = 0;
@@ -141,7 +127,6 @@ function OrderDetails({ services, ServicesDetails }) {
         
         return sum;
       }      
-      console.log(ServicesDetails,"ServicesDetails")
     return (
         <LayoutComponent>
                  <BreedCrumb className='container'>

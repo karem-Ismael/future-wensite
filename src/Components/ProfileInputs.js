@@ -38,14 +38,12 @@ const SavePassword =()=>{
 useEffect(()=>{
     if(localStorage.getItem("token")){
         client.get(`/asset-owner/me?token=${localStorage.getItem("token")}`).then((data)=>{
-            console.log(data.data.data,"off kok")
             setData({
                 ...data.data.data.asset_owner          ,
                 name:data.data.data.name,
                 email:data.data.data.email,
               })  
               const profile=data?.data?.data?.asset_owner?.files?.find(file=>file.title=="profile")?.path
-              console.log(profile,"profile")
               const firstImage=data?.data?.data?.asset_owner?.files?.find(file=>file.title=="صك الوقفية")?.path
               const secondImage =data?.data?.data?.asset_owner?.files?.find(file=>file.title=="الشهادة الضريبية")?.path
               const thirdImage =data?.data?.data?.asset_owner?.files?.find(file=>file.title=="عقد التأسيس")?.path

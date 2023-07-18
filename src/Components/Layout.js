@@ -57,7 +57,6 @@ const BtnStyle={
 const LayoutComponent =({children})=>{
 
   const router =useRouter()
-  console.log(router.route,"rr")
     return(
         <Space
     direction="vertical"

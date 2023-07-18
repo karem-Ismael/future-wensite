@@ -24,7 +24,6 @@ const NoteModal =({isopen,setIsOpen,serviceRequestId,setOrder})=>{
         .put(`asset-owner/request/${orderDetails.id}`, {
             ...data
         }).then(res=>{
-            console.log(res,"res")
             if(!res.errors){
                 // NotificationManager.success("تم تسجيل الملاحظة بنجاح")
                 client.get(`/asset-owner/request/${orderDetails.id}`).then(res=>{
@@ -38,7 +37,6 @@ const NoteModal =({isopen,setIsOpen,serviceRequestId,setOrder})=>{
             }
         })
     }
-    console.log(orderDetails,"orderDetails")
     return(
         <Modal size="lg" id="modal-note" isOpen={isopen} toggle={toggle} style={{padding:"10px"}}>
         <ModalHeader toggle={toggle}>  الملاجظات </ModalHeader>

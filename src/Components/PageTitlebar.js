@@ -35,11 +35,8 @@ const getUrlString = (path, sub, index) => {
 
 const PageTitleBar = ({ title, match,content, enableBreadCrumb,lastElement=undefined }) => {
    const path = match?.substr(1);
-   console.log(path,"path")
    const first =path.includes("?") ?  path?.substring(0,path.indexOf("?")) :path;
-   console.log(first,"first")
    const subPath = path.includes("/") ? first?.split('/') :[`${path}`];
-   console.log(subPath,"subPath kak")
    const items=subPath?.unshift("الوقف النامي")
    const router=useRouter()
    return (

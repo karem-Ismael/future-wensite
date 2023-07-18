@@ -32,7 +32,6 @@ function ImageUpload({
     [],
   );
 const fileRef=useRef()
-console.log(image,"image")
   return (
     <div className={`form-group ${required ? "required" : ""}`}>
    

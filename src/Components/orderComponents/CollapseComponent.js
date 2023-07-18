@@ -15,8 +15,6 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 const CollapseComponent = ({idx,service,record}) => {
   const [open, setOpen] = useState(false);
-  console.log(record,"record")
-console.log(JSON.parse(service?.stages_of_delivery),"karem" , record?.count_type )
   return (
     <>
       <tr key={JSON.stringify(idx)} data-testid={`data-tr-${idx}`}>

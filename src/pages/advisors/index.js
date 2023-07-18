@@ -71,7 +71,6 @@ function Advisors({advisors }) {
 
 
   
-      console.log(advisors,"Advisors")
     return (
         <LayoutComponent>
                  <BreedCrumb className='container'>
