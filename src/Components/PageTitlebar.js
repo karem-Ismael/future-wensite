@@ -35,8 +35,11 @@ const getUrlString = (path, sub, index) => {
 
 const PageTitleBar = ({ title, match,content, enableBreadCrumb,lastElement=undefined }) => {
    const path = match?.substr(1);
-   const first =path?.substring(0,path.indexOf("?"));
+   console.log(path,"path")
+   const first =path.includes("?") ?  path?.substring(0,path.indexOf("?")) :path;
+   console.log(first,"first")
    const subPath = path.includes("/") ? first?.split('/') :[`${path}`];
+   console.log(subPath,"subPath kak")
    const items=subPath?.unshift("الوقف النامي")
    const router=useRouter()
    return (
@@ -47,7 +50,7 @@ const PageTitleBar = ({ title, match,content, enableBreadCrumb,lastElement=undef
     items={
     subPath?.map((sub,index)=>(
       {
-         title:subPath.length == index +1 ?  lastElement  ? lastElement : sub  == "service-order" ? "طلب الخدمة"  : sub=="services" ?  "الخدمات": sub : <Link href={getUrlString(path, sub, index)} style={{color:"#D3B166"}}>{sub =="services" ? "الخدمات" :sub }</Link>
+         title:subPath.length == index +1 ?  lastElement  ? lastElement : sub  == "service-order" ? "طلب الخدمة"  : sub=="services" ?  "الخدمات": sub : <Link href={getUrlString(path, sub, index)} style={{color:"#D3B166"}}>{sub =="services" ? "الخدمات" :sub=="advisors" ? "الاستشارات" :sub  }</Link>
       }
     ))
    

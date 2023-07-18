@@ -390,3 +390,30 @@ table thead{
   font-family: Light;
 
 }
+.ant-picker-calendar-date{
+  border-radius: 50% !important;
+}
+.ant-picker-cell-selected .ant-picker-cell-inner{
+  background: #D3B166 !important;
+  border-radius: 50px;
+}
+.ant-picker-cell-today .ant-picker-cell-inner::before{
+  border: none !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled){
+  background: #D3B166 !important;
+  border-color: #D3B166 !important;
+}
+.choose-time{
+  margin-top: 20px;
+  color: #005D5E;
+  position: relative;
+}
+.choose-time::before{
+  content: "*";
+  color: red ;
+  position: absolute;
+  top: -6px;
+  right: -4px;;
+}

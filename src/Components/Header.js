@@ -172,8 +172,8 @@ const HeaderComponent = () => {
               الباقات
             </Link>
           </li>
-          <li className="">
-            <Link href={'/wakf-library'}>
+          <li className={router.pathname.includes("/advisors") ? "active-item" : null}>
+            <Link href={'/advisors'}>
               الاستشارات
             </Link>
           </li>

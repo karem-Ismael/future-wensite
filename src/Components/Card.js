@@ -2,7 +2,7 @@ import styled from "styled-components"
 const DIV =styled.div`
 background-color:${(props)=> props.color ? props.color : "#fff" };
 border-radius:5px;
-height:100%;
+height:${(props)=> props.height ? "" : "100%" };;
 direction:rtl;
 box-shadow:0px 1px 15px 1px rgba(69,65,78,0.08);
 border:none;
@@ -54,9 +54,9 @@ li.item{
 }
 }
 `
-const CardComponent =({color,children})=>{
+const CardComponent =({color,height,children})=>{
 return(
-    <DIV color={color}>
+    <DIV color={color} height={height}>
         <div className="rct-block-content">
             {children}
         </div>
