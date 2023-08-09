@@ -111,7 +111,7 @@ function Slider({clientServices}) {
                                         <Rate allowHalf defaultValue={2.5} disabled />
                                     </div>
                                     <div className="btn-details">
-                                        <Button onClick={() => router.push(`/services/${oneservice.id}`)} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>التفاصيل</Button>
+                                        <Button onClick={() => router.push(`/services/${oneservice.id}`)} style={{ width: "50%", background: "#150941", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>التفاصيل</Button>
                                     </div>
                                 </CardComponent>
                             </Col>
@@ -167,7 +167,7 @@ function Slider({clientServices}) {
                                                 <Rate allowHalf defaultValue={2.5} disabled />
                                                 </div>
                                                 <div className="btn-details" style={{position:"absolute",bottom:"0px",width:"100%",marginBottom:"10px"}}>
-                                                <Button   onClick={()=>router.push(`/services/${oneservice.id}?service_provider=${oneservice.service_provider.user_id}`)} style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
+                                                <Button   onClick={()=>router.push(`/services/${oneservice.id}?service_provider=${oneservice.service_provider.user_id}`)} style={{width:"50%" ,background:"#150941",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
                                                 </div>
                                 </CardComponent>
                             </Col>

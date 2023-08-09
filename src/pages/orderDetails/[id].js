@@ -39,7 +39,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 const BreedCrumb =styled.div`
@@ -55,7 +55,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 function OrderDetails({ services, ServicesDetails }) {
@@ -158,7 +158,7 @@ function OrderDetails({ services, ServicesDetails }) {
                                                 <img src="/assets/images/logo-com.png" width={100} height={100} />
                                             </Col>
                                             <Col md={16} sm={12} xs={24} style={{ alignSelf: "center" }} >
-                                                <p style={{ color: "#005D5E" }}>
+                                                <p style={{ color: "#150941" }}>
                                                     مقدم الخدمة :
                                                 </p>
                                                 <p className={styless.cadrTitle}>
@@ -174,7 +174,7 @@ function OrderDetails({ services, ServicesDetails }) {
                                     <Col md={8} sm={12} xs={24} style={{ alignSelf: "center" }}>
                                         <ul>
                                             <li>
-                                                <span style={{ color: "#005D5E" }}>
+                                                <span style={{ color: "#150941" }}>
                                                     تصنيف الخدمة :
                                                 </span>
                                                 <span style={{ color: "#707070" }}>
@@ -185,7 +185,7 @@ function OrderDetails({ services, ServicesDetails }) {
                                                 </span>
                                             </li>
                                             <li>
-                                                <span style={{ color: "#005D5E" }}>
+                                                <span style={{ color: "#150941" }}>
                                                     مدة الخدمة :
                                                 </span>
                                                 <span style={{ color: "#707070" }}>
@@ -341,7 +341,7 @@ function OrderDetails({ services, ServicesDetails }) {
                                         </Row>
                                     </Col>
                                     <Col className='text-center' lg={8} md={8} sm={24} xs={24} style={{ alignSelf: "center" }}>
-                                        <h4 style={{ color: "#005D5E" }}>
+                                        <h4 style={{ color: "#150941" }}>
                                             اجمالي التقييم
                                         </h4>
                                         <Rate allowHalf defaultValue={4} disabled />
@@ -355,7 +355,7 @@ function OrderDetails({ services, ServicesDetails }) {
                             <CardComponent>
                                 <Row>
                                     <Col lg={12} md={12} sm={12} xs={12}>
-                                        <h3 style={{ color: "#005D5E" }}>
+                                        <h3 style={{ color: "#150941" }}>
                                             شارك الباقة
                                         </h3>
                                     </Col>
@@ -445,11 +445,11 @@ function OrderDetails({ services, ServicesDetails }) {
                                                 router.push(`/services/service-order?id=${router.query.id}`)
                                                 },300)
                                                 
-                                            }} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
+                                            }} style={{ width: "50%", background: "#150941", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>طلب الخدمة</Button>
 
                                         </div>
                                         <div className="btn-details">
-                                            <Button onClick={() => router.push(`/services`)} style={{ width: "50%", background: "#fff", color: "#005D5E", border: "2px solid #005D5E", borderRadius: "0px" }} size={"large"}>طلب اجتماع</Button>
+                                            <Button onClick={() => router.push(`/services`)} style={{ width: "50%", background: "#fff", color: "#150941", border: "2px solid #150941", borderRadius: "0px" }} size={"large"}>طلب اجتماع</Button>
 
                                         </div>
                                     </Col>
@@ -476,7 +476,7 @@ function OrderDetails({ services, ServicesDetails }) {
                                                             delivery.title
                                                         }
                                                     </span>
-                                                    <span style={{ color: "#005D5E" }}>
+                                                    <span style={{ color: "#150941" }}>
                                                         {
                                                             delivery.count
                                                         }
@@ -527,7 +527,7 @@ function OrderDetails({ services, ServicesDetails }) {
 
                 </Row>
                 <div style={{ marginBottom: "20px", display: "flex", gap: "10px" }}>
-                    <h3 style={{ minWidth:"196px",width: "20%", maxWidth: "20%", color: "#005D5E", fontSize: "30px" }}>
+                    <h3 style={{ minWidth:"196px",width: "20%", maxWidth: "20%", color: "#150941", fontSize: "30px" }}>
                         خدمات ذات صلة
                     </h3>
                     <hr style={{ width: "80%", height: "0px", border: " 1px solid #D3B166", alignSelf: "center" }} />

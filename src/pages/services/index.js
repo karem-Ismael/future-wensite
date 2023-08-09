@@ -26,7 +26,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 const BreedCrumb =styled.div`
@@ -42,7 +42,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 function Services({services,fields}) {
@@ -95,7 +95,7 @@ function Services({services,fields}) {
             <DIVContent className='container' style={{padding:"0px"}}>
                 <Row>
                     <Col md={24} sm={24} xs={24}>
-                        <CardComponent color={"#005D5E"} >
+                        <CardComponent color={"#150941"} >
                             <Row gutter={[16,16]}>
                                 <Col md={6} sm={12}>
                                     <Row className='select-content'>
@@ -248,7 +248,7 @@ function Services({services,fields}) {
                                                 <Rate allowHalf defaultValue={2.5} disabled />
                                                 </div>
                                                 <div className="btn-details" style={{position:"absolute",bottom:"0px",width:"100%",marginBottom:"10px"}}>
-                                                <Button   onClick={()=>router.push(`/services/${oneservice.id}?service_provider=${oneservice.service_provider.user_id}`)} style={{width:"50%" ,background:"#005D5E",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
+                                                <Button   onClick={()=>router.push(`/services/${oneservice.id}?service_provider=${oneservice.service_provider.user_id}`)} style={{width:"50%" ,background:"#150941",color:"#fff",border:"none",borderRadius:"0px"}}size={"large"}>التفاصيل</Button>
                                                 </div>
                             </CardComponent>
                         </Col>

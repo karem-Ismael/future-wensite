@@ -37,7 +37,7 @@ function FileUpload({
         
     
           <div style={{position:"relative"}} >
-             <Button onClick={()=>inputFile.current.click()} style={{  background: "#38DCBB80", color: "#005D5E", border: "none", borderRadius: "0px" }} size={"small"}
+             <Button onClick={()=>inputFile.current.click()} style={{  background: "#38DCBB80", color: "#150941", border: "none", borderRadius: "0px" }} size={"small"}
                                 >
                                     <PlusOutlined />
                                     إدراج الملفات

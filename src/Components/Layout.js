@@ -14,7 +14,7 @@ const headerStyle = {
   height: 60,
   paddingInline: 60,
   lineHeight: '64px',
-  backgroundColor: '#005D5E',
+  backgroundColor: '#7EA831',
 };
 const contentStyle = {
   textAlign: 'center',
@@ -22,7 +22,8 @@ const contentStyle = {
   lineHeight: '120px',
   color: '#fff',
   // backgroundImage:url(`${mailImage}`),
-  background:"url(/assets/images/slide.png)",
+  // background:"url(/assets/images/slide.png)",
+  background:"#150941",
   backgroundRepeat:"no-repeat",
   backgroundPosition:"50% 50%",
   minHeight:"70vh"
@@ -41,12 +42,12 @@ const siderStyle = {
 const footerStyle = {
   textAlign: 'right',
   color: '#fff',
-  backgroundColor: '#D3B166',
+  backgroundColor: '#7EA831',
 };
 const footer1={
   textAlign: 'right',
   color: '#fff',
-  backgroundColor: '#005D5E',
+  backgroundColor: '#150941',
   direction:"rtl"
 }
 const BtnStyle={
@@ -100,8 +101,8 @@ const LayoutComponent =({children})=>{
         <div className="container">
           <Row gutter={[100,16]}>
 
-          <Col lg={8} md={8} sm={24} xs={24}>
-          <img src="/assets/images/logo-footr.png" width={"100%"}/>
+          <Col lg={12} md={12} sm={24} xs={24}>
+          <img src="/assets/images/logo-footer.png" width={"100%"}/>
           <Row className="social-row">
           <MailOutlined />
           <WhatsAppOutlined />
@@ -112,7 +113,7 @@ const LayoutComponent =({children})=>{
 
           </Row>
           </Col>
-          <Col lg={14} md={14} sm={24} xs={24}>
+          <Col lg={12} md={12} sm={24} xs={24}>
               <Row>
                 <Col lg={12} md={12} sm={24} xs={24} >
                 <ul className="footer-list">
@@ -179,7 +180,7 @@ const LayoutComponent =({children})=>{
       </Footer>
       <Footer style={footerStyle}>
         <div>
-      حقوق النشر 2023 تعود لـ شركة استثمار المستقبل المحدودة 〈وقف الأوقاف〉
+      منصة الوقف النامي هي أحد منتجات شركة فَرادة .. جميع الحقوق محفوظة لموقع الوقف النامي © 2023
         </div>
       </Footer>
     </Layout>

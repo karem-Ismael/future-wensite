@@ -166,7 +166,7 @@ axios.post("https://estithmar.arabia-it.net/api/auth/register",{...user}
                </div>
                
          </div>
-         <div className='col-md-4 col-sm-12 logo' style={{backgroundColor:"#005D5E"}}>
+         <div className='col-md-4 col-sm-12 logo' style={{backgroundColor:"#150941"}}>
          <div className='m-auto text-center' style={{placeItems:"center",display:"grid",height:"100%"}}>
             <img src="/assets/images/logo-waqf.png" className="m-auto"/>          
         </div>

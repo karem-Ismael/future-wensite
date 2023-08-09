@@ -2,14 +2,17 @@ import React, { useState } from "react"
 import { Button, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap"
 import Select from "react-select";
 import axios from "axios"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { OrderDetails, OrderDetailsAction,ConsultDetailsAction } from "@/store/orders/action";
 
 const client = axios.create({
     baseURL: "https://estithmar.arabia-it.net/api/admin",
   });
-const NoteModal =({isopen,setIsOpen,serviceRequestId,setOrder})=>{
+const NoteModal =({isopen,setIsOpen,serviceRequestId,setOrder,profileIndex ,consultDetails})=>{
     const toggle=()=>setIsOpen(!isopen)
   const {orderDetails} =useSelector((state)=>state.orders)||{}
+  const dispatch=useDispatch()
+
 
     const [data, setData] = useState(
         {
@@ -20,6 +23,29 @@ const NoteModal =({isopen,setIsOpen,serviceRequestId,setOrder})=>{
         }
       );
     const addNote=()=>{
+      if(profileIndex == 4){
+        const client2 = axios.create({
+          baseURL: "https://estithmar.arabia-it.net/api/",
+        });
+        client2
+        .put(`asset-owner/advisor-appointment/${consultDetails.id}`, {
+            ...data,
+            token:localStorage.getItem("token")
+        }).then(res=>{
+            if(!res.errors){
+                // NotificationManager.success("تم تسجيل الملاحظة بنجاح")
+                client2.get(`/asset-owner/advisor-appointment/${consultDetails.id}?token=${localStorage.getItem("token")}`).then(res=>{
+                  dispatch(ConsultDetailsAction(res.data.data))
+                setIsOpen(!isopen)
+
+                   
+                })
+            }else{
+                
+            }
+        })
+        return
+      }
         client
         .put(`asset-owner/request/${orderDetails.id}`, {
             ...data
@@ -72,7 +98,7 @@ const NoteModal =({isopen,setIsOpen,serviceRequestId,setOrder})=>{
                    name="select"
                    type="text"
                    placeholder='عنوان الملاحظة'
-                   style={{ borderColor: "#D4B265" }}
+                   style={{ borderColor: "#7EA831" }}
                    onChange={(e)=>{
                     setData({
                         ...data,
@@ -92,7 +118,7 @@ const NoteModal =({isopen,setIsOpen,serviceRequestId,setOrder})=>{
                    id="exampleText"
                    name="text"
                    type="textarea"
-                   style={{ borderColor: "#D4B265" }}
+                   style={{ borderColor: "#7EA831" }}
                    onChange={(e)=>{
                     setData({
                             ...data,
@@ -109,12 +135,12 @@ const NoteModal =({isopen,setIsOpen,serviceRequestId,setOrder})=>{
         </ModalBody>
         <ModalFooter className="d-flex justify-content-center" style={{justifyContent:"center"}}>
          <div className="col-md-4 col-sm-12">
-         <Button className="w-100" onClick={()=>addNote()}  style={{color:"#fff",background:"#005D5E"}}>
+         <Button className="w-100" onClick={()=>addNote()}  style={{color:"#fff",background:"#150941"}}>
           ارسال
           </Button>{' '}
          </div>
           <div className="col-md-4 col-sm-12">
-          <Button className="w-100" onClick={()=>setIsOpen(!isopen)} style={{color:"#fff",background:"#005D5E"}} >
+          <Button className="w-100" onClick={()=>setIsOpen(!isopen)} style={{color:"#fff",background:"#150941"}} >
           الغاء
           </Button>{' '}
           </div>

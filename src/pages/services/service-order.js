@@ -43,7 +43,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 const BreedCrumb = styled.div`
@@ -59,7 +59,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 function ServiceOrder({ ServicesDetails }) {
@@ -294,7 +294,7 @@ function ServiceOrder({ ServicesDetails }) {
                                 <div className='text-center'>
                                     <Button 
                                     onClick={()=>SaveOrder()}
-                                    style={{ width: "50%", maxWidth: "200px", background: "#005D5E", color: "#fff", border: "none", borderRadius: "0px" }} 
+                                    style={{ width: "50%", maxWidth: "200px", background: "#150941", color: "#fff", border: "none", borderRadius: "0px" }} 
                                     size={"large"}
                                     disabled={ServicesDetails.data.service_requirment.map((service)=>AssetFiles?.includes(service.title)).includes(false)}
                                     
@@ -324,7 +324,7 @@ function ServiceOrder({ ServicesDetails }) {
 
                                                         </sub>
                                                     </p>
-                                                    <p style={{ color: "#005D5E", fontSize: "18px", margin: "0px" }}>
+                                                    <p style={{ color: "#150941", fontSize: "18px", margin: "0px" }}>
                                                         تكلفة الخدمة
                                                     </p>
                                                 </div>
@@ -341,7 +341,7 @@ function ServiceOrder({ ServicesDetails }) {
 
                                                         </sub>
                                                     </p>
-                                                    <p style={{ color: "#005D5E", fontSize: "18px", margin: "0px" }}>
+                                                    <p style={{ color: "#150941", fontSize: "18px", margin: "0px" }}>
                                                         تكلفة الملحقات
                                                     </p>
                                                 </div>
@@ -364,7 +364,7 @@ function ServiceOrder({ ServicesDetails }) {
 
                                             </sub>
                                         </p>
-                                        <div className='text-center' style={{ color: "#005D5E" }}>
+                                        <div className='text-center' style={{ color: "#150941" }}>
                                             التكاليف شاملة الضريبة
                                         </div>
 

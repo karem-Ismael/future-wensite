@@ -189,10 +189,10 @@ ul{
 }
 .social-row svg{
   font-size: 30px;
-  color:#D3B166;
+  color:#7EA831;
 }
 .list-title{
-  color:#005D5E;
+  color:#150941;
   font-weight:bold
 }
 .service-description{
@@ -244,10 +244,10 @@ ul{
   background-color: #D3B166 !important;
 }
 .heading{
-  color:#005D5E;
+  color:#150941;
 }
 .val{
-  color:#D3B166
+  color:#7EA831
 }
 .currency{
   color: #9C9C9C;
@@ -263,7 +263,7 @@ ul{
   position: absolute;
   width: 65px;
   height: 6px;
-  background: #005D5E;
+  background: #150941;
   content: "";
   display: block;
   right: 0;
@@ -287,6 +287,7 @@ ul{
 }
 .ant-breadcrumb-separator{
   font-size: 25px;
+  color: #7EA831 !important;
 }
 .pageContent{
   font-size: 20px;
@@ -315,7 +316,7 @@ ul{
 
 }
 .title{
-  color:#005D5E;
+  color:#150941;
   position: relative;
 }
 .title::after{
@@ -334,11 +335,11 @@ ul{
   direction: ltr;
 }
 .drawer-link{
-  color:#005D5E !important;
+  color:#150941 !important;
 
 }
 .list-item a{
-  color:#005D5E !important;
+  color:#150941 !important;
   text-decoration: none;
   cursor: pointer;
 }
@@ -407,7 +408,7 @@ table thead{
 }
 .choose-time{
   margin-top: 20px;
-  color: #005D5E;
+  color: #150941;
   position: relative;
 }
 .choose-time::before{

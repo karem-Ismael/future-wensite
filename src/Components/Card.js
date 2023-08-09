@@ -14,12 +14,12 @@ position:relative;
 padding:1.25rem 1.25rem ;
 .card-title{
     text-align:center;
-    color:#D3B166;
+    color:#7EA831;
     font-size:20px;
 
 }
 .service-title{
-    color:#005D5E;
+    color:#150941;
     text-align:center;
     padding:20px 0px;
     width:80%;
@@ -46,7 +46,7 @@ li.item{
     top: 0px;
     left: 10px;
     text-align: center;
-    background:#D3B166;
+    background:#7EA831;
     color:#fff;
     width:15%;
     min-width:57px;

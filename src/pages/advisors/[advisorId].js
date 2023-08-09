@@ -41,7 +41,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 const BreedCrumb =styled.div`
@@ -57,7 +57,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 function AdvisorDetails({AdvisorDetailsRes }) {
@@ -67,6 +67,7 @@ function AdvisorDetails({AdvisorDetailsRes }) {
     const [filteredAppointments,setFilteredAppointments]=useState([])
     const router = useRouter()
   const dispatch=useDispatch()   
+  console.log(AdvisorDetailsRes,"AdvisorDetailsRes")
     return (
         <LayoutComponent>
                  <BreedCrumb className='container'>
@@ -76,7 +77,7 @@ function AdvisorDetails({AdvisorDetailsRes }) {
                             match={router.asPath}
                             enableBreadCrumb
                             content={"تركز خدمات وحلول الأوقاف الخاصة بنا على مجموعة واسعة من احتياجات الوقف القانونية والإدارية والمالية."}
-                            lastElement={AdvisorDetailsRes.data.ar_name}
+                            lastElement={AdvisorDetailsRes?.data?.ar_name}
                             
                         />
                  </BreedCrumb>
@@ -102,7 +103,7 @@ function AdvisorDetails({AdvisorDetailsRes }) {
                                        <img src={"/assets/images/ico-check.png"} width={20} height={20} />
 
                                        <span>
-                                          الاسم :{AdvisorDetailsRes.data.ar_name}
+                                          الاسم :{AdvisorDetailsRes?.data?.ar_name}
                                        </span>
                                    </li> 
                                         
@@ -117,7 +118,7 @@ function AdvisorDetails({AdvisorDetailsRes }) {
                                           <img src={"/assets/images/ico-check.png"} width={20} height={20} />
 
                                           <span>
-                                          الجنسية: {AdvisorDetailsRes.data.nationality}
+                                          الجنسية: {AdvisorDetailsRes?.data?.nationality}
 
                                           </span>
                                       </li> 
@@ -135,7 +136,7 @@ function AdvisorDetails({AdvisorDetailsRes }) {
                                             </h3>
                                             <ul className={styless.list}>
                                                 {
-                                                    JSON.parse(AdvisorDetailsRes.data.meta)?.edu_certificates?.map((edu)=>(
+                                                   AdvisorDetailsRes?.data?.meta &&  JSON.parse(AdvisorDetailsRes?.data?.meta)?.edu_certificates?.map((edu)=>(
                                                         <li key={edu} className={styless.listItem}>
                                                         <img src={"/assets/images/ico-check.png"} width={20} height={20} />
                  
@@ -161,7 +162,7 @@ function AdvisorDetails({AdvisorDetailsRes }) {
                                             </h3>
                                             <ul className={styless.list}>
                                                 {
-                                                    JSON.parse(AdvisorDetailsRes.data.meta)?.work_positions?.map((position)=>(
+                                                   AdvisorDetailsRes?.data?.meta && JSON.parse(AdvisorDetailsRes?.data?.meta)?.work_positions?.map((position)=>(
                                                         <li key={position} className={styless.listItem}>
                                                         <img src={"/assets/images/ico-check.png"} width={20} height={20} />
                  
@@ -235,7 +236,7 @@ function AdvisorDetails({AdvisorDetailsRes }) {
                                         </Row>
                                     </Col>
                                     <Col className='text-center' lg={8} md={8} sm={24} xs={24} style={{ alignSelf: "center" }}>
-                                        <h4 style={{ color: "#005D5E" }}>
+                                        <h4 style={{ color: "#150941" }}>
                                             اجمالي التقييم
                                         </h4>
                                         <Rate allowHalf defaultValue={4} disabled />
@@ -249,7 +250,7 @@ function AdvisorDetails({AdvisorDetailsRes }) {
                             <CardComponent>
                                 <Row>
                                     <Col lg={12} md={12} sm={12} xs={12}>
-                                        <h3 style={{ color: "#005D5E" }}>
+                                        <h3 style={{ color: "#150941" }}>
                                             شارك الباقة
                                         </h3>
                                     </Col>
@@ -296,7 +297,7 @@ function AdvisorDetails({AdvisorDetailsRes }) {
                                     <h3 className={styless.title}>
                                     طلب استشارة
                                     </h3>
-                                    <CalenderComponent setFilteredAppointments={setFilteredAppointments}  appointments={AdvisorDetailsRes.data.appointments}/>
+                                    <CalenderComponent setFilteredAppointments={setFilteredAppointments}  appointments={AdvisorDetailsRes?.data?.appointments}/>
                                     <AvailableAppointments filteredAppointments={filteredAppointments} />
                                   
                                 </div>

@@ -1,5 +1,7 @@
 export const REMOVE_BORDERS = "REMOVE_BORDERS";
 export const ORDER_DETAILS="ORDER_DETAILS";
+export const CONSULT_DETAILS="CONSULT_DETAILS";
+
 export const SET_BORDERS = "SET_BORDERS";
 export const LOGOUT = "LOGOUT";
 export const SIGNUP_USER_FAILURE="SIGNUP_USER_FAILURE";
@@ -19,6 +21,12 @@ export function RemoveBorders() {
   export function OrderDetailsAction(payload){
     return{
       type:ORDER_DETAILS,
+      payload,
+    }
+  }
+  export function ConsultDetailsAction(payload){
+    return{
+      type:CONSULT_DETAILS,
       payload,
     }
   }

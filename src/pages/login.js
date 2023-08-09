@@ -6,7 +6,8 @@ import { useRouter } from 'next/router';
 import React, { Component } from 'react';
 import { useState } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
-import { FormGroup, Label, Input, ButtonGroup, Button } from "reactstrap";
+import { FormGroup, Label, Input, ButtonGroup } from "reactstrap";
+
 import axios from "axios"
 import {
     authDataAction,
@@ -90,7 +91,7 @@ axios.post("https://estithmar.arabia-it.net/api/auth/login",{...user}
                         </p>
                         </div>
                        <div className='col-md-8 col-sm-12'>
-                       <Link href="/" style={{color:"#005D5E"}}>
+                       <Link href="/" style={{color:"#150941"}}>
                         نسيت اسم المستخدم / كلمة المرور
                         </Link>
                        </div>
@@ -115,14 +116,14 @@ axios.post("https://estithmar.arabia-it.net/api/auth/login",{...user}
                    <span>
                    ليس لدي حساب؟ 
                    </span>
-                   <Link href="/signup" style={{color:"#005D5E",width:"fit-content"}}>
+                   <Link href="/signup" style={{color:"#150941",width:"fit-content"}}>
                    إنشاء حساب
                    </Link>
                   </div>
             </Col>
-            <Col md={8} sm={24} style={{backgroundColor:"#005D5E"}}>
+            <Col md={8} sm={24} style={{backgroundColor:"#150941"}}>
                  <div className='m-auto text-center' style={{placeItems:"center",display:"grid",height:"100%"}}>
-                 <img src={"/assets/images/logo-waqf.png"} className="m-auto"/>
+                 <img src={"/assets/images/logo-footer.png"} className="m-auto"/>
                  </div>
             </Col>
 

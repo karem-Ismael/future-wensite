@@ -143,7 +143,7 @@ export const persist = {
     "grey",
     "metallic",
     "red",
-    "orange",
+    "#150941",
     "yellow",
     "Champaign",
   ];

@@ -15,7 +15,7 @@ const CalenderComponent = ({appointments,setFilteredAppointments}) => {
     borderRadius: token.borderRadiusLG,
   };
   const handelChange=(value,mode)=>{
-const filteredapp=appointments.filter((app)=>app.date == value.format('YYYY-MM-DD'))
+const filteredapp=appointments?.filter((app)=>app.date == value.format('YYYY-MM-DD'))
 setFilteredAppointments(filteredapp)
 // appointmentslist
 

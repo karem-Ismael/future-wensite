@@ -30,7 +30,7 @@ const OrderModal = ({isModalOpen,setIsModalOpen}) => {
       <Button  onClick={()=>{
         dispatch(RemoveBorders())
         router.push("/")
-      }}className="w-50" size="large" style={{background:"#005D5E",color:"#fff"}} key="console">
+      }}className="w-50" size="large" style={{background:"#150941",color:"#fff"}} key="console">
         تصفح المنصة
       </Button>,
     ]}

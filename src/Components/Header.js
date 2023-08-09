@@ -20,7 +20,7 @@ const Nav = styled.div`
   gap:30px;
   justify-content: space-between;
   .login{
-    background:#D4B265;
+    background:#7EA831;
     color:#fff;
     border:none;
     height:44px;
@@ -48,7 +48,7 @@ const Nav = styled.div`
     }
 
     &.active-item {
-        color:#D4B265;
+        color:#7EA831;
       a {
         color: var(--color-3);
         @media (min-width: 961px) {
@@ -60,7 +60,7 @@ const Nav = styled.div`
             height: 2px;
             position: absolute;
             left: 0;
-            background: orange;
+            background: #150941;
           }
         }
       }
@@ -86,7 +86,7 @@ const RowStyle = {
  
   padding: "15px",
   direction: "rtl",
-  color: "#005D5E",
+  color: "#150941",
   height: "120px",
   transform: "translateY(-14px)"
 

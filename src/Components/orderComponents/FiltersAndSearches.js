@@ -16,7 +16,7 @@ import FieldsDropDown from "./FieldsDropDown";
 import ServiceProviderDropDown from "./ServiceProviderDropDown";
 import Select from "react-select";
 import { useSelector } from "react-redux";
-import { FormGroup, Label } from "reactstrap";
+import { FormGroup, Input, Label } from "reactstrap";
 
 const trimFields = ["email", "nid"];
 
@@ -85,7 +85,7 @@ export function FiltersAndSearches({
                     {field?.label}
                   </Label>
                   <Input
-                    style={{ borderColor: "#D4B265" }}
+                    style={{ borderColor: "#7EA831" }}
                     id={field?.name}
                     name={
                       field?.placeholder || (
@@ -182,7 +182,7 @@ export function FiltersAndSearches({
           <Button
             size="large"
             style={{
-              background: "#D4B265",
+              background: "#7EA831",
               width: "200px",
               fontWeight: "bold",
               color:"#fff"

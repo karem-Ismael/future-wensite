@@ -45,7 +45,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 const BreedCrumb =styled.div`
@@ -61,7 +61,7 @@ direction:rtl;
     gap:10px;
 }
 .ant-select-arrow{
-    color:#005D5E
+    color:#150941
 }
 `;
 function Advisors({advisors }) {
@@ -103,7 +103,7 @@ function Advisors({advisors }) {
 
                                                     </p>
                                                     <div className='w-100' style={{textAlign:"center"}}> 
-                                            <Button className="w-100" onClick={() => router.push(`/advisors/${advisor.user_id}`)} style={{ width: "50%", background: "#005D5E", color: "#fff", border: "2px solid #005D5E", borderRadius: "0px" }} size={"large"}> التفاصيل</Button>
+                                            <Button className="w-100" onClick={() => router.push(`/advisors/${advisor.user_id}`)} style={{ width: "50%", background: "#150941", color: "#fff", border: "2px solid #150941", borderRadius: "0px" }} size={"large"}> التفاصيل</Button>
 
                                             </div>
                                                 </div>
@@ -127,7 +127,7 @@ function Advisors({advisors }) {
                     <Col lg={8} md={10} sm={8} xs={24}>
                         <Col md={24} sm={24} xs={24}>
                             <CardComponent>
-                                   <h3 style={{color:"#005D5E" ,borderBottom:"1px solid #ccc",padding:"10px 0px"}}>
+                                   <h3 style={{color:"#150941" ,borderBottom:"1px solid #ccc",padding:"10px 0px"}}>
                                    رشح لي مستشار
                                    </h3>
                                    <FormGroup>

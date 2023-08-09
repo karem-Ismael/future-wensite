@@ -191,7 +191,7 @@ useEffect(()=>{
          اسم المستخدم
               </Label>
               <Input
-                style={{ borderColor: "#D4B265" }}
+                style={{ borderColor: "#7EA831" }}
                 placeholder={"اسم المستخدم"}
                 type="text"
                 defaultValue={data?.name}
@@ -208,7 +208,7 @@ useEffect(()=>{
                  البريد الإلكتروني
               </Label>
               <Input
-                style={{ borderColor: "#D4B265" }}
+                style={{ borderColor: "#7EA831" }}
                 placeholder={"البريد الإلكتروني"}
                 type="email"
                 defaultValue={data?.email}
@@ -225,7 +225,7 @@ useEffect(()=>{
                  رقم الجوال
               </Label>
               <Input
-                style={{ borderColor: "#D4B265" }}
+                style={{ borderColor: "#7EA831" }}
                 placeholder={"+966 56 464 5665"}
                 type="text"
                 defaultValue={data?.phone}
@@ -239,7 +239,7 @@ useEffect(()=>{
         </div>
         <div className="col-md-4" style={{ alignSelf: "center",fontSize:"20px", color:"#707070" }}>
           <div>
-            <span style={{color:"#005D5E",fontWeight:"bold"}}>تحديث كلمة المرور</span>
+            <span style={{color:"#150941",fontWeight:"bold"}}>تحديث كلمة المرور</span>
              من خلال الزر أدناه سيتم
             <br />
             إعادة توجيهك إلى صفحة جديدة ويجب اتباع
@@ -247,7 +247,7 @@ useEffect(()=>{
             التعليمات
           </div>
           <div>
-            <button onClick={()=>toggle()} className="btn btn-block" style={{background:"#D4B265" ,color:"#fff"}}>تسجيل كلمة مرور جديدة</button>
+            <button onClick={()=>toggle()} className="btn btn-block" style={{background:"#7EA831" ,color:"#fff"}}>تسجيل كلمة مرور جديدة</button>
           </div>
         </div>
         <div className="col-md-3" style={{ alignSelf: "center" }}>
@@ -267,7 +267,7 @@ useEffect(()=>{
         </h3>
         <label class="container">
   <span class="checkmark"></span>
-  <p style={{fontSize:"27px" ,color:"#D4B265" ,fontWeight:"bold"}}>تفاصيل الوقف</p>
+  <p style={{fontSize:"27px" ,color:"#7EA831" ,fontWeight:"bold"}}>تفاصيل الوقف</p>
 </label>
        </div>
         <div className="col-md-4">
@@ -277,7 +277,7 @@ useEffect(()=>{
             اسم الوقف بالعربيه
               </Label>
               <Input
-                style={{ borderColor: "#D4B265" }}
+                style={{ borderColor: "#7EA831" }}
                 placeholder={"اسم الوقف بالعربيه"}
                 type="text"
                 defaultValue={data?.asset_name_ar}
@@ -301,7 +301,7 @@ useEffect(()=>{
                 اسم الوقف بالانجليزية
               </Label>
               <Input
-                style={{ borderColor: "#D4B265" }}
+                style={{ borderColor: "#7EA831" }}
                 placeholder={"اسم الوقف بالانجليزية"}
                 type="text"
                 defaultValue={data?.asset_name_en}
@@ -326,7 +326,7 @@ useEffect(()=>{
                         صاحب الوقف          
               </Label>
               <Input
-                style={{ borderColor: "#D4B265" }}
+                style={{ borderColor: "#7EA831" }}
                 placeholder={"صاحب الوقف"}
                 type="text"
                 defaultValue={data?.owner_name}
@@ -350,7 +350,7 @@ useEffect(()=>{
                  العائلة
               </Label>
               <Input
-                style={{ borderColor: "#D4B265" }}
+                style={{ borderColor: "#7EA831" }}
                 placeholder={"العائلة"}
                 type="text"
                 defaultValue={data?.owner_family}
@@ -842,7 +842,7 @@ useEffect(()=>{
       </Modal>
       <div className="row justify-content-center mt-2">
         <div className="col-md-4">
-            <button className="btn btn-block w-100" onClick={()=>  EditAssetsOwner()} style={{background:"#005D5E",color:"#fff",fontSize:"20px"}}>
+            <button className="btn btn-block w-100" onClick={()=>  EditAssetsOwner()} style={{background:"#150941",color:"#fff",fontSize:"20px"}}>
             حفظ
             </button>
         </div>
