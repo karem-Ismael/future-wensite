@@ -269,6 +269,26 @@ ul{
   right: 0;
   top: 45px;
 }
+.title-wallet {
+  color: #150941;
+  font-size: 30px;
+  position: relative;
+}
+
+.title-wallet::after {
+  position: absolute;
+  width: 65px;
+  height: 6px;
+  background: #7EA831;
+  content: "";
+  display: block;
+  right: 0;
+  top: 45px;
+}
+.table-wallet thead{
+  background: #7EA831 !important;
+  color: #fff !important;
+}
 .css-1xc3v61-indicatorContainer{
   color:#D4B265 !important
 }

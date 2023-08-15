@@ -217,7 +217,25 @@ function ServiceDetails({ services, ServicesDetails }) {
                                     <h3 className={styless.title}>
                                         خطوات التنفيذ
                                     </h3>
-                                    <ul className={styless.list}>
+                                    {
+                                        <ul className={styless.list}>
+
+                                           {
+                                            ServicesDetails?.data?.executive_steps?.map((step)=>(
+                                                <li key={step} className={styless.listItem}>
+                                                <img src={"/assets/images/ico-check.png"} width={20} height={20} />
+    
+                                                <span>
+                                                    {step}
+                                                </span>
+                                            </li> 
+                                            ))
+                                        }       
+                                        </ul>
+
+                                    }
+                                    {/* {console.log(ServicesDetails?.data?.executive_steps,"ServicesDetails?.data?.executive_steps")} */}
+                                    {/* <ul className={styless.list}>
                                         {
                                             JSON.parse(ServicesDetails?.data?.executive_steps)?.map((step)=>(
                                                 <li key={step} className={styless.listItem}>
@@ -229,13 +247,27 @@ function ServiceDetails({ services, ServicesDetails }) {
                                             </li> 
                                             ))
                                         }
-                                    </ul>
+                                    </ul> */}
                                 </div>
                                 <div>
                                     <h3 className={styless.title}>
                                     مخرجات الخدمة/ مواصفات التسليمات
                                     </h3>
                                     <ul className={styless.list}>
+                                    {
+                                            ServicesDetails?.data?.executive_result?.map((result)=>(
+                                                <li key={result} className={styless.listItem}>
+                                                <img src={"/assets/images/ico-check.png"} width={20} height={20} />
+    
+                                                <span>
+                                                    {result}
+                                                </span>
+                                            </li> 
+                                            ))
+                                        }
+                                    </ul>
+                                
+                                    {/* <ul className={styless.list}>
                                     {
                                             JSON.parse(ServicesDetails?.data?.executive_result)?.map((result)=>(
                                                 <li key={result} className={styless.listItem}>
@@ -247,7 +279,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                             </li> 
                                             ))
                                         }
-                                    </ul>
+                                    </ul> */}
                                 </div>
                             </CardComponent>
                         </Col>
@@ -277,7 +309,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         </Col>
                                     </Row>
                                     {       
-                                              JSON.parse(ServicesDetails?.data?.service_border)?.map((border,index)=>(
+                                              ServicesDetails?.data?.service_border?.map((border,index)=>(
                                                       <div className='d-flex'>
                                         <Checkbox onChange={(e)=>onChange(e,border)}></Checkbox>
                                         <div>
@@ -292,6 +324,22 @@ function ServiceDetails({ services, ServicesDetails }) {
                                     </div>
                                               ))      
                                       }
+                                    {/* {       
+                                              JSON.parse(ServicesDetails?.data?.service_border)?.map((border,index)=>(
+                                                      <div className='d-flex'>
+                                        <Checkbox onChange={(e)=>onChange(e,border)}></Checkbox>
+                                        <div>
+                                            <p className='m-0'>  
+                                            {border.title}
+                                            </p>
+                                            <p className='m-0'>
+                                                {border.price} {"ر.س"}
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                              ))      
+                                      } */}
                                 </div>
 
                             </CardComponent>
@@ -464,7 +512,33 @@ function ServiceDetails({ services, ServicesDetails }) {
                                         مدة التنفيذ
                                     </h3>
                                     <ul className={styless.list}>
-                                    {
+                                        {
+                                            ServicesDetails?.data?.stages_of_delivery?.map((delivery)=>(
+                                                <li className={styless.listItem}>
+                                                <img src={"/assets/images/ico-check.png"} width={20} height={20} />
+    
+                                                <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
+                                                    <span>
+                                                        {
+                                                            delivery.title
+                                                        }
+                                                    </span>
+                                                    <span style={{ color: "#150941" }}>
+                                                        {
+                                                            delivery.count
+                                                        }
+                                                        {
+                                                            delivery.count_type == "day" ? "يوم" : 
+                                                            delivery.count_type  == "month" ? "شهر" : "سنة"
+                                                        }
+    
+                                                    </span>
+                                                </div>
+                                            </li>
+                                              ))   
+                                        }
+                                        
+                                    {/* {
                                               
                                               JSON.parse(ServicesDetails?.data?.stages_of_delivery)?.map((delivery)=>(
                                                 <li className={styless.listItem}>
@@ -489,7 +563,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                                 </div>
                                             </li>
                                               ))      
-                                      }
+                                      } */}
                                         
                                        
 

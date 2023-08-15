@@ -1,7 +1,7 @@
 import CardComponent from "@/Components/Card";
 import LayoutComponent from "@/Components/Layout"
 import PageTitleBar from "@/Components/PageTitlebar"
-import { Button, Col, Pagination, Rate, Row, Tabs } from "antd";
+import { Button, Col, Pagination, Rate, Row, Select, Tabs } from "antd";
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import ProfileImage from "@/Components/ProfileImage"
@@ -16,11 +16,15 @@ import StagesTable from "@/Components/orderComponents/StagesTable";
 import CollapsibleTable from "@/Components/borderTable";
 import "moment/locale/ar-sa";
 import ConsultList from "@/Components/orderComponents/ConsultsList";
+import Wallet from "@/Components/Wallet"
 import { Button as AntBtn} from 'antd';
 import {
     VideoCameraOutlined 
   } from '@ant-design/icons';
 import { Input } from "reactstrap";
+const selectStyle={
+    width:"220px"
+}
 const BreedCrumb = styled.div`
 transform:translateY(-400px);
 direction:rtl;
@@ -85,7 +89,7 @@ function Profile() {
         {
             key: '5',
             label: `المحفظة`,
-            children: "karem2",
+            children: <Wallet />,
         },
         {
             key: '6',
@@ -668,7 +672,177 @@ function Profile() {
 
                 }
 
+                {
+                    profile ==5 ? 
+                    <Row>
+                        <Col md={24} sm={24} xs={24} className="mt-2">
+                            <CardComponent>
+                            <p className='title-wallet' style={{position:"relative"}}>
+                            المعاملات المالية
+                             </p>
+                             <Row>
+                    <Col md={24} sm={24} xs={24}>
+                        <CardComponent color={"#150941"} >
+                            <Row gutter={[16,16]}>
+                               
+                                <Col md={8} sm={12}>
+                                    <Row className='select-content'>
+                                        <span className='select-title'>المعاملات المالية</span>
+                                        <Select
+                                        size='large'
+                                        style={selectStyle}
+                                            showSearch
+                                            placeholder="عرض الكل"
+                                            optionFilterProp="children"
+                                            // onChange={onChange}
+                                            // onSearch={onSearch}
+                                            filterOption={(input, option) =>
+                                                (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                            }
+                                            options={[]}/>
+                                    </Row>
+                                </Col>
 
+
+                                <Col md={8} sm={12}>
+                                    <Row className='select-content'>
+                                        <span className='select-title'>حالة المعاملة</span>
+                                        <Select
+                                        size='large'
+                                        style={selectStyle}
+                                            showSearch
+                                            placeholder="عرض الكل"
+                                            optionFilterProp="children"
+                                            // onChange={onChangeTime}
+                                            // onSearch={onSearch}
+                                            filterOption={(input, option) =>
+                                                (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                            }
+                                            options={[
+                                                {
+                                                    label:"يوم",
+                                                    value:"day"
+                                                },
+                                                {
+                                                    label:"شهر",
+                                                    value:"month"
+                                                },
+                                                {
+                                                    label:"سنة",
+                                                    value:"year"
+                                                }
+                                            ]}
+                                        />
+                                    </Row>
+                                </Col>
+
+                                <Col md={8} sm={12}>
+                                    {/* <Row className='select-content'>
+                                        <span className='select-title'>التكلفة</span>
+                                        <Select
+                                        size='large'
+                                        style={selectStyle}
+                                            showSearch
+                                            placeholder="عرض الكل"
+                                            optionFilterProp="children"
+                                            // onChange={onChange}
+                                            // onSearch={onSearch}
+                                            filterOption={(input, option) =>
+                                                (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                            }
+                                            options={[
+                                               
+                                            ]}
+                                        />
+                                    </Row> */}
+                                </Col>
+                              
+                                
+                            </Row>
+                            <Row>
+                                
+                            </Row>
+                        </CardComponent>
+                    </Col>
+                </Row>
+                <table className="table table-hover table-responsive w-100 table-wallet mt-2">
+                <thead>
+                    <th>
+                    المعاملة
+                    </th>
+                    <th>
+                    نوع الخدمة
+                    </th>
+                    <th>
+                    المبلغ
+                    </th>
+                    <th>
+                    تاريخ المعاملة
+                    </th>
+                    <th>
+                    تاريخ المعاملة
+                    </th>
+                   
+                  </thead>
+                  {/* <tbody>
+                    <td>
+                      {order?.service?.title}
+                    </td>
+                    <td>
+                      {order?.service?.field?.name}
+                    </td>
+                    <td>
+                      {order?.service?.executive_time} {order?.service?.executive_time_type}
+                    </td>
+                    <td>
+                    {order?.total}
+                      
+                    </td>
+                    <td>
+                      {order?.service?.support_ratio} {"%"}
+                    </td>
+                    <td>
+    <StatusDropDown notAllowed={true} activationStatus={order?.service?.is_active}   url={`asset-owner/request/${order?.id}`} />
+
+                    </td>
+
+                  </tbody> */}
+              </table>
+                
+                            </CardComponent>
+                        </Col>
+                   
+                    </Row>
+                   
+                    
+                    
+                    : null
+                }
+                {
+                    profile == 5 ? 
+                    <Row>
+                          <Col md={24} sm={24} xs={24} className="mt-2">
+                            <CardComponent>
+                            <p className='title-wallet' style={{position:"relative"}}>
+                            طلب دعم
+                             </p>
+                             <Row>
+                                <Col lg={16} md={16} sm={24} xs={24}>
+                                <p style={{fontSize:"25px"}}>
+                                يمكنك تقديم طلب دعم بعد ملئ استمارة الطلب
+                                </p>
+                                </Col>
+                                <Col lg={8} md={8} sm={24} xs={24}>
+                                    <Button size="large" style={{borderColor:"#7EA831",borderRadius:"0px",color:"#7EA831"}}>
+                                    طلب دعم نقدي
+                                    </Button>
+                                </Col>
+                             </Row>
+                        </CardComponent>
+                        </Col>
+                    </Row>
+                    :null
+                }
 
             </DIVContent>
             <NoteModal profileIndex={profile} isopen={isopen} setIsOpen={setIsOpen} serviceRequestId={1} setOrder={setOrder}  consultDetails={consultDetails}/>

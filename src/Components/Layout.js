@@ -99,9 +99,9 @@ const LayoutComponent =({children})=>{
       {children}
       <Footer style={footer1}>
         <div className="container">
-          <Row gutter={[100,16]}>
+          <Row gutter={[200,16]}>
 
-          <Col lg={12} md={12} sm={24} xs={24}>
+          <Col lg={8} md={8} sm={24} xs={24}>
           <img src="/assets/images/logo-footer.png" width={"100%"}/>
           <Row className="social-row">
           <MailOutlined />
@@ -113,7 +113,7 @@ const LayoutComponent =({children})=>{
 
           </Row>
           </Col>
-          <Col lg={12} md={12} sm={24} xs={24}>
+          <Col lg={16} md={16} sm={24} xs={24}>
               <Row>
                 <Col lg={12} md={12} sm={24} xs={24} >
                 <ul className="footer-list">
