@@ -106,7 +106,7 @@ const HeaderComponent = () => {
     dispatch(LogOutAction());
     }
     if(e.key ==1){
-      router.push("profile")
+      router.push("/profile")
     }
   };
   const items = [

@@ -71,6 +71,7 @@ function ServiceOrder({ ServicesDetails }) {
     const router = useRouter()
     const { user } = useSelector(state => state.authentication.login_data) || {}
   const {borders} =useSelector(state=>state.orders) || {}
+  const { WalletTransactionsArr,WalletBalance } = useSelector((state) => state.profile) || {}
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -282,7 +283,7 @@ function ServiceOrder({ ServicesDetails }) {
                                     <p className={styless.title}>
                                         رصيد محفظتك الحالي
                                         <span className='text-center val' style={{ margin: "10px" }}>
-                                            1000
+                                        {WalletBalance?.valid_balance}
                                             <sub className='currency'>
                                                 ر.س
 

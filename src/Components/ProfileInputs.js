@@ -8,7 +8,7 @@ import FileUpload from "./FileUploader";
 import { useEffect } from "react";
 import Select, { components } from "react-select";
 import { useRouter } from "next/router";
-import {AddProfileImage} from "../store/Profile/action"
+import {AddProfileImage, GetProfileInfo} from "../store/Profile/action"
 import { useDispatch } from "react-redux";
 const client = axios.create({
   baseURL: "https://estithmar.arabia-it.net/api",
@@ -38,6 +38,8 @@ const SavePassword =()=>{
 useEffect(()=>{
     if(localStorage.getItem("token")){
         client.get(`/asset-owner/me?token=${localStorage.getItem("token")}`).then((data)=>{
+          console.log(data.data.data,"kareem")
+          dispatch(GetProfileInfo(data.data.data))
             setData({
                 ...data.data.data.asset_owner          ,
                 name:data.data.data.name,
