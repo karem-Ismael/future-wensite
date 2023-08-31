@@ -26,6 +26,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { WalletBallance, WalletTransactions } from "@/store/Profile/action";
 import WalletChargeComponent from "@/Components/WalletCharge";
+import BankTransfer from "@/Components/BankTransferComponent";
 const selectStyle = {
     width: "220px"
 }
@@ -75,7 +76,7 @@ function WalletCharge() {
         {
             key: '1',
             label: `تحويل بنكي`,
-            children: "",
+            children: <BankTransfer />,
         },
         {
             key: '2',

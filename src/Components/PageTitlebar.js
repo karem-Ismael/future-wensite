@@ -47,7 +47,7 @@ const PageTitleBar = ({ title, match,content, enableBreadCrumb,lastElement=undef
     items={
     subPath?.map((sub,index)=>(
       {
-         title:subPath.length == index +1 ?  lastElement  ? lastElement : sub  == "service-order" ? "طلب الخدمة"  : sub=="services" ?  "الخدمات": sub : <Link href={getUrlString(path, sub, index)} style={{color:"#7EA831"}}>{sub =="services" ? "الخدمات" :sub=="advisors" ? "الاستشارات" :sub  }</Link>
+         title:subPath.length == index +1 ?  lastElement  ? lastElement : sub  == "service-order" ? "طلب الخدمة"  : sub=="services" ?  "الخدمات": sub : <Link href={getUrlString(path, sub, index)} style={{color:"#7EA831"}}>{sub =="services" ? "الخدمات" :sub=="advisors" ? "الاستشارات" :sub =="wallet" ? "المحفظة": sub  }</Link>
       }
     ))
    

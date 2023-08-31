@@ -288,7 +288,7 @@ return(
                         <td>
                         {
                             InvoiceDetails?.cost
-                            }
+                         }
                         </td>
                         {console.log(JSON.parse(InvoiceDetails?.meta),"kareem")}
                     </tr>
@@ -331,7 +331,7 @@ return(
        <span>
        {
                                 InvoiceDetails?.cost - InvoiceDetails?.tax
-                            }
+        }
        </span>
         </li>
         <li className="list-item d-flex justify-content-between">

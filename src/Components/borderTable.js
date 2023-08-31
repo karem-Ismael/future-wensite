@@ -75,18 +75,13 @@ const dispatch=useDispatch()
         },
       })
       .then((res) => {
-        // client.get(`/service-request/${serviceRequestId}`).then(res=>{
-        //   setOrder(res.data.data)
-           
-        // })
+       
         client.get(`/asset-owner/request/${serviceRequestId}?token=${localStorage.getItem("token")}`).then((res)=>{
   
           dispatch(OrderDetailsAction(res.data.data))
-        // setTableView(false)
       
         })
-        // setFiles([...files, res.data.data.id]);
-        // setEnImage("https://estithmar.arabia-it.net" + res.data.data.path);
+     
       });
   };
   const DeleteFile=(id)=>{
@@ -207,15 +202,15 @@ const dispatch=useDispatch()
                                   ارفاق ملفات
                                 </button>
                                 <input
-                            style={{display:"none"}}
-                              ref={inputFile}
-                              type="file"
-                              accept="image/jpeg, jpeg, png, image/png, gif, image/gif"
-                              onChange={(e) => {
-                                const file = e.target.files[0];
-                                uploadEnimage(file,row)
-                                // setImage(file)
-                              }}
+                                  style={{display:"none"}}
+                                    ref={inputFile}
+                                    type="file"
+                                    accept="image/jpeg, jpeg, png, image/png, gif, image/gif"
+                                    onChange={(e) => {
+                                      const file = e.target.files[0];
+                                      uploadEnimage(file,row)
+                                      // setImage(file)
+                                    }}
                             />
                               </div>
                             </div>

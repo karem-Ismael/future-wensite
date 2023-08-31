@@ -322,8 +322,8 @@ ul{
 }
 .ant-tabs-nav-list{
   gap: 20px !important;
-  justify-content: space-between !important;
-  width: 100% !important;
+  /* justify-content: space-between !important; */
+  /* width: 100% !important; */
 }
 .ant-tabs-ink-bar{
   background:#C9AB7A !important;
