@@ -119,7 +119,6 @@ function Profile() {
             children: <WalletChargeTransactions />,
         },
     ]
-    console.log(profile, "profile")
     const goToZoomLink = (link) => {
         if (link) {
             window.open(link, "_blank")
@@ -130,7 +129,6 @@ function Profile() {
             token: localStorage.getItem("token")
         }).then((data) => {
             dispatch(WalletTransactions(data.data.data))
-            console.log(data.data.data, "profile karem")
         }
         )
         axios.post("https://estithmar.arabia-it.net/api/auth/wallet",{

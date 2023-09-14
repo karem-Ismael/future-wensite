@@ -2,7 +2,6 @@ import moment from "moment";
 import { Progress } from "reactstrap";
 import StatusDropDown from "./StatusDropDown";
 const ConsultDetailsComponent=({order})=>{
-  console.log(order,"consult details")
     return(
         <div className="col-md-12">
       

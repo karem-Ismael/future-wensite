@@ -7,11 +7,7 @@ import { useSelector } from "react-redux"
 const InvoiceDetailsComponent=({InvoiceDetails})=>{
     const {profileImage,profileInfo} =useSelector((state)=>state.profile) || {}
 
-console.log(InvoiceDetails,"InvoiceDetails")
 const {provider}=JSON.parse(InvoiceDetails?.meta)
-console.log(JSON.parse(InvoiceDetails?.meta),"provider")
-console.log(JSON.parse(InvoiceDetails?.meta),"meta data ")
-console.log(profileInfo?.asset_owner?.asset_name_ar,"profileInfo profileInfo")
 return(
     <div>
           <div className="mt-3 row">
@@ -290,7 +286,6 @@ return(
                             InvoiceDetails?.cost
                          }
                         </td>
-                        {console.log(JSON.parse(InvoiceDetails?.meta),"kareem")}
                     </tr>
                   </tbody>
                   {/* <tbody>

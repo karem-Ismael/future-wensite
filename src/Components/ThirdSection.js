@@ -2,6 +2,7 @@ import { Button, Col, Rate, Row } from "antd";
 import styled from "styled-components";
 import CardComponent from "./Card";
 import Slider from "./Slider"
+import { useRouter } from "next/router";
 
 const Div=styled.div`
 background:#150941;
@@ -27,7 +28,8 @@ transform:translateY(100px);
 }
 `;
 
-const ThirdSection=()=>{
+const ThirdSection=({services})=>{
+    const router =useRouter()
 return(
     <Div>
         <div className="container" style={{padding:"0px"}}>
@@ -37,40 +39,12 @@ return(
                     أحدث الخدمات
                     </h3>
                     <hr style={{ width: "80%", height: "0px", border: " 1px solid #7EA831", alignSelf: "center" }} />
-                    <Button size="large" style={{vorder:"none",background:"#7EA831",color:"#fff",width:"200px",minHeight:"50px"}}>  
+                    <Button size="large" onClick={()=>router.push("/services")} style={{vorder:"none",background:"#7EA831",color:"#fff",width:"200px",minHeight:"50px"}}>  
                     عرض الكل
                     </Button>
                 </div>
                 <Col lg={24} sm={24} md={24}>
-                <Slider inHome={true} clientServices={[
-                    {
-                        name:"karem"
-                    },
-                    {
-                        name:"karem"
-                    },
-                    {
-                        name:"karem"
-                    },
-                    {
-                        name:"karem"
-                    },
-                    {
-                        name:"karem"
-                    },
-                    {
-                        name:"karem"
-                    },
-                    {
-                        name:"karem"
-                    },
-                    {
-                        name:"karem"
-                    },
-                    {
-                        name:"karem"
-                    }
-                ]} /> 
+                <Slider inHome={true} clientServices={services.data.data.slice(0,9)} /> 
                 </Col>
                 
             </Row>

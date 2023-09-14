@@ -9,7 +9,6 @@ const Invoice=()=>{
     const { WalletTransactionsArr,InVoicesArr } = useSelector((state) => state.profile) || {}
     const [InvoiceDetails,setInvoicedDetails]=useState()
     const dispatch=useDispatch()
-    console.log(InvoiceDetails,"InvoiceDetails")
     useEffect(() => {
         axios.post(`https://estithmar.arabia-it.net/api/auth/invoices`, {
             token: localStorage.getItem("token")

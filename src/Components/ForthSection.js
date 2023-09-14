@@ -2,6 +2,7 @@ import { Button, Card, Col, Rate, Row } from "antd";
 import styled from "styled-components";
 import CardComponent from "./Card";
 import Slider from "./Slider"
+import { useRouter } from "next/router";
 
 const Div=styled.div`
 background:#150941;
@@ -28,6 +29,7 @@ padding:15px;
 `;
 
 const ForthSection=()=>{
+   const router =useRouter()
 return(
     <Div>
         <div className="container" style={{padding:"0px"}}>
@@ -39,7 +41,7 @@ return(
                 <p >
                 منصة الوقف النامي تربط بين مزودي الخدمات وبين الأوقاف المحتاجة للخدمات ، وبين المانحين الراغبين في دعم الخدمات للأوقاف
                 </p>
-                <Button size="large" style={{background:"#7EA831",color:"#fff" ,borderRadius:"0px",width:"100%",maxWidth:"200px",border:"none",minHeight:"50px"}}>
+                <Button onClick={()=>router.push("/services")} size="large" style={{background:"#7EA831",color:"#fff" ,borderRadius:"0px",width:"100%",maxWidth:"200px",border:"none",minHeight:"50px"}}>
                 عرض الخدمات
                 </Button>
              </Col>

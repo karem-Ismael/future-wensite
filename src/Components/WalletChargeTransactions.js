@@ -4,7 +4,6 @@ import { Badge } from "antd";
 
 const WalletChargeTransactions=()=>{
     const { WalletTransactionsArr,WalletBalance,AllWalletTransactionsArr } = useSelector((state) => state.profile) || {}
-console.log(AllWalletTransactionsArr,"AllWalletTransactionsArrAllWalletTransactionsArr")
 return(
     <div>
          <table className="table table-hover table-responsive w-100 table-wallet mt-2">

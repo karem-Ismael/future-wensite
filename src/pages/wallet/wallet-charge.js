@@ -88,7 +88,6 @@ function WalletCharge() {
 
 
     ];
-    console.log(profile, "profile")
     const goToZoomLink = (link) => {
         if (link) {
             window.open(link, "_blank")

@@ -77,7 +77,7 @@ return(
                       <div className="d-flex justify-content-between">
                       <p className="p-card">
 
-                      طلب الخدمة 
+                     طلب الخدمة/اجتماع 
                        </p>
                        <p className="watermark">
                         3

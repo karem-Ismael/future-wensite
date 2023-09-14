@@ -19,7 +19,6 @@ const AvailableAppointments = ({ filteredAppointments }) => {
           .put(`asset-owner/advisor-appointment/${value2}`, {
               token:localStorage.getItem("token")
           }).then(res=>{
-              console.log(res,"res")
               if(!res.errors){
                 //   NotificationManager.success("تم تسجيل حجز الاستشارة   بنجاح")
                 //   client.get(`/service-request/${serviceRequestId}`).then(res=>{

@@ -38,7 +38,6 @@ const SavePassword =()=>{
 useEffect(()=>{
     if(localStorage.getItem("token")){
         client.get(`/asset-owner/me?token=${localStorage.getItem("token")}`).then((data)=>{
-          console.log(data.data.data,"kareem")
           dispatch(GetProfileInfo(data.data.data))
             setData({
                 ...data.data.data.asset_owner          ,

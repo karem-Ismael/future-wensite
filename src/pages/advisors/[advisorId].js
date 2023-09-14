@@ -67,7 +67,6 @@ function AdvisorDetails({AdvisorDetailsRes }) {
     const [filteredAppointments,setFilteredAppointments]=useState([])
     const router = useRouter()
   const dispatch=useDispatch()   
-  console.log(AdvisorDetailsRes,"AdvisorDetailsRes")
     return (
         <LayoutComponent>
                  <BreedCrumb className='container'>

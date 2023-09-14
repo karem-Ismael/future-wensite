@@ -51,7 +51,6 @@ function ConsultList({ allowners, loading, limit, setLimit ,status}) {
         }
       }
       ).then(data=>{
-        console.log(data,"kareem data ")
         setOwners({
       collection: data?.data.data.data,
       metadata: {

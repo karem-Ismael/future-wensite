@@ -31,7 +31,6 @@ const BankTransfer=()=>{
     })
     .then((res) => {
       setIsModalOpen(true)
-     console.log(res,"res")
     });
   }
   const uploadEnimage = (file,row) => {

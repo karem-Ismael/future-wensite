@@ -33,10 +33,10 @@ const items = [
   },
 ];
 
-function Slider({clientServices,inHome}) {
+function Slider2({clientServices,inHome}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const router=useRouter()
+const router=useRouter()
   const next = () => {
     if (animating) return;
     const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
@@ -64,26 +64,25 @@ function Slider({clientServices,inHome}) {
       >
                        <Row gutter={[16, 16]}>
                        {
-                        clientServices?.slice(index*3,index == 0 ? 3  : index==1 ? 6 : 9).map((oneservice) => (
-                            <Col key={oneservice.id} md={8} sm={24} xs={24}>
+                              <Col key={clientServices[index].id} md={24} sm={24} xs={24}>
        
                                 <CardComponent>
                                   {
                                     inHome ? null: 
                                     <span className='discount'>
-                                        {oneservice.support_ratio} % <br />
+                                        {clientServices[index]?.support_ratio} % <br />
                                         دعم
                                     </span>
                                   }
                                     
                                     <p className='card-title'>
-                                        { inHome ?"الحصاد محاسبون" : oneservice?.service_provider?.company_name_ar}
+                                        {   clientServices[index]?.service_provider?.company_name_ar}
                                     </p>
                                     <h2 className='service-title'>
-                                        { inHome ? "إدارة التحقيق والمراجعة": oneservice.title}
+                                        { clientServices[index]?.title}
                                     </h2>
                                     <p className='service-description'>
-                                        { inHome ? "إدارة عمليات التحقيق الداخلي والتنسيق مع لجنة المراجعة الداخلية ومراجع الحسابات الخارجي": oneservice.description}
+                                        { clientServices[index]?.description}
                                     </p>
                                     <hr />
                               {
@@ -121,11 +120,72 @@ function Slider({clientServices,inHome}) {
                                         <Rate allowHalf defaultValue={2.5} disabled />
                                     </div>
                                     <div className="btn-details">
-                                        <Button onClick={() => router.push(`/services/${oneservice.id}`)} style={{ width: "50%", background: "#150941", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>التفاصيل</Button>
+                                        <Button onClick={() => router.push(`/services/${clientServices[index].id}`)} style={{ width: "50%", background: "#150941", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>التفاصيل</Button>
                                     </div>
                                 </CardComponent>
                             </Col>
-                        ))
+                        // clientServices?.map((oneservice) => (
+                        //     <Col key={oneservice.id} md={24} sm={24} xs={24}>
+       
+                        //         <CardComponent>
+                        //           {
+                        //             inHome ? null: 
+                        //             <span className='discount'>
+                        //                 {oneservice.support_ratio} % <br />
+                        //                 دعم
+                        //             </span>
+                        //           }
+                                    
+                        //             <p className='card-title'>
+                        //                 { inHome ?"الحصاد محاسبون" : oneservice?.service_provider?.company_name_ar}
+                        //             </p>
+                        //             <h2 className='service-title'>
+                        //                 { inHome ? "إدارة التحقيق والمراجعة": oneservice.title}
+                        //             </h2>
+                        //             <p className='service-description'>
+                        //                 { inHome ? "إدارة عمليات التحقيق الداخلي والتنسيق مع لجنة المراجعة الداخلية ومراجع الحسابات الخارجي": oneservice.description}
+                        //             </p>
+                        //             <hr />
+                        //       {
+                        //         inHome ? null: 
+                        //         <>
+                        //               <li className='item'>
+                        //                 <span className='list-title'>
+                        //                     التصنيف :
+                        //                 </span>
+                        //                 <span className='list-value'>
+                        //                     {oneservice?.field?.name}
+                        //                 </span>
+                        //             </li>
+                        //             <li className='item'>
+                        //                 <span className='list-title'>
+                        //                     التكلفة :
+                        //                 </span>
+                        //                 <span className='list-value'>
+                        //                     حسب طلب الوقف
+
+                        //                 </span>
+                        //             </li>
+                        //             <li className='item'>
+                        //                 <span className='list-title'>
+                        //                     مدة التنفيذ :
+                        //                 </span>
+                        //                 <span className='list-value'>
+                        //                     {oneservice.executive_time}{oneservice.executive_time_type}
+
+                        //                 </span>
+                        //             </li>
+                        //         </>
+                        //       }
+                        //             <div className='rate' >
+                        //                 <Rate allowHalf defaultValue={2.5} disabled />
+                        //             </div>
+                        //             <div className="btn-details">
+                        //                 <Button onClick={() => router.push(`/services/${oneservice.id}`)} style={{ width: "50%", background: "#150941", color: "#fff", border: "none", borderRadius: "0px" }} size={"large"}>التفاصيل</Button>
+                        //             </div>
+                        //         </CardComponent>
+                        //     </Col>
+                        // ))
                         
                     }
                     {
@@ -207,4 +267,4 @@ function Slider({clientServices,inHome}) {
   );
 }
 
-export default Slider;
+export default Slider2;

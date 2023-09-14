@@ -26,16 +26,16 @@ line-height:3;
     border-raduis:0px;
 }
 `;
-const HomePage=()=>{
+const HomePage=({services,fields})=>{
 return(
  <>
-  <FirstSection />
+  <FirstSection  services={services}/>
   <SecondSection />
-  <ThirdSection />
+  <ThirdSection services={services}/>
   <div style={{minHeight:"200px"}}>
 </div>
 <ForthSection />
-<LastSection />
+<LastSection services={services} />
 
  </>
 )
