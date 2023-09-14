@@ -32,7 +32,7 @@ const items = [
   },
 ];
 
-function Slider({clientServices}) {
+function Slider({clientServices,inHome}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -67,21 +67,28 @@ function Slider({clientServices}) {
                             <Col key={oneservice.id} md={8} sm={24} xs={24}>
        
                                 <CardComponent>
+                                  {
+                                    inHome ? null: 
                                     <span className='discount'>
                                         {oneservice.support_ratio} % <br />
                                         دعم
                                     </span>
+                                  }
+                                    
                                     <p className='card-title'>
-                                        {oneservice?.service_provider?.company_name_ar}
+                                        { inHome ?"الحصاد محاسبون" : oneservice?.service_provider?.company_name_ar}
                                     </p>
                                     <h2 className='service-title'>
-                                        {oneservice.title}
+                                        { inHome ? "إدارة التحقيق والمراجعة": oneservice.title}
                                     </h2>
                                     <p className='service-description'>
-                                        {oneservice.description}
+                                        { inHome ? "إدارة عمليات التحقيق الداخلي والتنسيق مع لجنة المراجعة الداخلية ومراجع الحسابات الخارجي": oneservice.description}
                                     </p>
                                     <hr />
-                                    <li className='item'>
+                              {
+                                inHome ? null: 
+                                <>
+                                      <li className='item'>
                                         <span className='list-title'>
                                             التصنيف :
                                         </span>
@@ -107,6 +114,8 @@ function Slider({clientServices}) {
 
                                         </span>
                                     </li>
+                                </>
+                              }
                                     <div className='rate' >
                                         <Rate allowHalf defaultValue={2.5} disabled />
                                     </div>
@@ -122,7 +131,7 @@ function Slider({clientServices}) {
                         clientServices?.data?.data.map((oneservice) => (
                             <Col key={oneservice.id} md={8} sm={24} xs={24}>
        
-                                <CardComponent>
+                                <CardComponent inHome={true}>
                                 <span className='discount'>
                                                 {oneservice.support_ratio} % <br/>
                                                 دعم

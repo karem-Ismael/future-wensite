@@ -99,7 +99,7 @@ const LayoutComponent =({children})=>{
       {children}
       <Footer style={footer1}>
         <div className="container">
-          <Row gutter={[200,16]}>
+          <Row gutter={[200,16]} style={{padding:"0px 100px 0px 76px"}}>
 
           <Col lg={8} md={8} sm={24} xs={24}>
           <img src="/assets/images/logo-footer.png" width={"100%"}/>

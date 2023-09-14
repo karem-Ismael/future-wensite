@@ -22,7 +22,8 @@ padding:1.25rem 1.25rem ;
     color:#150941;
     text-align:center;
     padding:20px 0px;
-    width:80%;
+    width: ${(props)=> props.inHome ? "100%" : "100%" };
+    margin:auto;
 }
 .service-description{
     text-align:center;
@@ -54,9 +55,9 @@ li.item{
 }
 }
 `
-const CardComponent =({color,height,children})=>{
+const CardComponent =({color,height,children,inHome})=>{
 return(
-    <DIV color={color} height={height}>
+    <DIV color={color} height={height} inHome={inHome}>
         <div className="rct-block-content">
             {children}
         </div>

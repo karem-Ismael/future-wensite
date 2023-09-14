@@ -438,3 +438,34 @@ table thead{
   top: -6px;
   right: -4px;;
 }
+.homespan{
+  position: relative;
+}
+.homespan::after {
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background: #7EA831;
+  content: "";
+  display: block;
+  right: 9px;
+  top: 39px;
+}
+.watermark
+{
+  position: absolute;
+ bottom:-44px;
+ left:21px;
+ opacity:0.5;
+ z-index:99;
+ /* color:white; */
+ font-size: 63px;
+}
+.img-service{
+  max-width: 50px;
+  height: 42px;
+}
+.p-card{
+  position: absolute;
+  bottom: 0;
+}
