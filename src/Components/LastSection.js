@@ -6,7 +6,7 @@ import Slider from "./Slider"
 const Div=styled.div`
 background:#F1F1F1;
 color:#fff;
-transform:translateY(-125px);
+transform:translateY(-1Slider25px);
 padding:15px;
 .container{
 
@@ -21,7 +21,7 @@ padding:15px;
     background:#7EA831;
     color:#fff;
     min-height:50px;
-    min-width:224px;
+    min-width:Slider2Slider24px;
     border:none;
     border-raduis:0px;
 }
@@ -57,7 +57,7 @@ return(
                     </Card>
                     </Col>
                     <Col md={8} sm={24} >
-                    <Card  style={{border:"1px solid #FFFFFF",color:"#7EA831",height:"146px",position:"relative",background:"#FFFFFF",width:"300px"}}> 
+                    <Card  className="class-2" style={{border:"1px solid #FFFFFF",color:"#7EA831",height:"146px",position:"relative",background:"#FFFFFF",width:"300px"}}> 
                     
                     <img src="/assets/images/mark.png"  className="img-service"/>
                       <div className="d-flex justify-content-between"> 
@@ -65,7 +65,7 @@ return(
                       
                        اختيار الخدمة
                        </p>
-                       <p className="watermark">
+                       <p className="watermark ">
                         2
                        </p>
                       </div>
@@ -101,7 +101,7 @@ return(
                     </Card>
                     </Col>
                     <Col md={8} sm={24} >
-                    <Card  style={{border:"1px solid #7EA831",color:"#FFFFFF",position:"relative",height:"146px",background:"#7EA831",width:"300px"}}> 
+                    <Card  className="class-2" style={{border:"1px solid #7EA831",color:"#FFFFFF",position:"relative",height:"146px",background:"#7EA831",width:"300px"}}> 
                 <img src="/assets/images/confirm.png" className="img-service"/>
                       <div className="d-flex justify-content-between">
                       <p className="p-card">

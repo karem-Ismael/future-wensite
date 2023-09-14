@@ -469,3 +469,22 @@ table thead{
   position: absolute;
   bottom: 0;
 }
+.class-2{
+  position: relative !important;
+}
+.class-2::before{
+  content: url("/assets/images/icon-arrow.svg") !important;
+  left: 0px;
+  position: absolute;
+  right: -89px;
+  top: 50%;
+  width: 81px
+}
+.class-2::after{
+  content: url("/assets/images/icon-arrow.svg") !important;
+  left: 0px;
+  position: absolute;
+  left: -99px;
+  top: 50%;
+  width: 81px
+}
