@@ -156,7 +156,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                                     <Col md={16} sm={12} xs={24}>
                                         <Row >
                                             <Col md={5} sm={12} xs={24}>
-                                                <img src="/assets/images/logo-com.png" width={100} height={100} />
+                                                <img src={ServicesDetails.data.profile_pic ? ServicesDetails.data.profile_pic :"/assets/images/logo-com.png"} width={100} height={100} />
                                             </Col>
                                             <Col md={16} sm={12} xs={24} style={{ alignSelf: "center" }} >
                                                 <p style={{ color: "#150941" }}>
