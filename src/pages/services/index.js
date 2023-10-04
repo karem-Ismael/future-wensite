@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router'
 import PageTitleBar from '@/Components/PageTitlebar';
+import { Pagination } from 'antd';
 
 const { useBreakpoint } = Grid;
 
@@ -51,7 +52,7 @@ function Services({services,fields}) {
     const [field,setField]=useState()
     const [excutivetime,setExcutivetime]=useState()
     const router = useRouter()
-
+console.log(clientServices,"clientServices")
     const onChange = (value) => {
         
         setField(value)
@@ -80,7 +81,11 @@ function Services({services,fields}) {
     const onSearch = (value) => {
         console.log('search:', value);
     };
- 
+ const  handelPageClick=async(page)=>{
+    const response =await fetch(`https://estithmar.arabia-it.net/api/service?page=${page}`)
+    const data =await response.json()
+    setClientServices(data)
+ }
     return (
         <LayoutComponent>
              <BreedCrumb className='container'>
@@ -254,6 +259,13 @@ function Services({services,fields}) {
                         </Col>
                         ))
                     }
+                </Row>
+                <Row align={"middle"} className='mt-5'>
+                <Pagination current={clientServices.data.current_page} pageSize={15} total={clientServices.data.total} 
+                
+                onChange={(page)=>handelPageClick(page)}
+                />
+
                 </Row>
             </DIVContent>
 

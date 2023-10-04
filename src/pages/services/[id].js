@@ -127,6 +127,7 @@ function ServiceDetails({ services, ServicesDetails }) {
         
         return sum;
       }      
+      console.log(ServicesDetails,"ServicesDetails")
     return (
         <LayoutComponent>
                  <BreedCrumb className='container'>
