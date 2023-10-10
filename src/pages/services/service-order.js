@@ -289,7 +289,14 @@ function ServiceOrder({ ServicesDetails }) {
 
                                             </sub>
                                         </span>
-                                        يكفي لاتمام الطلب
+                                        {localStorage.getItem("total") &&  localStorage.getItem("total") > WalletBalance?.valid_balance ? 
+                                        
+                                        "لا يكفي لاتمام الطلب"
+                                        : ServicesDetails.data.cost  > WalletBalance?.valid_balance ? 
+                                        " يكفي لاتمام الطلب"
+                                            : " يكفي لاتمام الطلب"
+                                        }
+
                                     </p>
                                 </div>
                                 <div className='text-center'>
@@ -297,7 +304,7 @@ function ServiceOrder({ ServicesDetails }) {
                                     onClick={()=>SaveOrder()}
                                     style={{ width: "50%", maxWidth: "200px", background: "#150941", color: "#fff", border: "none", borderRadius: "0px" }} 
                                     size={"large"}
-                                    disabled={ServicesDetails.data.service_requirment.map((service)=>AssetFiles?.includes(service.title)).includes(false)}
+                                    disabled={ !user?.id || ServicesDetails.data.service_requirment.map((service)=>AssetFiles?.includes(service.title)).includes(false)}
                                     
                                     >
                                         إتمام الطلب</Button>

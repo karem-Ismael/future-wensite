@@ -144,44 +144,50 @@ const HeaderComponent = () => {
       </Col>
       <Col lg={16} style={{display: screens.lg || screens.xl  ? "" : "none"}}>
         <Nav>
+        <Link href={'/'} >
 
           <li className={router.pathname === "/" ? "active-item" : null}>
-            <Link href={'/'} >
               الرئيسية
-            </Link>
           </li>
+          </Link>
+          <Link href={'/about'}>
+
           <li className="">
-            <Link href={'/about'}>
               من نحن
-            </Link>
           </li>
+          </Link>
+
+          <Link href={'/wakf-library'}>
 
           <li className="">
-            <Link href={'/wakf-library'}>
               مكتبة الوقف
-            </Link>
           </li>
+          </Link>
+          <Link href={'/services'}>
+
           <li className={router.pathname.includes("/services") ? "active-item" : null}>
-            <Link href={'/services'}>
               خدماتنا
-            </Link>
           </li>
+          </Link>
+          <Link href={'/wakf-library'}>
 
           <li className="">
-            <Link href={'/wakf-library'}>
               الباقات
-            </Link>
           </li>
+          </Link>
+          <Link href={'/advisors'}>
+
           <li className={router.pathname.includes("/advisors") ? "active-item" : null}>
-            <Link href={'/advisors'}>
               الاستشارات
-            </Link>
           </li>
+          </Link>
+          <Link href={'/wakf-library'}>
+
           <li className="">
-            <Link href={'/wakf-library'}>
               اتصل بنا
-            </Link>
           </li>
+          </Link>
+
           <li>
             {
               user?.id ?  

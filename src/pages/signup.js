@@ -55,6 +55,7 @@ axios.post("https://estithmar.arabia-it.net/api/auth/register",{...user}
  }).catch(err=>console.log(err.message))
   } 
   const {errors} =useSelector(state=>state.authentication) || {}
+  console.log(errors,"s")
       return (
          <div className='row' style={{height:"100vh" ,textAlign:"right",direction:"ltr"}}>
          <div className='col-md-8 col-sm-12' style={{margin:"auto",direction:"rtl",paddingRight:"50px"}}> 
@@ -142,25 +143,14 @@ axios.post("https://estithmar.arabia-it.net/api/auth/register",{...user}
                  }
                </FormGroup>
                </div>
-               <div className='col-md-5 col-sm-12 '> 
-                  { 
-                  errors ? 
-                    Object.keys(errors)?.map((key,value)=>(
-                      <div className=''> 
-                        {errors[key]?.map(err=>(
-                        <div className='alert alert-danger'>
-                          {key} {err}
-                        </div>
-                        ))
-                        }
-                      </div>
-                    ))
-                    : null
+               {
+                     errors ? <div className='col-md-5 col-sm-12 alert alert-danger'>
+                              {errors}
+                        </div> :null
                   }
-               </div>
              
                <div className='col-md-5 col-sm-12' style={{gap:"30px"}}>
-                 <button onClick={()=>handelClick()} style={{border:"none",background:"#D4B265",color:"#fff",height:"48px",cursor:"pointer",width:"100%"}}>
+                 <button onClick={()=>handelClick()} style={{border:"none",background:"#7EA831",color:"#fff",height:"48px",cursor:"pointer",width:"100%"}}>
                  تسجيل   
                  </button>
                </div>

@@ -510,7 +510,7 @@ function ServiceDetails({ services, ServicesDetails }) {
                             <CardComponent>
                                 <div>
                                     <h3 className={styless.title}>
-                                        مدة التنفيذ
+                                        مراحل التسليم
                                     </h3>
                                     <ul className={styless.list}>
                                         {
