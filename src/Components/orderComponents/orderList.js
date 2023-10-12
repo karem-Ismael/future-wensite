@@ -127,9 +127,10 @@ const getOrderDetails=(id)=>{
                 <Pagination 
                 size="small"
                 defaultCurrent={page}
-                current={page}
+                // current={page}
                 onChange={(page)=>setPage(page)}
                 pageSize={10}
+                showSizeChanger={false}
                  total={metadata.totalCount}
                   />
               

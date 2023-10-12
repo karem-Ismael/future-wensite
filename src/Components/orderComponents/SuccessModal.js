@@ -24,7 +24,7 @@ const SuccessModal = ({isModalOpen,setIsModalOpen}) => {
     status="success"
     title="تم إتمام طلبك وارساله بنجاح"
     extra={[
-      <Button className="w-50"  size="large" style={{color:"#D3B166",borderColor:"#D3B166"}}key="buy">طلباتي</Button>,
+      <Button className="w-50" onClick={()=>router.push("/profile")}  size="large" style={{color:"#D3B166",borderColor:"#D3B166"}}key="buy">طلباتي</Button>,
       <Button  onClick={()=>{
         dispatch(RemoveBorders())
         router.push("/")

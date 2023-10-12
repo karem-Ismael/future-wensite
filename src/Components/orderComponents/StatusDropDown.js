@@ -14,13 +14,48 @@ function StatusDropDown(props) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   const {user} =useSelector(state=>state.authentication.login_data) || {}
-
+  const StatusDl=props.inWakfStatus ? 
+  [
+    {name:"غير مكتمل",id:3,color:"#FF0404"},
+   
+    {name:"مكتمل",id:2,color:"#31CE77"}
+  ]
+  :props.inorder ? [
+    {name:"جاري العمل ",id:1,color:"#31CE77"},
+    {name:"قيد الانتظار",id:0,color:"#EEB656"},
+    {name:"مرفوض",id:-1 ,color:"#FF0404"},
+    {name:"مكتمل",id:2,color:"#31CE77"}
+  ] : [
+    {name:"جاري العمل ",id:1,color:"#31CE77"},
+    {name:"قيد الانتظار",id:0,color:"#EEB656"},
+    {name:"مرفوض",id:-1,color:"#FF0404"},
+]
 useEffect(()=>{
   if(props.activationStatus !=undefined){
-    const activeStatus =  [
-      {name:"مفعل",id:1},
-      {name:"قيد الانتظار",id:0},
-      {name:"مرفوض",id:-1},
+    const activeStatus = props.inWakfStatus ? 
+    [
+    {name:"غير مكتمل",id:3,color:"#FF0404"},
+
+     
+    {name:"مكتمل",id:2,color:"#31CE77"}
+      
+    ].find(one=>one.id == props.activationStatus)
+    :props.inorder ? [
+    {name:"جاري العمل ",id:1,color:"#31CE77"},
+      
+    {name:"قيد الانتظار",id:0,color:"#EEB656"},
+
+    {name:"مرفوض",id:-1,color:"#FF0404"},
+
+    {name:"مكتمل",id:2,color:"#31CE77"}
+
+    ] .find(one=>one.id == props.activationStatus): [
+    {name:"جاري العمل ",id:1,color:"#31CE77"},
+
+    {name:"قيد الانتظار",id:0,color:"#EEB656"},
+
+    {name:"مرفوض",id:-1,color:"#FF0404"},
+
   ].find(one=>one.id == props.activationStatus)
     setActiveStatus(activeStatus)
   }
@@ -60,17 +95,12 @@ const changeStatus=(status)=>{
 }
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle} {...props}>
-      <DropdownToggle disabled={(user?.category != "admin" || props.notAllowed) && !props.wakf} caret size="md" style={{background:activeStatus?.title == 
-"قيد الانتظار" ?  "#EEB656":  "",border:"none",width:"fit-content"}}>
+      <DropdownToggle disabled={(user?.category != "admin" || props.notAllowed) && !props.wakf} caret size="md" style={{background:activeStatus?.color,border:"none",width:"fit-content"}}>
         {activeStatus?.name}
       </DropdownToggle>
       <DropdownMenu>
         {
-           [
-            {name:"مفعل",id:1},
-            {name:"قيد الانتظار",id:0},
-            {name:"مرفوض",id:-1},
-        ].map((onestatus)=>(
+           StatusDl.map((onestatus)=>(
             <DropdownItem onClick={()=>changeStatus(onestatus)}>{onestatus.name}</DropdownItem>
            ))
         }     

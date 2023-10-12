@@ -135,7 +135,7 @@ const dispatch=useDispatch()
                   حالة المرحلة
                 </p>
                 <div>
-                <StatusDropDown  borderId={row.id} orderId={orderDetails.id}  wakf={true} activationStatus={row?.owner_status} />
+                <StatusDropDown  inWakfStatus={true} borderId={row.id} orderId={orderDetails.id}  wakf={true} activationStatus={row?.owner_status} />
                 </div>
                 </div>
                
@@ -143,7 +143,7 @@ const dispatch=useDispatch()
               {
                 <>
                 <div>
-                   <table className="table table-hover w-100">
+                   <table className="table table-hover w-100 mt-2">
                 <thead>
                     <th>
                      ID
